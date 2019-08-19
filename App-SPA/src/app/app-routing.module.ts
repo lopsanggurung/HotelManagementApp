@@ -8,7 +8,7 @@ import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
   {
@@ -24,8 +24,8 @@ const routes: Routes = [
     component: PagesComponent
   },
   {
-    path: '',
-    redirectTo: 'login',
+    path: '**',
+    redirectTo: '',
     pathMatch: 'full',
   },
 ];

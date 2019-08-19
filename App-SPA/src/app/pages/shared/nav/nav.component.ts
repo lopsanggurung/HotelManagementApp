@@ -29,7 +29,7 @@ export class NavComponent implements OnDestroy {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
     this.snackBar.open('Logged out', 'Close', { duration: 5000 });
   }
 

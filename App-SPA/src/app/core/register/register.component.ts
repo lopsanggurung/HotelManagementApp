@@ -29,7 +29,8 @@ export class RegisterComponent implements OnInit {
 
   public onCancel = () => {
     console.log('Clicked Cancel');
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']
+    );
   }
 
   public onRegister = (registerFormValue) => {
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(this.model).subscribe(
         () => {
           this.authService.login(this.model).subscribe();
-          this.router.navigateByUrl('/pages');
+          this.router.navigate(['/pages']);
           this.snackBar.open('Registered successfully', 'Close', { duration: 5000 });
         },
         error => {

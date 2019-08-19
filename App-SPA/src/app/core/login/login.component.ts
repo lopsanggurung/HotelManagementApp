@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   public onForgotPassword = () => {
     console.log('Clicked Forgot Password');
-    this.router.navigateByUrl('/resetPassword');
+    this.router.navigate(['/resetPassword']);
   }
 
   public onLogin = (loginFormValue) => {
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       };
       this.authService.login(this.model).subscribe(next => {
         this.snackBar.open('Logged in successfully', 'Close', { duration: 5000 });
-        this.router.navigateByUrl('/pages');
+        this.router.navigate(['/pages/dashboard']);
       }, error => {
         this.snackBar.open('Failed to login', 'Close', { duration: 5000 });
       });
@@ -49,6 +49,6 @@ export class LoginComponent implements OnInit {
 
   public openRegister = () => {
     console.log('Clicked Register');
-    this.router.navigateByUrl('/register');
+    this.router.navigate(['/register']);
   }
 }

@@ -7,7 +7,7 @@
     <span class="spacer"></span>
     <span class="user-menu" *ngIf="loggedIn()">
       <button mat-button [matMenuTriggerFor]="menu">
-        Welcome User
+        Welcome {{authService.decodedToken?.unique_name | titlecase}}
         <mat-icon aria-hidden="false" aria-label="arrow icon">arrow_drop_down</mat-icon>
       </button>
       <mat-menu #menu="matMenu" [overlapTrigger]="false">

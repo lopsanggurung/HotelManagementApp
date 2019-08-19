@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 import { AuthService } from './../auth.service';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   public loginForm: FormGroup;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -37,13 +38,12 @@ export class LoginComponent implements OnInit {
         username: loginFormValue.username,
         password: loginFormValue.password
       };
-      // console.log(this.model);
       this.authService.login(this.model).subscribe(next => {
-        console.log('Logged in successfully');
+        this.snackBar.open('Logged in successfully', 'Close', { duration: 5000 });
+        this.router.navigateByUrl('/pages');
       }, error => {
-        console.log('Failed to login');
+        this.snackBar.open('Failed to login', 'Close', { duration: 5000 });
       });
-      this.router.navigateByUrl('/pages');
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 import { AuthService } from '../auth.service';
 
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   public registerForm: FormGroup;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -40,12 +41,13 @@ export class RegisterComponent implements OnInit {
       // console.log(this.model);
       this.authService.register(this.model).subscribe(
         () => {
-          console.log('Registration successful');
           this.authService.login(this.model).subscribe();
           this.router.navigateByUrl('/pages');
+          this.snackBar.open('Registered successfully', 'Close', { duration: 5000 });
         },
         error => {
-          console.log(error);
+          // console.log(error);
+          this.snackBar.open('Failed to register', 'Close', { duration: 5000 });
         }
       );
     }

@@ -2,6 +2,9 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthService } from './../../../core/auth.service';
+import { MatSnackBar } from '@angular/material';
+
 /** @title Responsive sidenav */
 @Component({
   selector: 'app-nav',
@@ -13,21 +16,21 @@ export class NavComponent implements OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private router: Router, public authService: AuthService,
+    private snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout() {
     localStorage.removeItem('token');
-    console.log('logged out');
     this.router.navigateByUrl('/login');
+    this.snackBar.open('Logged out', 'Close', { duration: 5000 });
   }
 
   ngOnDestroy(): void {

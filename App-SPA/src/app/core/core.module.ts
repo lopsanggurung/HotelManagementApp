@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material/material.module';
 import { CoreComponent } from './core.component';
@@ -9,9 +13,14 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MaterialModule
   ],
   declarations: [CoreComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
-  exports: [MaterialModule, LoginComponent, RegisterComponent, ResetPasswordComponent]
+  exports: [BrowserAnimationsModule, HttpClientModule, MaterialModule, LoginComponent, RegisterComponent, ResetPasswordComponent]
 })
 export class CoreModule { }

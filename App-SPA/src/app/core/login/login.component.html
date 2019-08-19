@@ -1,3 +1,32 @@
-<p>
-  login works!
-</p>
+<mat-card>
+  <mat-card-title>
+    <h2>Welcome to App</h2>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <h3>Login</h3>
+  </mat-card-subtitle>
+  <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="onLogin(loginForm.value)"
+    fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" placeholder="Username" formControlName="username" id="username">
+        <mat-hint>Required</mat-hint>
+        <mat-error *ngIf="hasError('username', 'required')">Username is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Password" formControlName="password" id="password">
+        <mat-hint>Required</mat-hint>
+        <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Login</button>
+      <button mat-button (click)="onForgotPassword()">
+        Forgot Password
+      </button>
+    </mat-card-actions>
+  </form>
+  <button mat-raised-button color="secondary" (click)="openRegister()">Register</button>
+</mat-card>

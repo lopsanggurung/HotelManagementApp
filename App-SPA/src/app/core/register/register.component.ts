@@ -42,13 +42,16 @@ export class RegisterComponent implements OnInit {
       // console.log(this.model);
       this.authService.register(this.model).subscribe(
         () => {
-          this.authService.login(this.model).subscribe();
-          this.router.navigate(['/pages']);
           this.snackBar.open('Registered successfully', 'Close', { duration: 5000 });
         },
         error => {
           // console.log(error);
           this.snackBar.open('Failed to register', 'Close', { duration: 5000 });
+        }, () => {
+          this.authService.login(this.model).subscribe(() => {
+            this.router.navigate(['/pages']);
+          });
+          // this.router.navigate(['/pages']);
         }
       );
     }

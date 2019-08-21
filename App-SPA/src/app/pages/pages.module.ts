@@ -10,6 +10,8 @@ import { NavComponent } from './shared/nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserListResolver } from './user/_resolvers/user-list.resolver';
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     DashboardModule,
     PagesRoutingModule
   ],
-  declarations: [PagesComponent, NavComponent, DashboardComponent, AdminComponent]
+  providers: [UserListResolver],
+  declarations: [PagesComponent, NavComponent, DashboardComponent, AdminComponent, UserListComponent]
 })
 export class PagesModule { }

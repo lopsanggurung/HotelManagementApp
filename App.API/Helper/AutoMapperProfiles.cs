@@ -10,6 +10,7 @@ namespace App.API.Helpers
         {
             CreateMap<User, UserForListDto>();
             CreateMap<User, UserForDetailedDto>();
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }

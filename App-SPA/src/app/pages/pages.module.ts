@@ -11,7 +11,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { UserListResolver } from './user/_resolvers/user-list.resolver';
+import { UserListResolver } from './user/_resolvers/user-edit.resolver';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserEditResolver } from './user/_resolvers/user-list.resolver';
+import { PreventUnsavedchanges } from './user/_guards/prevent-unsaved-changes.guard';
 
 @NgModule({
   imports: [
@@ -22,7 +25,18 @@ import { UserListResolver } from './user/_resolvers/user-list.resolver';
     DashboardModule,
     PagesRoutingModule
   ],
-  providers: [UserListResolver],
-  declarations: [PagesComponent, NavComponent, DashboardComponent, AdminComponent, UserListComponent]
+  providers: [
+    UserListResolver,
+    UserEditResolver,
+    PreventUnsavedchanges
+  ],
+  declarations: [
+    PagesComponent,
+    NavComponent,
+    DashboardComponent,
+    AdminComponent,
+    UserListComponent,
+    UserEditComponent
+  ]
 })
 export class PagesModule { }

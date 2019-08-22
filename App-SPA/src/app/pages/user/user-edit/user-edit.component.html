@@ -1,0 +1,22 @@
+<h1>Your Profile</h1>
+
+<div *ngIf="editForm.dirty">
+  <p>
+    <strong>Information:</strong>
+    You have made changes. Any unsaved changes will be lost!
+  </p>
+</div>
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+  <label for="username">Username</label>
+  <input class="form-control" type="text" [disabled]="true" name="username" [(ngModel)]="user.username" />
+  <label for="firstName">First Name</label>
+  <input class="form-control" type="text" name="firstName" [(ngModel)]="user.firstName" />
+  <label for="lastName">Last Name</label>
+  <input class="form-control" type="text" name="lastName" [(ngModel)]="user.lastName" />
+  <label for="created">Created on</label>
+  <input class="form-control" type="text" [disabled]="true" name="created" [(ngModel)]="user.created" />
+</form>
+
+<button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block mt-5">
+  Save Changes
+</button>

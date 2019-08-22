@@ -6,7 +6,10 @@ import { AdminComponent } from './admin/admin.component';
 import { PagesComponent } from './pages.component';
 import { AuthGuard } from '../core/auth.guard';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { UserListResolver } from './user/_resolvers/user-list.resolver';
+import { UserListResolver } from './user/_resolvers/user-edit.resolver';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserEditResolver } from './user/_resolvers/user-list.resolver';
+import { PreventUnsavedchanges } from './user/_guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
   {
@@ -23,6 +26,12 @@ const routes: Routes = [
         path: 'users',
         component: UserListComponent,
         resolve: { users: UserListResolver }
+      },
+      {
+        path: 'user/edit',
+        component: UserEditComponent,
+        resolve: { user: UserEditResolver },
+        canDeactivate: [PreventUnsavedchanges]
       },
       {
         path: 'admin',

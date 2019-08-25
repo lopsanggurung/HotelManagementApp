@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { SharedComponent } from './shared.component';
 
@@ -10,10 +11,12 @@ import { SharedComponent } from './shared.component';
     FormsModule
   ],
   declarations: [
-    SharedComponent
+    SharedComponent,
+    TimeAgoPipe
   ],
   exports: [
-    FormsModule
+    FormsModule,
+    TimeAgoPipe
   ]
 })
 export class SharedModule { }

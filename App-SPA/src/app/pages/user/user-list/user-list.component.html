@@ -29,7 +29,7 @@
       <!-- LastActive Column -->
       <ng-container matColumnDef="lastActive">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Active </th>
-        <td mat-cell *matCellDef="let row"> {{row.lastActive | date}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.lastActive | timeAgo}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

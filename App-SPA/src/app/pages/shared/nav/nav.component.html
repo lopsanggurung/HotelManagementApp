@@ -43,7 +43,10 @@
         <a mat-list-item routerLink='.' routerLinkActive="active">
           Link 5
         </a>
-        <a mat-list-item routerLink='../pages/admin' routerLinkActive="active">
+        <a *appHasRole="['Manager']" mat-list-item routerLink='../pages/manager' routerLinkActive="active">
+          Manager
+        </a>
+        <a *appHasRole="['Admin']" mat-list-item routerLink='../pages/admin' routerLinkActive="active">
           Admin
         </a>
       </mat-nav-list>

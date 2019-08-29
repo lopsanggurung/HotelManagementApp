@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 namespace App.API.Controllers
 {
     //GET http://localhost:5000/api/values
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -22,6 +21,7 @@ namespace App.API.Controllers
         }
 
         // GET api/values
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
@@ -31,7 +31,7 @@ namespace App.API.Controllers
         }
 
         // GET api/values/5
-        [AllowAnonymous]
+        [Authorize(Roles = "Member")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {

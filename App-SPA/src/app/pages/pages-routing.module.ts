@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
+import { ManagerComponent } from './manager/manager.component';
 import { PagesComponent } from './pages.component';
 import { AuthGuard } from '../core/auth.guard';
 import { UserListComponent } from './user/user-list/user-list.component';
@@ -34,8 +35,14 @@ const routes: Routes = [
         canDeactivate: [PreventUnsavedchanges]
       },
       {
+        path: 'manager',
+        component: ManagerComponent,
+        data: { roles: ['Admin', 'Manager'] }
+      },
+      {
         path: 'admin',
-        component: AdminComponent
+        component: AdminComponent,
+        data: { roles: ['Admin'] }
       },
     ]
   },

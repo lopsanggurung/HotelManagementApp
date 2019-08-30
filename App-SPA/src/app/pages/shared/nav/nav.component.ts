@@ -1,26 +1,29 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './../../../core/auth.service';
 import { MatSnackBar } from '@angular/material';
+import { SidenavService } from 'src/app/core/sidenav.service';
+import { animateText, onSideNavChange, onMainContentChange } from 'src/app/animations/animations';
 
-/** @title Responsive sidenav */
+/** @title sidenav */
 @Component({
   selector: 'app-nav',
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.scss'],
+  animations: [onSideNavChange, animateText, onMainContentChange],
 })
 export class NavComponent implements OnDestroy {
-  mobileQuery: MediaQueryList;
-
-  private _mobileQueryListener: () => void;
+  public sideNavState = false;
+  public linkText = false;
+  public onSideNavChange: boolean;
 
   constructor(private router: Router, public authService: AuthService,
-    private snackBar: MatSnackBar, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    private _sidenavService: SidenavService, private snackBar: MatSnackBar) {
+      this._sidenavService.sideNavState$.subscribe( res => {
+        console.log(res);
+        this.onSideNavChange = res;
+    });
   }
 
   loggedIn() {
@@ -33,7 +36,14 @@ export class NavComponent implements OnDestroy {
     this.snackBar.open('Logged out', 'Close', { duration: 5000 });
   }
 
+  onSidenavToggle() {
+    this.sideNavState = !this.sideNavState;
+    setTimeout(() => {
+      this.linkText = this.sideNavState;
+    }, 200);
+    this._sidenavService.sideNavState$.next(this.sideNavState);
+  }
+
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 }

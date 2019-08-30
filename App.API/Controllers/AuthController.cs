@@ -47,6 +47,13 @@ namespace App.API.Controllers
 
             if (result.Succeeded)
             {
+                IEnumerable<string> defaultRolesList = new List<string>() { "Member" };
+
+                var resultForRole = await _userManager.AddToRolesAsync(userToCreate, defaultRolesList);
+
+                if (!resultForRole.Succeeded)
+                    return BadRequest(resultForRole.Errors);
+
                 return CreatedAtRoute("GetUser", new { controller = "Users", Id = userToCreate.Id }, userToReturn);
             }
 

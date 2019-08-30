@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatSnackBar, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 import { AdminService } from './../../../core/admin.service';
 import { User } from './../../../_models/user';
-import { MatDialog } from '@angular/material';
-import { UserEditModalComponent } from '../user-edit-modal/user-edit-modal.component';
+import { RolesModalComponent } from '../roles-modal/roles-modal.component';
 
+export interface DialogData {
+  user: User;
+  roles: any[];
+}
 
 @Component({
   selector: 'app-user-management',
@@ -13,33 +17,68 @@ import { UserEditModalComponent } from '../user-edit-modal/user-edit-modal.compo
 })
 export class UserManagementComponent implements OnInit {
   users: User[];
-  // currentUser: User;
+  displayedColumns: string[] = ['id', 'userName', 'roles', 'action'];
+  dataSource: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private adminService: AdminService,
+    private snackBar: MatSnackBar,
     public dialog: MatDialog
-  ) { }
-
-  editUserDetail(user: User): void {
-    const dialogRef = this.dialog.open(UserEditModalComponent, {
-      width: '450px',
-      data: { user }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
-      // this.currentUser = result;
-      // console.log(result);
-    });
+  ) {
+    this.getUsersWithRoles();
   }
 
   ngOnInit() {
-    this.getUsersWithRoles();
+    // this.dataSource = new MatTableDataSource(this.users);
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  openDialog(user: User): void {
+    const dialogRef = this.dialog.open(RolesModalComponent, {
+      width: '450px',
+      data: {
+        user, roles: this.getRolesArray(user)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const rolesToUpdate = {
+          roleNames: [...result.filter(el => el.checked === true).map(el => el.name)]
+        };
+        if (rolesToUpdate) {
+          this.adminService.updateUserRoles(user, rolesToUpdate).subscribe(() => {
+            user.roles = [...rolesToUpdate.roleNames];
+            this.snackBar.open('Roles changed successfully', 'Close', { duration: 5000 });
+          }, error => {
+            console.log(error);
+            this.snackBar.open('Failed to change Roles', 'Close', { duration: 5000 });
+          });
+        }
+      }
+    });
   }
 
   getUsersWithRoles() {
     this.adminService.getUsersWithRoles().subscribe(
       (users: User[]) => {
         this.users = users;
+        // this.dataSource = this.users;
+        this.dataSource = new MatTableDataSource(this.users);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error => {
         console.log(error);
@@ -47,42 +86,12 @@ export class UserManagementComponent implements OnInit {
     );
   }
 
-  // editUserDetail() {
-  // }
-
-  // editRolesModal(user: User) {
-  // const initialState = {
-  //   user,
-  //   roles: this.getRolesArray(user)
-  // };
-  // this.bsModalRef = this.modalService.show(RolesModalComponent, {
-  //   initialState
-  // });
-  // this.bsModalRef.content.updateSelectedRoles.subscribe(values => {
-  //   const rolesToUpdate = {
-  //     roleNames: [
-  //       ...values.filter(el => el.checked === true).map(el => el.name)
-  //     ]
-  //   };
-  //   if (rolesToUpdate) {
-  //     this.adminService.updateUserRoles(user, rolesToUpdate).subscribe(
-  //       () => {
-  //         user.roles = [...rolesToUpdate.roleNames];
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       }
-  //     );
-  //   }
-  // });
-  // }
-
   private getRolesArray(user) {
     const roles = [];
     const userRoles = user.roles;
     const availableRoles: any[] = [
       { name: 'Admin', value: 'Admin' },
-      { name: 'Moderator', value: 'Moderator' },
+      { name: 'Manager', value: 'Manager' },
       { name: 'Member', value: 'Member' },
       { name: 'VIP', value: 'VIP' }
     ];

@@ -1,0 +1,24 @@
+.container {
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 20px;
+  margin-bottom: 1px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

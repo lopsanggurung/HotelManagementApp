@@ -12,6 +12,9 @@ namespace App.API.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Value> Values { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

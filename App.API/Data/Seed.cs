@@ -10,10 +10,12 @@ namespace App.API.Data
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
-        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager)
+        private readonly DataContext _context;
+        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager, DataContext context)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _context = context;
         }
 
         public void SeedUsers()
@@ -54,6 +56,30 @@ namespace App.API.Data
                     var admin = _userManager.FindByNameAsync("Admin").Result;
                     _userManager.AddToRolesAsync(admin, new[] { "Admin", "Manager" }).Wait();
                 }
+            }
+
+            if (!_context.Rooms.Any())
+            {
+                var roomData = System.IO.File.ReadAllText("Data/RoomSeedData.json");
+                var rooms = JsonConvert.DeserializeObject<List<Room>>(roomData);
+                foreach (var room in rooms)
+                {
+                    _context.Rooms.Add(room);
+                }
+
+            _context.SaveChanges();
+            }
+
+            if (!_context.Guests.Any())
+            {
+                var guestData = System.IO.File.ReadAllText("Data/GuestSeedData.json");
+                var guests = JsonConvert.DeserializeObject<List<Guest>>(guestData);
+                foreach (var guest in guests)
+                {
+                    _context.Guests.Add(guest);
+                }
+
+            _context.SaveChanges();
             }
         }
     }

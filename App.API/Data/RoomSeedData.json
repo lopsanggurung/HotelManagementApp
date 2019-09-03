@@ -1,0 +1,167 @@
+[
+    {
+        "RoomNumber": "101",
+        "RoomType": "Standard",
+        "TwinBed": 0,
+        "FullBed": 1,
+        "QueenBed": 0,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 40.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "102",
+        "RoomType": "Standard",
+        "TwinBed": 0,
+        "FullBed": 1,
+        "QueenBed": 0,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 40.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "103",
+        "RoomType": "Standard",
+        "TwinBed": 0,
+        "FullBed": 1,
+        "QueenBed": 0,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 40.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "104",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "105",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "201",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "202",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "203",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "204",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "205",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "301",
+        "RoomType": "Suite",
+        "TwinBed": 1,
+        "FullBed": 0,
+        "QueenBed": 0,
+        "KingBed": 1,
+        "MaxOccupancy": 4,
+        "Price": 100.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "302",
+        "RoomType": "Suite",
+        "TwinBed": 1,
+        "FullBed": 0,
+        "QueenBed": 0,
+        "KingBed": 1,
+        "MaxOccupancy": 4,
+        "Price": 100.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "303",
+        "RoomType": "Suite",
+        "TwinBed": 1,
+        "FullBed": 0,
+        "QueenBed": 0,
+        "KingBed": 1,
+        "MaxOccupancy": 4,
+        "Price": 100.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "304",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    },
+    {
+        "RoomNumber": "305",
+        "RoomType": "Deluxe",
+        "TwinBed": 0,
+        "FullBed": 0,
+        "QueenBed": 1,
+        "KingBed": 0,
+        "MaxOccupancy": 2,
+        "Price": 50.00,
+        "IsClean": true
+    }
+]

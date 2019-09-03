@@ -1,3 +1,4 @@
+import { AuthService } from './../../../core/auth.service';
 import { Injectable } from '@angular/core';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -9,16 +10,17 @@ import { UserService } from '../../../core/user.service';
 
 
 @Injectable()
-export class UserListResolver implements Resolve<User[]> {
+export class UserEditResolver implements Resolve<User> {
 
     constructor(
         private userService: UserService,
+        private authService: AuthService,
         private router: Router,
         private snackBar: MatSnackBar
     ) { }
 
-    resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
-        return this.userService.getUsers().pipe(
+    resolve(route: ActivatedRouteSnapshot): Observable<User> {
+        return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
             catchError(error => {
                 this.snackBar.open('Problem retreiving data', 'Close', { duration: 5000 });
                 this.router.navigate(['/../pages/users']);

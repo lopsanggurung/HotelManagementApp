@@ -10,7 +10,7 @@ import { AuthService } from './../../../core/auth.service';
 
 
 @Injectable()
-export class UserEditResolver implements Resolve<User[]> {
+export class UserListResolver implements Resolve<User[]> {
 
     constructor(
         private userService: UserService,
@@ -20,7 +20,7 @@ export class UserEditResolver implements Resolve<User[]> {
     ) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
-        return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
+        return this.userService.getUsers().pipe(
             catchError(error => {
                 this.snackBar.open('Problem retreiving data', 'Close', { duration: 5000 });
                 this.router.navigate(['/../pages/users']);

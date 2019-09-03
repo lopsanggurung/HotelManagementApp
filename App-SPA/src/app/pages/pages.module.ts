@@ -13,9 +13,9 @@ import { AdminComponent } from './admin/admin.component';
 import { ManagerComponent } from './manager/manager.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { UserListResolver } from './user/_resolvers/user-edit.resolver';
+import { UserListResolver } from './user/_resolvers/user-list.resolver';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
-import { UserEditResolver } from './user/_resolvers/user-list.resolver';
+import { UserEditResolver } from './user/_resolvers/user-edit.resolver';
 import { PreventUnsavedchanges } from './user/_guards/prevent-unsaved-changes.guard';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 

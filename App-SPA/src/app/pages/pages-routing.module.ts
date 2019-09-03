@@ -7,9 +7,9 @@ import { ManagerComponent } from './manager/manager.component';
 import { PagesComponent } from './pages.component';
 import { AuthGuard } from '../core/auth.guard';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { UserListResolver } from './user/_resolvers/user-edit.resolver';
+import { UserListResolver } from './user/_resolvers/user-list.resolver';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
-import { UserEditResolver } from './user/_resolvers/user-list.resolver';
+import { UserEditResolver } from './user/_resolvers/user-edit.resolver';
 import { PreventUnsavedchanges } from './user/_guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [

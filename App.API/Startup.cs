@@ -100,6 +100,9 @@ namespace App.API
             services.AddAutoMapper();
             services.AddTransient<Seed>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IGuestRepository, GuestRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
 
             services.AddScoped<LogUserActivity>();
         }

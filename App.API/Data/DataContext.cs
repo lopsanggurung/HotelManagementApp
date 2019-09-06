@@ -15,6 +15,14 @@ namespace App.API.Data
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<RoomService> RoomServices { get; set; }
+        public DbSet<LaundryService> LaundryServices { get; set; }
+        public DbSet<WakeUpCallService> WakeUpCallServices { get; set; }
+        public DbSet<RestaurantOrder> RestaurantOrders { get; set; }
+        public DbSet<RoomServiceItem> RoomServiceItems { get; set; }
+        public DbSet<LaundryServiceItem> LaundryServiceItems { get; set; }
+        public DbSet<RestaurantOrderItem> RestaurantOrderItems { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

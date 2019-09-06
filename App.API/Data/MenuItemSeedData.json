@@ -1,0 +1,65 @@
+[
+    {
+        "IsArchived": false,
+        "Name": "Fries",
+        "Description": "Fried potatoes with sauce",
+        "IsBarItem": false,
+        "Category": "American",
+        "SubCategory": "Appetizer",
+        "Price": 2.00
+    },
+    {
+        "IsArchived": false,
+        "Name": "Dumplings",
+        "Description": "Chicken Dumplings",
+        "IsBarItem": false,
+        "Category": "Chinese",
+        "SubCategory": "Appetizer",
+        "Price": 2.00
+    },
+    {
+        "IsArchived": false,
+        "Name": "Burger",
+        "Description": "Burger with Fries and Salad",
+        "IsBarItem": false,
+        "Category": "American",
+        "SubCategory": "Main Course",
+        "Price": 5.00
+    },
+    {
+        "IsArchived": false,
+        "Name": "Pasta",
+        "Description": "Pasta with sauce",
+        "IsBarItem": false,
+        "Category": "Italian",
+        "SubCategory": "Main Course",
+        "Price": 5.00
+    },
+    {
+        "IsArchived": false,
+        "Name": "Ice-cream",
+        "Description": "Ice-cream",
+        "IsBarItem": false,
+        "Category": "Other",
+        "SubCategory": "Dessert",
+        "Price": 1.00
+    },
+    {
+        "IsArchived": false,
+        "Name": "Mousse",
+        "Description": "Mango Mousse",
+        "IsBarItem": false,
+        "Category": "Other",
+        "SubCategory": "Dessert",
+        "Price": 1.00
+    },
+    {
+        "IsArchived": false,
+        "Name": "Chocolate Cake",
+        "Description": "Chocolate Cake with Melted Chocolate on top",
+        "IsBarItem": false,
+        "Category": "Other",
+        "SubCategory": "Dessert",
+        "Price": 1.00
+    }
+]

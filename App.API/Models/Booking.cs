@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace App.API.Models
 {
@@ -33,5 +34,9 @@ namespace App.API.Models
         public decimal TotalPrice { get; set; }
         public Guest Guest { get; set; }
         public Room Room { get; set; }
+        public ICollection<RoomService> RoomServices { get; set; }
+        public ICollection<LaundryService> LaundryServices { get; set; }
+        public ICollection<WakeUpCallService> WakeUpCallServices { get; set; }
+        public ICollection<RestaurantOrder> RestaurantOrders { get; set; }
     }
 }

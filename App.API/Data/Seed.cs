@@ -67,7 +67,7 @@ namespace App.API.Data
                     _context.Rooms.Add(room);
                 }
 
-            _context.SaveChanges();
+                _context.SaveChanges();
             }
 
             if (!_context.Guests.Any())
@@ -79,7 +79,67 @@ namespace App.API.Data
                     _context.Guests.Add(guest);
                 }
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+
+            if (!_context.WakeUpCallServices.Any())
+            {
+                var wakeUpCallServiceData = System.IO.File.ReadAllText("Data/WakeUpCallServiceSeedData.json");
+                var wakeUpCallServices = JsonConvert.DeserializeObject<List<WakeUpCallService>>(wakeUpCallServiceData);
+                foreach (var wakeUpCallService in wakeUpCallServices)
+                {
+                    _context.WakeUpCallServices.Add(wakeUpCallService);
+                }
+
+                _context.SaveChanges();
+            }
+
+            if (!_context.MenuItems.Any())
+            {
+                var menuItemData = System.IO.File.ReadAllText("Data/MenuItemSeedData.json");
+                var MenuItems = JsonConvert.DeserializeObject<List<MenuItem>>(menuItemData);
+                foreach (var MenuItem in MenuItems)
+                {
+                    _context.MenuItems.Add(MenuItem);
+                }
+
+                _context.SaveChanges();
+            }
+
+            if (!_context.RoomServices.Any())
+            {
+                var roomServiceData = System.IO.File.ReadAllText("Data/RoomServiceSeedData.json");
+                var roomServices = JsonConvert.DeserializeObject<List<RoomService>>(roomServiceData);
+                foreach (var roomService in roomServices)
+                {
+                    _context.RoomServices.Add(roomService);
+                }
+
+                _context.SaveChanges();
+            }
+
+            if (!_context.LaundryServices.Any())
+            {
+                var laundryServiceData = System.IO.File.ReadAllText("Data/LaundryServiceSeedData.json");
+                var laundryServices = JsonConvert.DeserializeObject<List<LaundryService>>(laundryServiceData);
+                foreach (var laundryService in laundryServices)
+                {
+                    _context.LaundryServices.Add(laundryService);
+                }
+
+                _context.SaveChanges();
+            }
+
+            if (!_context.RestaurantOrders.Any())
+            {
+                var restaurantOrderData = System.IO.File.ReadAllText("Data/RestaurantOrderSeedData.json");
+                var restaurantOrders = JsonConvert.DeserializeObject<List<RestaurantOrder>>(restaurantOrderData);
+                foreach (var restaurantOrder in restaurantOrders)
+                {
+                    _context.RestaurantOrders.Add(restaurantOrder);
+                }
+
+                _context.SaveChanges();
             }
         }
     }

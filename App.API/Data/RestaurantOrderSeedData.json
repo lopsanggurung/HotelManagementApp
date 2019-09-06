@@ -1,0 +1,65 @@
+[
+    {
+        "OrderFor": "",
+        "OrderDate": "2019-09-05",
+        "IsCompleted": true,
+        "IsPaid": false,
+        "TotalPriceBeforeTax": 14.00,
+        "TaxAmount": 3.00,
+        "TotalPrice": 17.00,
+        "RestaurantOrderItems": [
+            {
+                "MenuItemId": 2,
+                "Quantity": 2,
+                "PricePerItem": 2.00
+            },
+            {
+                "MenuItemId": 3,
+                "Quantity": 2,
+                "PricePerItem": 5.00
+            }
+        ]
+    },
+    {
+        "OrderFor": "",
+        "OrderDate": "2019-09-08",
+        "IsCompleted": true,
+        "IsPaid": true,
+        "TotalPriceBeforeTax": 21.00,
+        "TaxAmount": 4.00,
+        "TotalPrice": 25.00,
+        "RestaurantOrderItems": [
+            {
+                "MenuItemId": 2,
+                "Quantity": 3,
+                "PricePerItem": 2.00
+            },
+            {
+                "MenuItemId": 3,
+                "Quantity": 3,
+                "PricePerItem": 5.00
+            }
+        ]
+    },
+    {
+        "OrderFor": "",
+        "OrderDate": "2019-09-09",
+        "IsCompleted": true,
+        "IsPaid": true,
+        "TotalPriceBeforeTax": 14.00,
+        "TaxAmount": 3.00,
+        "TotalPrice": 17.00,
+        "RestaurantOrderItems": [
+            {
+                "MenuItemId": 1,
+                "Quantity": 2,
+                "PricePerItem": 2.00
+            },
+            {
+                "MenuItemId": 3,
+                "Quantity": 2,
+                "PricePerItem": 5.00
+            }
+        ]
+    }
+]

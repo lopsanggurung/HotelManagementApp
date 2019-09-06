@@ -1,0 +1,68 @@
+[
+    {
+        "BookingId": 1,
+        "DateOrdered": "2019-09-05",
+        "DateReturnedFromLaundry": "2019-09-07",
+        "DateReturnedToGuest": "2019-09-07",
+        "IsPaid": false,
+        "TotalPriceBeforeTax": 10.00,
+        "TaxAmount": 2.00,
+        "TotalPrice": 12.00,
+        "LaundryServiceItems": [
+            {
+                "Type": "Jeans",
+                "Category": "Clothes",
+                "Quantity": 2,
+                "PricePerItem": 1.00
+            },
+            {
+                "Type": "Shirt",
+                "Category": "Clothes",
+                "Quantity": 5,
+                "PricePerItem": 1.00
+            },
+            {
+                "Type": "Jacket",
+                "Category": "Clothes",
+                "Quantity": 1,
+                "PricePerItem": 3.00
+            }
+        ]
+    },
+    {
+        "BookingId": 5,
+        "DateOrdered": "2019-09-07",
+        "DateReturnedFromLaundry": "2019-09-09",
+        "DateReturnedToGuest": "2019-09-09",
+        "IsPaid": true,
+        "TotalPriceBeforeTax": 20.00,
+        "TaxAmount": 4.00,
+        "TotalPrice": 24.00,
+        "LaundryServiceItems": [
+            {
+                "Type": "Jeans",
+                "Category": "Clothes",
+                "Quantity": 2,
+                "PricePerItem": 1.00
+            },
+            {
+                "Type": "Shirt",
+                "Category": "Clothes",
+                "Quantity": 5,
+                "PricePerItem": 1.00
+            },
+            {
+                "Type": "Jacket",
+                "Category": "Clothes",
+                "Quantity": 3,
+                "PricePerItem": 3.00
+            },
+            {
+                "Type": "T-Shirt",
+                "Category": "Clothes",
+                "Quantity": 4,
+                "PricePerItem": 1.00
+            }
+        ]
+    }
+]

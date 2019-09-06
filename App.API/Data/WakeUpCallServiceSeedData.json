@@ -1,0 +1,12 @@
+[
+    {
+        "BookingId": 1,
+        "WakeUpCallDate": "2019-09-05",
+        "IsCompleted": false
+    },
+    {
+        "BookingId": 2,
+        "WakeUpCallDate": "2019-09-04",
+        "IsCompleted": false
+    }
+]

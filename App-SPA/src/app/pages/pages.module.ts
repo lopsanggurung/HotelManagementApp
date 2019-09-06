@@ -18,6 +18,12 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserEditResolver } from './user/_resolvers/user-edit.resolver';
 import { PreventUnsavedchanges } from './user/_guards/prevent-unsaved-changes.guard';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { GuestListComponent } from './guest/guest-list/guest-list.component';
+import { GuestListResolver } from './guest/_resolvers/guest-list.resolver';
+import { BookingListComponent } from './booking/booking-list/booking-list.component';
+import { BookingListResolver } from './booking/_resolvers/booking-list.resolver';
+import { RoomListResolver } from './room/_resolvers/room-list.resolver';
+import { RoomListComponent } from './room/room-list/room-list.component';
 
 @NgModule({
   imports: [
@@ -32,6 +38,9 @@ import { UserManagementComponent } from './admin/user-management/user-management
   providers: [
     UserListResolver,
     UserEditResolver,
+    GuestListResolver,
+    BookingListResolver,
+    RoomListResolver,
     PreventUnsavedchanges
   ],
   declarations: [
@@ -42,7 +51,10 @@ import { UserManagementComponent } from './admin/user-management/user-management
     ManagerComponent,
     UserListComponent,
     UserEditComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    GuestListComponent,
+    BookingListComponent,
+    RoomListComponent
   ]
 })
 export class PagesModule { }

@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>Rooms</h2>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- isArchived Column -->
+      <ng-container matColumnDef="isArchived">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Archived</th>
+        <td mat-cell *matCellDef="let row"> {{row.isArchived}} </td>
+      </ng-container>
+
+      <!-- price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+        <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+      </ng-container>
+
+      <!-- isClean Column -->
+      <ng-container matColumnDef="isClean">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Clean </th>
+        <td mat-cell *matCellDef="let row"> {{row.isClean }} </td>
+      </ng-container>
+
+      <!-- roomNumber Column -->
+      <ng-container matColumnDef="roomNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.roomNumber }} </td>
+      </ng-container>
+
+      <!-- roomType Column -->
+      <ng-container matColumnDef="roomType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Type </th>
+        <td mat-cell *matCellDef="let row"> {{row.roomType }} </td>
+      </ng-container>
+
+      <!-- twinBed Column -->
+      <ng-container matColumnDef="twinBed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Twin Bed </th>
+        <td mat-cell *matCellDef="let row"> {{row.twinBed }} </td>
+      </ng-container>
+
+      <!-- fullBed Column -->
+      <ng-container matColumnDef="fullBed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Bed </th>
+        <td mat-cell *matCellDef="let row"> {{row.fullBed }} </td>
+      </ng-container>
+
+      <!-- queenBed Column -->
+      <ng-container matColumnDef="queenBed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Queen Bed </th>
+        <td mat-cell *matCellDef="let row"> {{row.queenBed }} </td>
+      </ng-container>
+
+      <!-- kingBed Column -->
+      <ng-container matColumnDef="kingBed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> King Bed </th>
+        <td mat-cell *matCellDef="let row"> {{row.kingBed }} </td>
+      </ng-container>
+
+      <!-- maxOccupancy Column -->
+      <ng-container matColumnDef="maxOccupancy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Max Occupancy </th>
+        <td mat-cell *matCellDef="let row"> {{row.maxOccupancy }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>

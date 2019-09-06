@@ -11,6 +11,12 @@ import { UserListResolver } from './user/_resolvers/user-list.resolver';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserEditResolver } from './user/_resolvers/user-edit.resolver';
 import { PreventUnsavedchanges } from './user/_guards/prevent-unsaved-changes.guard';
+import { GuestListComponent } from './guest/guest-list/guest-list.component';
+import { GuestListResolver } from './guest/_resolvers/guest-list.resolver';
+import { BookingListComponent } from './booking/booking-list/booking-list.component';
+import { BookingListResolver } from './booking/_resolvers/booking-list.resolver';
+import { RoomListComponent } from './room/room-list/room-list.component';
+import { RoomListResolver } from './room/_resolvers/room-list.resolver';
 
 const routes: Routes = [
   {
@@ -22,6 +28,21 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'bookings',
+        component: BookingListComponent,
+        resolve: { bookings: BookingListResolver }
+      },
+      {
+        path: 'guests',
+        component: GuestListComponent,
+        resolve: { guests: GuestListResolver }
+      },
+      {
+        path: 'rooms',
+        component: RoomListComponent,
+        resolve: { rooms: RoomListResolver }
       },
       {
         path: 'users',

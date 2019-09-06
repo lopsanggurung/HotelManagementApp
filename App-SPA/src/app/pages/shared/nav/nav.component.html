@@ -1,7 +1,4 @@
-<div
-  class="sidenav_container"
-  [@onSideNavChange]="sideNavState ? 'open' : 'close'"
->
+<div class="sidenav_container" [@onSideNavChange]="sideNavState ? 'open' : 'close'">
   <div fxLayout="column" fxLayoutGap="10px" style="height: 100%;">
     <mat-toolbar color="primary" class="toolbar">
       <button mat-icon-button (click)="snav.toggle()">
@@ -12,22 +9,16 @@
       <span class="user-menu" *ngIf="loggedIn()">
         <button mat-button [matMenuTriggerFor]="menu">
           Welcome {{ authService.decodedToken?.unique_name | titlecase }}
-          <mat-icon aria-hidden="false" aria-label="arrow icon"
-            >arrow_drop_down</mat-icon
-          >
+          <mat-icon aria-hidden="false" aria-label="arrow icon">arrow_drop_down</mat-icon>
         </button>
         <mat-menu #menu="matMenu" [overlapTrigger]="false">
           <button mat-menu-item [routerLink]="['../pages/user/edit']">
-            <mat-icon aria-hidden="false" aria-label="user icon"
-              >person</mat-icon
-            >
+            <mat-icon aria-hidden="false" aria-label="user icon">person</mat-icon>
             Edit Profile
           </button>
           <mat-divider></mat-divider>
           <button mat-menu-item (click)="logout()">
-            <mat-icon aria-hidden="false" aria-label="logout icon"
-              >power_settings_new</mat-icon
-            >
+            <mat-icon aria-hidden="false" aria-label="logout icon">power_settings_new</mat-icon>
             Logout
           </button>
         </mat-menu>
@@ -39,114 +30,76 @@
         <div class="user_menu">
           <mat-nav-list>
             <a mat-list-item>
-              <img
-                class="user"
-                src="../../../../assets/user.png"
-                alt=""
-              />
-              <span [@animateText]="linkText ? 'show' : 'hide'"
-                >{{ page?.name }}
-              </span>
+              <img class="user" src="../../../../assets/user.png" alt="" />
+              <!-- <span [@animateText]="linkText ? 'show' : 'hide'">{{ page?.name }}
+              </span> -->
             </a>
           </mat-nav-list>
           <mat-divider></mat-divider>
         </div>
         <div>
           <mat-nav-list>
-            <a
-              mat-list-item
-              routerLink="../pages/dashboard"
-              routerLinkActive="active"
-              matTooltip="Dashboard"
-              matTooltipPosition="right"
-            >
+            <a mat-list-item routerLink="../pages/dashboard" routerLinkActive="active" matTooltip="Dashboard"
+              matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">dashboard</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'">
                 Dashboard
               </span>
             </a>
-            <a
-              mat-list-item
-              routerLink="../pages/users"
-              routerLinkActive="active"
-              matTooltip="Users"
-              matTooltipPosition="right"
-            >
+            <a mat-list-item routerLink="../pages/bookings" routerLinkActive="active" matTooltip="Bookings"
+              matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">hotel</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Bookings </span>
+            </a>
+            <a mat-list-item routerLink="../pages/guests" routerLinkActive="active" matTooltip="Guests"
+              matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">people</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Guests </span>
+            </a>
+            <a mat-list-item routerLink="../pages/rooms" routerLinkActive="active" matTooltip="Rooms"
+              matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">house</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Rooms </span>
+            </a>
+            <a mat-list-item routerLink="../pages/users" routerLinkActive="active" matTooltip="Users"
+              matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">people</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Users </span>
             </a>
-            <a
-              mat-list-item
-              routerLink="."
-              routerLinkActive="active"
-              matTooltip="Link 3"
-              matTooltipPosition="right"
-            >
+            <a mat-list-item routerLink="." routerLinkActive="active" matTooltip="Link 3" matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">link</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Link 3 </span>
             </a>
-            <a
-              mat-list-item
-              routerLink="."
-              routerLinkActive="active"
-              matTooltip="Link 4"
-              matTooltipPosition="right"
-            >
+            <a mat-list-item routerLink="." routerLinkActive="active" matTooltip="Link 4" matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">link</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Link 4 </span>
             </a>
-            <a
-              mat-list-item
-              routerLink="."
-              routerLinkActive="active"
-              matTooltip="Link 5"
-              matTooltipPosition="right"
-            >
+            <a mat-list-item routerLink="." routerLinkActive="active" matTooltip="Link 5" matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">link</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Link 5 </span>
             </a>
-            <a
-              *appHasRole="['Manager']"
-              mat-list-item
-              routerLink="../pages/manager"
-              routerLinkActive="active"
-              matTooltip="Manager"
-              matTooltipPosition="right"
-            >
+            <a *appHasRole="['Manager']" mat-list-item routerLink="../pages/manager" routerLinkActive="active"
+              matTooltip="Manager" matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">person</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Manager </span>
             </a>
-            <a
-              *appHasRole="['Admin']"
-              mat-list-item
-              routerLink="../pages/admin"
-              routerLinkActive="active"
-              matTooltip="Admin"
-              matTooltipPosition="right"
-            >
+            <a *appHasRole="['Admin']" mat-list-item routerLink="../pages/admin" routerLinkActive="active"
+              matTooltip="Admin" matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">account_box</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Admin </span>
             </a>
           </mat-nav-list>
         </div>
         <span class="spacer"></span>
-        <div
-          fxLayout="row"
-          fxLayoutAlign="end center"
-          style="padding: 0px 10px;"
-        >
+        <div fxLayout="row" fxLayoutAlign="end center" style="padding: 0px 10px;">
           <button mat-icon-button (click)="onSidenavToggle()">
-            <mat-icon *ngIf="sideNavState" matTooltip="Dock"
-            matTooltipPosition="right">arrow_left</mat-icon>
-            <mat-icon *ngIf="!sideNavState" matTooltip="Undock"
-            matTooltipPosition="right">arrow_right</mat-icon>
+            <mat-icon *ngIf="sideNavState" matTooltip="Dock" matTooltipPosition="right">arrow_left</mat-icon>
+            <mat-icon *ngIf="!sideNavState" matTooltip="Undock" matTooltipPosition="right">arrow_right</mat-icon>
           </button>
         </div>
       </mat-sidenav>
 
-      <mat-sidenav-content
-        [@onMainContentChange]="onSideNavChange ? 'open' : 'close'"
-      >
+      <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open' : 'close'">
         <div class="main_content">
           <div style="padding: 20px">
             <router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+export interface Booking {
+    id: number;
+    guestId: number;
+    roomId: number;
+    createdDate: Date;
+    lastModifiedDate: Date;
+    bookingStatus: string;
+    checkInDate: Date;
+    checkOutDate: Date;
+    numberOfAdults: number;
+    numberOfChildren: number;
+    additionalBed: boolean;
+    requirePickUp: boolean;
+    pickUpDate: Date;
+    pickUpLocation: string;
+    pickUpDetails: string;
+    checkedInDate: Date;
+    checkedOutDate: Date;
+    notes: string;
+    feedBackOnCheckOut: string;
+    bookingSource: string;
+    paymentStatus: string;
+    pricePerNight: number;
+    additionalBedPricePerNight: number;
+    otalPriceBeforeTax: number;
+    taxAmount: number;
+    depositAmount: number;
+    totalPrice: number;
+}

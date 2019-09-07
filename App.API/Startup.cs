@@ -103,6 +103,11 @@ namespace App.API
             services.AddScoped<IGuestRepository, GuestRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IRoomServiceRepository, RoomServiceRepository>();
+            services.AddScoped<ILaundryServiceRepository, LaundryServiceRepository>();
+            services.AddScoped<IWakeUpCallServiceRepository, WakeUpCallServiceRepository>();
+            services.AddScoped<IRestaurantOrderRepository, RestaurantOrderRepository>();
+            services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 
             services.AddScoped<LogUserActivity>();
         }

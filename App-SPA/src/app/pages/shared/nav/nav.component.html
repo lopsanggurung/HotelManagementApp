@@ -48,12 +48,12 @@
             </a>
             <a mat-list-item routerLink="../pages/bookings" routerLinkActive="active" matTooltip="Bookings"
               matTooltipPosition="right">
-              <mat-icon style="padding-right:5px;">hotel</mat-icon>
+              <mat-icon style="padding-right:5px;">calendar_today</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Bookings </span>
             </a>
             <a mat-list-item routerLink="../pages/guests" routerLinkActive="active" matTooltip="Guests"
               matTooltipPosition="right">
-              <mat-icon style="padding-right:5px;">people</mat-icon>
+              <mat-icon style="padding-right:5px;">perm_contact_calendar</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Guests </span>
             </a>
             <a mat-list-item routerLink="../pages/rooms" routerLinkActive="active" matTooltip="Rooms"
@@ -61,22 +61,35 @@
               <mat-icon style="padding-right:5px;">house</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Rooms </span>
             </a>
+            <a mat-list-item routerLink="../pages/roomServices" routerLinkActive="active" matTooltip="Room Services"
+              matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">room_service</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Room Services </span>
+            </a>
+            <a mat-list-item routerLink="../pages/laundryServices" routerLinkActive="active"
+              matTooltip="Laundry Services" matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">local_laundry_service</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Laundries </span>
+            </a>
+            <a mat-list-item routerLink="../pages/wakeUpCallServices" routerLinkActive="active"
+              matTooltip="Wake Up Call Services" matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">alarm</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Wake Up Calls </span>
+            </a>
+            <a mat-list-item routerLink="../pages/restaurantOrders" routerLinkActive="active"
+              matTooltip="Restaurant Orders" matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">restaurant</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Restaurant </span>
+            </a>
+            <a mat-list-item routerLink="../pages/menuItems" routerLinkActive="active" matTooltip="Menu Items"
+              matTooltipPosition="right">
+              <mat-icon style="padding-right:5px;">menu_book</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Menu </span>
+            </a>
             <a mat-list-item routerLink="../pages/users" routerLinkActive="active" matTooltip="Users"
               matTooltipPosition="right">
               <mat-icon style="padding-right:5px;">people</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Users </span>
-            </a>
-            <a mat-list-item routerLink="." routerLinkActive="active" matTooltip="Link 3" matTooltipPosition="right">
-              <mat-icon style="padding-right:5px;">link</mat-icon>
-              <span [@animateText]="linkText ? 'show' : 'hide'"> Link 3 </span>
-            </a>
-            <a mat-list-item routerLink="." routerLinkActive="active" matTooltip="Link 4" matTooltipPosition="right">
-              <mat-icon style="padding-right:5px;">link</mat-icon>
-              <span [@animateText]="linkText ? 'show' : 'hide'"> Link 4 </span>
-            </a>
-            <a mat-list-item routerLink="." routerLinkActive="active" matTooltip="Link 5" matTooltipPosition="right">
-              <mat-icon style="padding-right:5px;">link</mat-icon>
-              <span [@animateText]="linkText ? 'show' : 'hide'"> Link 5 </span>
             </a>
             <a *appHasRole="['Manager']" mat-list-item routerLink="../pages/manager" routerLinkActive="active"
               matTooltip="Manager" matTooltipPosition="right">

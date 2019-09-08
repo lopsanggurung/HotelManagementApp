@@ -9,14 +9,22 @@
 }
 
 .sidenav_container {
-  min-width: 60px; 
+  min-width: 60px;
   height: calc(100vh - 200px);
 }
 
 // .sidenav-container {
-  //   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-  //        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-  //   flex: 1;
+//   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+//        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+//   flex: 1;
+// }
+
+// mat-sidenav {
+//   background-color: #222d32;
+// }
+
+// .mat-list-item {
+//   color: white;
 // }
 
 .user {
@@ -27,8 +35,8 @@
 }
 
 .main_content {
-  width:100%; 
-  height: calc(100vh - 60px); 
+  width: 100%;
+  height: calc(100vh - 60px);
   // background: #efefef;
 }
 

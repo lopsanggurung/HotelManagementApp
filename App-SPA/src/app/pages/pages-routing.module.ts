@@ -17,6 +17,16 @@ import { BookingListComponent } from './booking/booking-list/booking-list.compon
 import { BookingListResolver } from './booking/_resolvers/booking-list.resolver';
 import { RoomListComponent } from './room/room-list/room-list.component';
 import { RoomListResolver } from './room/_resolvers/room-list.resolver';
+import { RoomServiceListComponent } from './roomService/room-service-list/room-service-list.component';
+import { RoomServiceListResolver } from './roomService/_resolvers/room-service-list.resolver';
+import { LaundryServiceListComponent } from './laundryService/laundry-service-list/laundry-service-list.component';
+import { LaundryServiceListResolver } from './laundryService/_resolvers/laundry-service-list.resolver';
+import { WakeUpCallServiceListComponent } from './wakeUpCallService/wake-up-call-service-list/wake-up-call-service-list.component';
+import { WakeUpCallServiceListResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-list.resolver';
+import { RestaurantOrderListResolver } from './restaurantOrder/_resolvers/restaurant-order-list.resolver';
+import { RestaurantOrderListComponent } from './restaurantOrder/restaurant-order-list/restaurant-order-list.component';
+import { MenuItemListResolver } from './menuItem/_resolvers/menu-item-list.resolver';
+import { MenuItemListComponent } from './menuItem/menu-item-list/menu-item-list.component';
 
 const routes: Routes = [
   {
@@ -43,6 +53,31 @@ const routes: Routes = [
         path: 'rooms',
         component: RoomListComponent,
         resolve: { rooms: RoomListResolver }
+      },
+      {
+        path: 'roomServices',
+        component: RoomServiceListComponent,
+        resolve: { roomServices: RoomServiceListResolver }
+      },
+      {
+        path: 'laundryServices',
+        component: LaundryServiceListComponent,
+        resolve: { laundryServices: LaundryServiceListResolver }
+      },
+      {
+        path: 'wakeUpCallServices',
+        component: WakeUpCallServiceListComponent,
+        resolve: { wakeUpCallServices: WakeUpCallServiceListResolver }
+      },
+      {
+        path: 'restaurantOrders',
+        component: RestaurantOrderListComponent,
+        resolve: { restaurantOrders: RestaurantOrderListResolver }
+      },
+      {
+        path: 'menuItems',
+        component: MenuItemListComponent,
+        resolve: { menuItems: MenuItemListResolver }
       },
       {
         path: 'users',

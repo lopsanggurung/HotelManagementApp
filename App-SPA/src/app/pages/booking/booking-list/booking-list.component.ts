@@ -12,7 +12,7 @@ import { BookingService } from './../../../core/booking.service';
 })
 export class BookingListComponent implements OnInit {
   bookings: Booking[];
-  displayedColumns: string[] = ['id', 'guestId', 'roomId', 'createdDate', 'checkInDate'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'roomNumber', 'checkInDate', 'checkOutDate', 'country', 'createdDate'];
   dataSource: MatTableDataSource<Booking>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

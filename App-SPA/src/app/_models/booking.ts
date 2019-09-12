@@ -1,7 +1,11 @@
 export interface Booking {
     id: number;
     guestId: number;
+    firstName?: string;
+    lastName?: string;
+    country?: string;
     roomId: number;
+    roomNumber?: string;
     createdDate: Date;
     lastModifiedDate: Date;
     bookingStatus: string;

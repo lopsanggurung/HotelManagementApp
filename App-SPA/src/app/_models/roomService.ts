@@ -1,6 +1,9 @@
 export interface RoomService {
     id: number;
     bookingId: number;
+    firstName?: string;
+    lastName?: string;
+    roomNumber?: string;
     serviceDate: Date;
     isCompleted: boolean;
     isPaid: boolean;

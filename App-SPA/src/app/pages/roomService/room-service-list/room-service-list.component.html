@@ -20,10 +20,28 @@
         <td mat-cell *matCellDef="let row"> {{row.bookingId}} </td>
       </ng-container>
 
+      <!-- firstName Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name</th>
+        <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+      </ng-container>
+
+      <!-- lastName Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name</th>
+        <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+      </ng-container>
+
+      <!-- roomNumber Column -->
+      <ng-container matColumnDef="roomNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.roomNumber}} </td>
+      </ng-container>
+
       <!-- serviceDate Column -->
       <ng-container matColumnDef="serviceDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Service Date </th>
-        <td mat-cell *matCellDef="let row"> {{row.serviceDate}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.serviceDate | date}} </td>
       </ng-container>
 
       <!-- isCompleted Column -->

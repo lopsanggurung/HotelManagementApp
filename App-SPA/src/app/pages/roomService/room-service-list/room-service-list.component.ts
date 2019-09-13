@@ -12,7 +12,7 @@ import { RoomServiceService } from './../../../core/roomService.service';
 })
 export class RoomServiceListComponent implements OnInit {
   roomServices: RoomService[];
-  displayedColumns: string[] = ['id', 'bookingId', 'serviceDate', 'isCompleted', 'isPaid',
+  displayedColumns: string[] = ['id', 'bookingId', 'firstName', 'lastName', 'roomNumber', 'serviceDate', 'isCompleted', 'isPaid',
     'totalPriceBeforeTax', 'taxAmount', 'totalPrice'];
   dataSource: MatTableDataSource<RoomService>;
 

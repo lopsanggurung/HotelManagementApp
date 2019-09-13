@@ -29,7 +29,7 @@
       <!-- orderDate Column -->
       <ng-container matColumnDef="orderDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Date </th>
-        <td mat-cell *matCellDef="let row"> {{row.orderDate}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.orderDate | date}} </td>
       </ng-container>
 
       <!-- isCompleted Column -->

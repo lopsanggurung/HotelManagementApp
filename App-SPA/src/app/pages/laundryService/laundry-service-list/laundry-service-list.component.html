@@ -20,22 +20,40 @@
         <td mat-cell *matCellDef="let row"> {{row.bookingId}} </td>
       </ng-container>
 
+      <!-- firstName Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+      </ng-container>
+    
+      <!-- lastName Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+      </ng-container>
+
+      <!-- roomNumber Column -->
+      <ng-container matColumnDef="roomNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Room Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.roomNumber}} </td>
+      </ng-container>
+
       <!-- dateOrdered Column -->
       <ng-container matColumnDef="dateOrdered">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Ordered </th>
-        <td mat-cell *matCellDef="let row"> {{row.dateOrdered}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.dateOrdered | date}} </td>
       </ng-container>
 
       <!-- dateReturnedFromLaundry Column -->
       <ng-container matColumnDef="dateReturnedFromLaundry">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Returned From Laundry </th>
-        <td mat-cell *matCellDef="let row"> {{row.dateReturnedFromLaundry }} </td>
+        <td mat-cell *matCellDef="let row"> {{row.dateReturnedFromLaundry | date}} </td>
       </ng-container>
 
       <!-- dateReturnedToGuest Column -->
       <ng-container matColumnDef="dateReturnedToGuest">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Returned To Guest </th>
-        <td mat-cell *matCellDef="let row"> {{row.dateReturnedToGuest }} </td>
+        <td mat-cell *matCellDef="let row"> {{row.dateReturnedToGuest | date}} </td>
       </ng-container>
 
       <!-- isPaid Column -->

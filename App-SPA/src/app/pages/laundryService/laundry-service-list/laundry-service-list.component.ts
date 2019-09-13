@@ -12,8 +12,8 @@ import { LaundryServiceService } from './../../../core/laundryService.service';
 })
 export class LaundryServiceListComponent implements OnInit {
   laundryServices: LaundryService[];
-  displayedColumns: string[] = ['id', 'bookingId', 'dateOrdered', 'dateReturnedFromLaundry', 'dateReturnedToGuest',
-    'isPaid', 'totalPriceBeforeTax', 'taxAmount', 'totalPrice'];
+  displayedColumns: string[] = ['id', 'bookingId', 'firstName', 'lastName', 'roomNumber', 'dateOrdered',
+  'dateReturnedFromLaundry', 'dateReturnedToGuest', 'isPaid', 'totalPriceBeforeTax', 'taxAmount', 'totalPrice'];
   dataSource: MatTableDataSource<LaundryService>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

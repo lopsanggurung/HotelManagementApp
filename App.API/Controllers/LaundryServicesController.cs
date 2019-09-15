@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,23 +38,96 @@ namespace App.API.Controllers
                                             join booking in _context.Bookings on laundryService.BookingId equals booking.Id
                                             join guest in _context.Guests on booking.GuestId equals guest.Id
                                             join room in _context.Rooms on booking.RoomId equals room.Id
-                                        select new
-                                        {
-                                            Id = laundryService.Id,
-                                            BookingId = laundryService.BookingId,
-                                            FirstName = guest.FirstName,
-                                            LastName = guest.LastName,
-                                            RoomNumber = room.RoomNumber,
-                                            DateOrdered = laundryService.DateOrdered,
-                                            DateReturnedFromLaundry = laundryService.DateReturnedFromLaundry,
-                                            DateReturnedToGuest = laundryService.DateReturnedToGuest,
-                                            IsPaid = laundryService.IsPaid,
-                                            TotalPriceBeforeTax = laundryService.TotalPriceBeforeTax,
-                                            TaxAmount = laundryService.TaxAmount,
-                                            TotalPrice = laundryService.TotalPrice
-                                        }).ToListAsync();
+                                            select new
+                                            {
+                                                Id = laundryService.Id,
+                                                BookingId = laundryService.BookingId,
+                                                FirstName = guest.FirstName,
+                                                LastName = guest.LastName,
+                                                RoomNumber = room.RoomNumber,
+                                                DateOrdered = laundryService.DateOrdered,
+                                                DateReturnedFromLaundry = laundryService.DateReturnedFromLaundry,
+                                                DateReturnedToGuest = laundryService.DateReturnedToGuest,
+                                                IsPaid = laundryService.IsPaid,
+                                                TotalPriceBeforeTax = laundryService.TotalPriceBeforeTax,
+                                                TaxAmount = laundryService.TaxAmount,
+                                                TotalPrice = laundryService.TotalPrice
+                                            }).ToListAsync();
 
             return Ok(laundryServiceList);
+        }
+
+        [HttpGet]
+        [Route("GetPendingLaundryToReturnToGuest")]
+        public async Task<IActionResult> GetPendingLaundryToReturnToGuest()
+        {
+            var pendingLaundryToReturn = await (from LaundryService in _context.LaundryServices.Cast<LaundryService>().Where(l => l.DateReturnedFromLaundry.Date != default(DateTime).Date && l.DateReturnedToGuest.Date == default(DateTime).Date)
+                                                join booking in _context.Bookings on LaundryService.BookingId equals booking.Id
+                                                join guest in _context.Guests on booking.GuestId equals guest.Id
+                                                join room in _context.Rooms on booking.RoomId equals room.Id
+                                                let laundryServiceItems = (from laundryServiceItem in _context.LaundryServiceItems.Where(l => l.LaundryServiceId == LaundryService.Id) select laundryServiceItem)                                          // join laundryItems in _context.LaundryServiceItems on LaundryService.Id equals laundryItems.LaundryServiceId
+                                                select new
+                                                {
+                                                    Id = LaundryService.Id,
+                                                    IsPaid = LaundryService.IsPaid,
+                                                    TotalPrice = LaundryService.TotalPrice,
+                                                    DateOrdered = LaundryService.DateOrdered,
+                                                    DateReturnedFromLaundry = LaundryService.DateReturnedFromLaundry,
+                                                    FirstName = guest.FirstName,
+                                                    LastName = guest.LastName,
+                                                    RoomNumber = room.RoomNumber,
+                                                    LaundryItems = laundryServiceItems
+                                                }).ToListAsync();
+
+            return Ok(pendingLaundryToReturn);
+        }
+
+        [HttpGet]
+        [Route("GetPendingLaundryToReceiveFromLaundry")]
+        public async Task<IActionResult> GetPendingLaundryToReceiveFromLaundry()
+        {
+            var pendingLaundryToReceive = await (from LaundryService in _context.LaundryServices.Cast<LaundryService>().Where(l => l.DateReturnedFromLaundry.Date == default(DateTime).Date && l.DateReturnedToGuest.Date == default(DateTime).Date)
+                                                 join booking in _context.Bookings on LaundryService.BookingId equals booking.Id
+                                                 join guest in _context.Guests on booking.GuestId equals guest.Id
+                                                 join room in _context.Rooms on booking.RoomId equals room.Id
+                                                 let laundryServiceItems = (from laundryServiceItem in _context.LaundryServiceItems.Where(l => l.LaundryServiceId == LaundryService.Id) select laundryServiceItem)                                          // join laundryItems in _context.LaundryServiceItems on LaundryService.Id equals laundryItems.LaundryServiceId
+                                                 select new
+                                                 {
+                                                     Id = LaundryService.Id,
+                                                     IsPaid = LaundryService.IsPaid,
+                                                     TotalPrice = LaundryService.TotalPrice,
+                                                     DateOrdered = LaundryService.DateOrdered,
+                                                     FirstName = guest.FirstName,
+                                                     LastName = guest.LastName,
+                                                     RoomNumber = room.RoomNumber,
+                                                     LaundryItems = laundryServiceItems
+                                                 }).ToListAsync();
+
+            return Ok(pendingLaundryToReceive);
+        }
+
+        [HttpGet]
+        [Route("GetTodaysLaundryReturned")]
+        public async Task<IActionResult> GetTodaysLaundryReturned()
+        {
+            var todaysLaundryReturned = await (from LaundryService in _context.LaundryServices.Cast<LaundryService>().Where(l => l.DateReturnedToGuest.Date == DateTime.Today.Date)
+                                               join booking in _context.Bookings on LaundryService.BookingId equals booking.Id
+                                               join guest in _context.Guests on booking.GuestId equals guest.Id
+                                               join room in _context.Rooms on booking.RoomId equals room.Id
+                                               let laundryServiceItems = (from laundryServiceItem in _context.LaundryServiceItems.Where(l => l.LaundryServiceId == LaundryService.Id) select laundryServiceItem)                                          // join laundryItems in _context.LaundryServiceItems on LaundryService.Id equals laundryItems.LaundryServiceId
+                                               select new
+                                               {
+                                                   Id = LaundryService.Id,
+                                                   IsPaid = LaundryService.IsPaid,
+                                                   TotalPrice = LaundryService.TotalPrice,
+                                                   DateOrdered = LaundryService.DateOrdered,
+                                                   FirstName = guest.FirstName,
+                                                   LastName = guest.LastName,
+                                                   RoomNumber = room.RoomNumber,
+                                                   LaundryItems = laundryServiceItems
+                                               }).ToListAsync();
+
+            return Ok(todaysLaundryReturned);
         }
 
         [HttpGet("{id}", Name = "GetLaundryService")]

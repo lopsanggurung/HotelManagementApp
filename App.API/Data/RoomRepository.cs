@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using App.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,12 @@ namespace App.API.Data
         public async Task<IEnumerable<Room>> GetRooms()
         {
             var rooms = await _context.Rooms.ToListAsync();
+            return rooms;
+        }
+
+        public async Task<IEnumerable<Room>> GetDirtyRooms()
+        {
+            var rooms = await _context.Rooms.Where(r => r.IsClean == false).ToListAsync();
             return rooms;
         }
 

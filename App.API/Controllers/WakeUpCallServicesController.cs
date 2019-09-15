@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,21 +35,84 @@ namespace App.API.Controllers
             // return Ok(wakeUpCallServicesToReturn);
 
             var wakeUpCallServiceList = await (from wakeUpCallService in _context.WakeUpCallServices.Cast<WakeUpCallService>()
-                                                join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
-                                                join guest in _context.Guests on booking.GuestId equals guest.Id
-                                                join room in _context.Rooms on booking.RoomId equals room.Id
-                                            select new
-                                            {
-                                                Id = wakeUpCallService.Id,
-                                                BookingId = wakeUpCallService.BookingId,
-                                                FirstName = guest.FirstName,
-                                                LastName = guest.LastName,
-                                                RoomNumber = room.RoomNumber,
-                                                WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
-                                                IsCompleted = wakeUpCallService.IsCompleted
-                                        }).ToListAsync();
+                                               join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
+                                               join guest in _context.Guests on booking.GuestId equals guest.Id
+                                               join room in _context.Rooms on booking.RoomId equals room.Id
+                                               select new
+                                               {
+                                                   Id = wakeUpCallService.Id,
+                                                   BookingId = wakeUpCallService.BookingId,
+                                                   FirstName = guest.FirstName,
+                                                   LastName = guest.LastName,
+                                                   RoomNumber = room.RoomNumber,
+                                                   WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
+                                                   IsCompleted = wakeUpCallService.IsCompleted
+                                               }).ToListAsync();
 
             return Ok(wakeUpCallServiceList);
+        }
+
+        [HttpGet]
+        [Route("GetTodaysPendingWakeupCalls")]
+        public async Task<IActionResult> GetTodaysPendingWakeupCalls()
+        {
+            var todaysPendingWakeupCalls = await (from wakeUpCallService in _context.WakeUpCallServices.Cast<WakeUpCallService>().Where(w => w.WakeUpCallDate.Date == DateTime.Today.Date && w.IsCompleted == false)
+                                                  join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
+                                                  join guest in _context.Guests on booking.GuestId equals guest.Id
+                                                  join room in _context.Rooms on booking.RoomId equals room.Id
+                                                  select new
+                                                  {
+                                                      Id = wakeUpCallService.Id,
+                                                      WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
+                                                      IsCompleted = wakeUpCallService.IsCompleted,
+                                                      FirstName = guest.FirstName,
+                                                      LastName = guest.LastName,
+                                                      RoomNumber = room.RoomNumber
+                                                  }).ToListAsync();
+
+            return Ok(todaysPendingWakeupCalls);
+        }
+
+        [HttpGet]
+        [Route("GetTodaysCompletedWakeupCalls")]
+        public async Task<IActionResult> GetTodaysCompletedWakeupCalls()
+        {
+            var todaysCompletedWakeupCalls = await (from wakeUpCallService in _context.WakeUpCallServices.Cast<WakeUpCallService>().Where(w => w.WakeUpCallDate.Date == DateTime.Today.Date && w.IsCompleted == true)
+                                                    join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
+                                                    join guest in _context.Guests on booking.GuestId equals guest.Id
+                                                    join room in _context.Rooms on booking.RoomId equals room.Id
+                                                    select new
+                                                    {
+                                                        Id = wakeUpCallService.Id,
+                                                        WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
+                                                        IsCompleted = wakeUpCallService.IsCompleted,
+                                                        FirstName = guest.FirstName,
+                                                        LastName = guest.LastName,
+                                                        RoomNumber = room.RoomNumber
+                                                    }).ToListAsync();
+
+            return Ok(todaysCompletedWakeupCalls);
+        }
+
+        [HttpGet]
+        [Route("GetTomorrowsPendingWakeupCalls")]
+        public async Task<IActionResult> GetTomorrowsPendingWakeupCalls()
+        {
+            var tomorrowsPendingWakeupCalls = await (from wakeUpCallService in _context.WakeUpCallServices.Cast<WakeUpCallService>().Where(w => w.WakeUpCallDate.Date == DateTime.Today.AddDays(1).Date)
+                                                     join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
+                                                     join guest in _context.Guests on booking.GuestId equals guest.Id
+                                                     join room in _context.Rooms on booking.RoomId equals room.Id
+                                                     select new
+                                                     {
+                                                         Id = wakeUpCallService.Id,
+                                                         WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
+                                                         IsCompleted = wakeUpCallService.IsCompleted,
+                                                         FirstName = guest.FirstName,
+                                                         LastName = guest.LastName,
+                                                         RoomNumber = room.RoomNumber
+                                                     }).ToListAsync();
+
+            return Ok(tomorrowsPendingWakeupCalls);
         }
 
         [HttpGet("{id}", Name = "GetWakeUpCallService")]

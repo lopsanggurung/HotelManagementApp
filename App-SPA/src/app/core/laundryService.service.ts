@@ -21,6 +21,10 @@ export class LaundryServiceService {
     return this.http.get<LaundryService>(this.baseUrl + 'laundryServices/' + id);
   }
 
+  getTodaysLaundryReturned(): Observable<LaundryService[]> {
+    return this.http.get<LaundryService[]>(this.baseUrl + 'laundryServices/' + 'getTodaysLaundryReturned');
+  }
+
   // updateLaundryService(id: number, laundryService: LaundryService) {
   //   return this.http.put(this.baseUrl + 'laundryServices/' + id, laundryService);
   // }

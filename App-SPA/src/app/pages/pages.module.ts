@@ -36,6 +36,7 @@ import { MenuItemListResolver } from './menuItem/_resolvers/menu-item-list.resol
 import { MenuItemListComponent } from './menuItem/menu-item-list/menu-item-list.component';
 import { TodaysCallListResolver } from './dashboard/_resolvers/todays-call-list.resolver';
 import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call-list.resolver';
+import { LaundryReturnedListResolver } from './dashboard/_resolvers/laundry-returned-list.resolver';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call
     MenuItemListResolver,
     PreventUnsavedchanges,
     TodaysCallListResolver,
-    TomorrowsCallListResolver
+    TomorrowsCallListResolver,
+    LaundryReturnedListResolver
   ],
   declarations: [
     PagesComponent,

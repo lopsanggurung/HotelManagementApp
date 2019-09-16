@@ -29,6 +29,7 @@ import { MenuItemListResolver } from './menuItem/_resolvers/menu-item-list.resol
 import { MenuItemListComponent } from './menuItem/menu-item-list/menu-item-list.component';
 import { TodaysCallListResolver } from './dashboard/_resolvers/todays-call-list.resolver';
 import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call-list.resolver';
+import { LaundryReturnedListResolver } from './dashboard/_resolvers/laundry-returned-list.resolver';
 
 const routes: Routes = [
   {
@@ -42,7 +43,8 @@ const routes: Routes = [
         component: DashboardComponent,
         resolve: {
           todaysCalls: TodaysCallListResolver,
-          tomorrowsCalls: TomorrowsCallListResolver
+          tomorrowsCalls: TomorrowsCallListResolver,
+          laundryReturnedToday: LaundryReturnedListResolver
         }
       },
       {

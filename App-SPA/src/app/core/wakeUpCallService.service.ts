@@ -21,6 +21,14 @@ export class WakeUpCallServiceService {
     return this.http.get<WakeUpCallService>(this.baseUrl + 'wakeUpCallServices/' + id);
   }
 
+  getTodaysCalls(): Observable<WakeUpCallService[]> {
+    return this.http.get<WakeUpCallService[]>(this.baseUrl + 'wakeUpCallServices/' + 'GetTodaysWakeupCalls');
+  }
+
+  getTomorrowsCalls(): Observable<WakeUpCallService[]> {
+    return this.http.get<WakeUpCallService[]>(this.baseUrl + 'wakeUpCallServices/' + 'GetTomorrowsPendingWakeupCalls');
+  }
+
   // updateWakeUpCallService(id: number, wakeUpCallService: WakeUpCallService) {
   //   return this.http.put(this.baseUrl + 'wakeUpCallServices/' + id, wakeUpCallService);
   // }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MaterialModule } from 'src/app/core/material/material.module';
 import { TodaysPendingCheckinsCheckoutsComponent } from './todays-pending-checkins-checkouts/todays-pending-checkins-checkouts.component';
 import { TodaysCheckinsCheckoutsComponent } from './todays-checkins-checkouts/todays-checkins-checkouts.component';
 import { PendingLaundryReturnReceiveComponent } from './pending-laundry-return-receive/pending-laundry-return-receive.component';
@@ -12,7 +13,8 @@ import { TodaysVacantRoomsComponent } from './todays-vacant-rooms/todays-vacant-
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   declarations: [
     TodaysPendingCheckinsCheckoutsComponent,

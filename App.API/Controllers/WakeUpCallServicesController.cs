@@ -53,6 +53,27 @@ namespace App.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetTodaysWakeupCalls")]
+        public async Task<IActionResult> GetTodaysWakeupCalls()
+        {
+            var todaysWakeupCalls = await (from wakeUpCallService in _context.WakeUpCallServices.Cast<WakeUpCallService>().Where(w => w.WakeUpCallDate.Date == DateTime.Today.Date)
+                                                  join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
+                                                  join guest in _context.Guests on booking.GuestId equals guest.Id
+                                                  join room in _context.Rooms on booking.RoomId equals room.Id
+                                                  select new
+                                                  {
+                                                      Id = wakeUpCallService.Id,
+                                                      WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
+                                                      IsCompleted = wakeUpCallService.IsCompleted,
+                                                      FirstName = guest.FirstName,
+                                                      LastName = guest.LastName,
+                                                      RoomNumber = room.RoomNumber
+                                                  }).ToListAsync();
+
+            return Ok(todaysWakeupCalls);
+        }
+
+        [HttpGet]
         [Route("GetTodaysPendingWakeupCalls")]
         public async Task<IActionResult> GetTodaysPendingWakeupCalls()
         {

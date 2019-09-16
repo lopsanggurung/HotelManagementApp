@@ -34,6 +34,8 @@ import { RestaurantOrderListResolver } from './restaurantOrder/_resolvers/restau
 import { RestaurantOrderListComponent } from './restaurantOrder/restaurant-order-list/restaurant-order-list.component';
 import { MenuItemListResolver } from './menuItem/_resolvers/menu-item-list.resolver';
 import { MenuItemListComponent } from './menuItem/menu-item-list/menu-item-list.component';
+import { TodaysCallListResolver } from './dashboard/_resolvers/todays-call-list.resolver';
+import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call-list.resolver';
 
 @NgModule({
   imports: [
@@ -56,7 +58,9 @@ import { MenuItemListComponent } from './menuItem/menu-item-list/menu-item-list.
     WakeUpCallServiceListResolver,
     RestaurantOrderListResolver,
     MenuItemListResolver,
-    PreventUnsavedchanges
+    PreventUnsavedchanges,
+    TodaysCallListResolver,
+    TomorrowsCallListResolver
   ],
   declarations: [
     PagesComponent,

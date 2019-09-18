@@ -21,6 +21,14 @@ export class BookingService {
     return this.http.get<Booking>(this.baseUrl + 'bookings/' + id);
   }
 
+  getTodaysCheckIns(): Observable<Booking[]> {
+    return this.http.get<Booking[]>(this.baseUrl + 'bookings/getTodaysCheckIns');
+  }
+
+  getTodaysCheckOuts(): Observable<Booking[]> {
+    return this.http.get<Booking[]>(this.baseUrl + 'bookings/getTodaysCheckOuts');
+  }
+
   // updateBooking(id: number, guest: Booking) {
   //   return this.http.put(this.baseUrl + 'bookings/' + id, booking);
   // }

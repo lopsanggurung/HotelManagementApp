@@ -39,6 +39,8 @@ import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call
 import { LaundryReturnedListResolver } from './dashboard/_resolvers/laundry-returned-list.resolver';
 import { PendingLaundryReturnListResolver } from './dashboard/_resolvers/pending-laundry-return-list.resolver';
 import { PendingLaundryReceiveListResolver } from './dashboard/_resolvers/pending-laundry-receive-list.resolver';
+import { TodaysCheckinListResolver } from './dashboard/_resolvers/todays-checkin-list.resolver';
+import { TodaysCheckoutListResolver } from './dashboard/_resolvers/todays-checkout-list.resolver';
 
 @NgModule({
   imports: [
@@ -66,7 +68,9 @@ import { PendingLaundryReceiveListResolver } from './dashboard/_resolvers/pendin
     TomorrowsCallListResolver,
     LaundryReturnedListResolver,
     PendingLaundryReturnListResolver,
-    PendingLaundryReceiveListResolver
+    PendingLaundryReceiveListResolver,
+    TodaysCheckinListResolver,
+    TodaysCheckoutListResolver
   ],
   declarations: [
     PagesComponent,

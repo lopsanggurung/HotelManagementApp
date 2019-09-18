@@ -12,6 +12,8 @@ import { DirtyRoomsComponent } from './dirty-rooms/dirty-rooms.component';
 import { TodaysVacantRoomsComponent } from './todays-vacant-rooms/todays-vacant-rooms.component';
 import { PendingLaundryReturnComponent } from './pending-laundry-return-receive/pending-laundry-return/pending-laundry-return.component';
 import { PendingLaundryReceiveComponent } from './pending-laundry-return-receive/pending-laundry-receive/pending-laundry-receive.component';
+import { TodaysCheckinsComponent } from './todays-checkins-checkouts/todays-checkins/todays-checkins.component';
+import { TodaysCheckoutsComponent } from './todays-checkins-checkouts/todays-checkouts/todays-checkouts.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { PendingLaundryReceiveComponent } from './pending-laundry-return-receive
   declarations: [
     TodaysPendingCheckinsCheckoutsComponent,
     TodaysCheckinsCheckoutsComponent,
+    TodaysCheckinsComponent,
+    TodaysCheckoutsComponent,
     PendingLaundryReturnReceiveComponent,
     PendingLaundryReturnComponent,
     PendingLaundryReceiveComponent,

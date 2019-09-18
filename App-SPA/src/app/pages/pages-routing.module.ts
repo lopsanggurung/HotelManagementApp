@@ -32,6 +32,8 @@ import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call
 import { LaundryReturnedListResolver } from './dashboard/_resolvers/laundry-returned-list.resolver';
 import { PendingLaundryReturnListResolver } from './dashboard/_resolvers/pending-laundry-return-list.resolver';
 import { PendingLaundryReceiveListResolver } from './dashboard/_resolvers/pending-laundry-receive-list.resolver';
+import { TodaysCheckinListResolver } from './dashboard/_resolvers/todays-checkin-list.resolver';
+import { TodaysCheckoutListResolver } from './dashboard/_resolvers/todays-checkout-list.resolver';
 
 const routes: Routes = [
   {
@@ -48,7 +50,9 @@ const routes: Routes = [
           tomorrowsCalls: TomorrowsCallListResolver,
           laundryReturnedToday: LaundryReturnedListResolver,
           pendingLaundryReturn: PendingLaundryReturnListResolver,
-          pendingLaundryReceive: PendingLaundryReceiveListResolver
+          pendingLaundryReceive: PendingLaundryReceiveListResolver,
+          todaysCheckins: TodaysCheckinListResolver,
+          todaysCheckouts: TodaysCheckoutListResolver
         }
       },
       {

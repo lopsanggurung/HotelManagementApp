@@ -30,6 +30,8 @@ import { MenuItemListComponent } from './menuItem/menu-item-list/menu-item-list.
 import { TodaysCallListResolver } from './dashboard/_resolvers/todays-call-list.resolver';
 import { TomorrowsCallListResolver } from './dashboard/_resolvers/tomorrows-call-list.resolver';
 import { LaundryReturnedListResolver } from './dashboard/_resolvers/laundry-returned-list.resolver';
+import { PendingLaundryReturnListResolver } from './dashboard/_resolvers/pending-laundry-return-list.resolver';
+import { PendingLaundryReceiveListResolver } from './dashboard/_resolvers/pending-laundry-receive-list.resolver';
 
 const routes: Routes = [
   {
@@ -44,7 +46,9 @@ const routes: Routes = [
         resolve: {
           todaysCalls: TodaysCallListResolver,
           tomorrowsCalls: TomorrowsCallListResolver,
-          laundryReturnedToday: LaundryReturnedListResolver
+          laundryReturnedToday: LaundryReturnedListResolver,
+          pendingLaundryReturn: PendingLaundryReturnListResolver,
+          pendingLaundryReceive: PendingLaundryReceiveListResolver
         }
       },
       {

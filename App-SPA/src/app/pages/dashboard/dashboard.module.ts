@@ -10,6 +10,8 @@ import { TodaysCallsComponent } from './todays-calls/todays-calls.component';
 import { TomorrowsCallsComponent } from './tomorrows-calls/tomorrows-calls.component';
 import { DirtyRoomsComponent } from './dirty-rooms/dirty-rooms.component';
 import { TodaysVacantRoomsComponent } from './todays-vacant-rooms/todays-vacant-rooms.component';
+import { PendingLaundryReturnComponent } from './pending-laundry-return-receive/pending-laundry-return/pending-laundry-return.component';
+import { PendingLaundryReceiveComponent } from './pending-laundry-return-receive/pending-laundry-receive/pending-laundry-receive.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,8 @@ import { TodaysVacantRoomsComponent } from './todays-vacant-rooms/todays-vacant-
     TodaysPendingCheckinsCheckoutsComponent,
     TodaysCheckinsCheckoutsComponent,
     PendingLaundryReturnReceiveComponent,
+    PendingLaundryReturnComponent,
+    PendingLaundryReceiveComponent,
     LaundryReturnedComponent,
     TodaysCallsComponent,
     TomorrowsCallsComponent,

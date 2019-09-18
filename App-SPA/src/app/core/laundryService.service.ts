@@ -25,6 +25,14 @@ export class LaundryServiceService {
     return this.http.get<LaundryService[]>(this.baseUrl + 'laundryServices/' + 'getTodaysLaundryReturned');
   }
 
+  getPendingLaundryToReturnToGuest(): Observable<LaundryService[]> {
+    return this.http.get<LaundryService[]>(this.baseUrl + 'laundryServices/' + 'getPendingLaundryToReturnToGuest');
+  }
+
+  getPendingLaundryToReceiveFromLaundry(): Observable<LaundryService[]> {
+    return this.http.get<LaundryService[]>(this.baseUrl + 'laundryServices/' + 'getPendingLaundryToReceiveFromLaundry');
+  }
+
   // updateLaundryService(id: number, laundryService: LaundryService) {
   //   return this.http.put(this.baseUrl + 'laundryServices/' + id, laundryService);
   // }

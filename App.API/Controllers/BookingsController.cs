@@ -120,7 +120,7 @@ namespace App.API.Controllers
         [Route("GetTodaysPendingCheckOuts")]
         public async Task<IActionResult> GetTodaysPendingCheckOuts()
         {
-            var bookingList = await (from booking in _context.Bookings.Cast<Booking>().Where(b => b.CheckOutDate.Date == DateTime.Today.Date && b.CheckedOutDate.Date == default(DateTime).Date)
+            var bookingList = await (from booking in _context.Bookings.Cast<Booking>().Where(b => b.CheckedInDate.Date != default(DateTime).Date && b.CheckOutDate.Date == DateTime.Today.Date && b.CheckedOutDate.Date == default(DateTime).Date)
                                      join guest in _context.Guests on booking.GuestId equals guest.Id
                                      join room in _context.Rooms on booking.RoomId equals room.Id
                                      select new

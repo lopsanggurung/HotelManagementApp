@@ -14,6 +14,10 @@ import { PendingLaundryReturnComponent } from './pending-laundry-return-receive/
 import { PendingLaundryReceiveComponent } from './pending-laundry-return-receive/pending-laundry-receive/pending-laundry-receive.component';
 import { TodaysCheckinsComponent } from './todays-checkins-checkouts/todays-checkins/todays-checkins.component';
 import { TodaysCheckoutsComponent } from './todays-checkins-checkouts/todays-checkouts/todays-checkouts.component';
+// tslint:disable-next-line: max-line-length
+import { TodaysPendingCheckinsComponent } from './todays-pending-checkins-checkouts/todays-pending-checkins/todays-pending-checkins.component';
+// tslint:disable-next-line: max-line-length
+import { TodaysPendingCheckoutsComponent } from './todays-pending-checkins-checkouts/todays-pending-checkouts/todays-pending-checkouts.component';
 
 @NgModule({
   imports: [
@@ -22,6 +26,8 @@ import { TodaysCheckoutsComponent } from './todays-checkins-checkouts/todays-che
   ],
   declarations: [
     TodaysPendingCheckinsCheckoutsComponent,
+    TodaysPendingCheckinsComponent,
+    TodaysPendingCheckoutsComponent,
     TodaysCheckinsCheckoutsComponent,
     TodaysCheckinsComponent,
     TodaysCheckoutsComponent,

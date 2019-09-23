@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { MaterialModule } from '../core/material/material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -48,6 +49,7 @@ import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays
   imports: [
     CommonModule,
     MaterialModule,
+    NgxEchartsModule,
     SharedModule,
     AdminModule,
     ManagerModule,

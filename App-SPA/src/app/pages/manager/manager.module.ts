@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgxEchartsModule
   ],
   declarations: []
 })
-export class ManagerModule { }
+export class ManagerModule {}

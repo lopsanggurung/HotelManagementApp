@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 
+/** import echart theme files here: */
+import './../../node_modules/echarts/theme/dark.js';
+import './../../node_modules/echarts/theme/macarons.js';
+
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';

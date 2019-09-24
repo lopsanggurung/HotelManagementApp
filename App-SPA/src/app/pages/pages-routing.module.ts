@@ -36,6 +36,8 @@ import { TodaysCheckinListResolver } from './dashboard/_resolvers/todays-checkin
 import { TodaysCheckoutListResolver } from './dashboard/_resolvers/todays-checkout-list.resolver';
 import { TodaysPendingCheckinListResolver } from './dashboard/_resolvers/todays-pending-checkin-list.resolver';
 import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays-pending-checkout-list.resolver';
+import { ReportComponent } from './report/report.component';
+import { BookingCountByMonthResolver } from './report/_resolvers/booking-count-by-month.resolver';
 
 const routes: Routes = [
   {
@@ -114,6 +116,14 @@ const routes: Routes = [
         path: 'manager',
         component: ManagerComponent,
         data: { roles: ['Admin', 'Manager'] }
+      },
+      {
+        path: 'report',
+        component: ReportComponent,
+        resolve: {
+          bookingCountByMonth: BookingCountByMonthResolver
+        },
+        data: { roles: ['Admin'] }
       },
       {
         path: 'admin',

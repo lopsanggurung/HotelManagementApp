@@ -96,6 +96,11 @@
               <mat-icon style="padding-right:30px;">person</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'"> Manager </span>
             </a>
+            <a *appHasRole="['Admin']" mat-list-item routerLink="../pages/report" routerLinkActive="active"
+              matTooltip="Report" matTooltipPosition="right">
+              <mat-icon style="padding-right:30px;">bar_chart</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'"> Report </span>
+            </a>
             <a *appHasRole="['Admin']" mat-list-item routerLink="../pages/admin" routerLinkActive="active"
               matTooltip="Admin" matTooltipPosition="right">
               <mat-icon style="padding-right:30px;">account_box</mat-icon>

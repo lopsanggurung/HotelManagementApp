@@ -44,6 +44,9 @@ import { TodaysCheckinListResolver } from './dashboard/_resolvers/todays-checkin
 import { TodaysCheckoutListResolver } from './dashboard/_resolvers/todays-checkout-list.resolver';
 import { TodaysPendingCheckinListResolver } from './dashboard/_resolvers/todays-pending-checkin-list.resolver';
 import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays-pending-checkout-list.resolver';
+import { ReportComponent } from './report/report.component';
+import { ReportModule } from './report/report.module';
+import { BookingCountByMonthResolver } from './report/_resolvers/booking-count-by-month.resolver';
 
 @NgModule({
   imports: [
@@ -52,6 +55,7 @@ import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays
     NgxEchartsModule,
     SharedModule,
     AdminModule,
+    ReportModule,
     ManagerModule,
     DashboardModule,
     PagesRoutingModule
@@ -76,13 +80,15 @@ import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays
     TodaysCheckinListResolver,
     TodaysCheckoutListResolver,
     TodaysPendingCheckinListResolver,
-    TodaysPendingCheckoutListResolver
+    TodaysPendingCheckoutListResolver,
+    BookingCountByMonthResolver
   ],
   declarations: [
     PagesComponent,
     NavComponent,
     DashboardComponent,
     AdminComponent,
+    ReportComponent,
     ManagerComponent,
     UserListComponent,
     UserEditComponent,

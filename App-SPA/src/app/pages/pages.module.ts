@@ -46,7 +46,7 @@ import { TodaysPendingCheckinListResolver } from './dashboard/_resolvers/todays-
 import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays-pending-checkout-list.resolver';
 import { ReportComponent } from './report/report.component';
 import { ReportModule } from './report/report.module';
-import { BookingCountByMonthResolver } from './report/_resolvers/booking-count-by-month.resolver';
+import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
 
 @NgModule({
   imports: [
@@ -81,7 +81,7 @@ import { BookingCountByMonthResolver } from './report/_resolvers/booking-count-b
     TodaysCheckoutListResolver,
     TodaysPendingCheckinListResolver,
     TodaysPendingCheckoutListResolver,
-    BookingCountByMonthResolver
+    BookingCountByRoomResolver
   ],
   declarations: [
     PagesComponent,

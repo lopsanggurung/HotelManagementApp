@@ -11,8 +11,8 @@ export class ReportService {
 
   constructor(private http: HttpClient) { }
 
-  getBookingCountByMonth(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'reports/getBookingCountByMonth');
+  getBookingCountByRoom(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + 'reports/getBookingCountByRoom');
   }
 
 }

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BookingCountByMonthComponent } from './booking-count-by-month.component';
+import { BookingCountByRoomComponent } from './booking-count-by-room.component';
 
-describe('BookingCountByMonthComponent', () => {
-  let component: BookingCountByMonthComponent;
-  let fixture: ComponentFixture<BookingCountByMonthComponent>;
+describe('BookingCountByRoomComponent', () => {
+  let component: BookingCountByRoomComponent;
+  let fixture: ComponentFixture<BookingCountByRoomComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookingCountByMonthComponent ]
+      declarations: [ BookingCountByRoomComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookingCountByMonthComponent);
+    fixture = TestBed.createComponent(BookingCountByRoomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -37,7 +37,7 @@ import { TodaysCheckoutListResolver } from './dashboard/_resolvers/todays-checko
 import { TodaysPendingCheckinListResolver } from './dashboard/_resolvers/todays-pending-checkin-list.resolver';
 import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays-pending-checkout-list.resolver';
 import { ReportComponent } from './report/report.component';
-import { BookingCountByMonthResolver } from './report/_resolvers/booking-count-by-month.resolver';
+import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
 
 const routes: Routes = [
   {
@@ -121,7 +121,7 @@ const routes: Routes = [
         path: 'report',
         component: ReportComponent,
         resolve: {
-          bookingCountByMonth: BookingCountByMonthResolver
+          bookingCountByRoom: BookingCountByRoomResolver
         },
         data: { roles: ['Admin'] }
       },

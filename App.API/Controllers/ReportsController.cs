@@ -26,8 +26,8 @@ namespace App.API.Controllers
         }
 
         [HttpGet]
-        [Route("GetBookingCountByMonth")]
-        public async Task<IActionResult> GetBookingCountByMonth()
+        [Route("GetBookingCountByRoom")]
+        public async Task<IActionResult> GetBookingCountByRoom()
         {
             var result = await (from room in _context.Rooms
                                 select new

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MaterialModule } from './../../core/material/material.module';
 
-import { BookingCountByMonthComponent } from './booking-count-by-month/booking-count-by-month.component';
+import { BookingCountByRoomComponent } from './booking-count-by-room/booking-count-by-room.component';
 
 @NgModule({
   imports: [
@@ -12,10 +12,10 @@ import { BookingCountByMonthComponent } from './booking-count-by-month/booking-c
     MaterialModule
   ],
   declarations: [
-    BookingCountByMonthComponent
+    BookingCountByRoomComponent
   ],
   exports: [
-    BookingCountByMonthComponent
+    BookingCountByRoomComponent
   ]
 })
 export class ReportModule { }

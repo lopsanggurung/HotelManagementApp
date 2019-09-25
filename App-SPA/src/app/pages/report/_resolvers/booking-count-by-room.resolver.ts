@@ -7,11 +7,11 @@ import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../../../core/auth.service';
 import { Booking } from 'src/app/_models/booking';
 import { BookingService } from 'src/app/core/booking.service';
-import { ReportService } from './../../../core/report.service';
+import { ReportService } from '../../../core/report.service';
 
 
 @Injectable()
-export class BookingCountByMonthResolver implements Resolve<Booking[]> {
+export class BookingCountByRoomResolver implements Resolve<Booking[]> {
 
     constructor(
         private reportService: ReportService,
@@ -20,7 +20,7 @@ export class BookingCountByMonthResolver implements Resolve<Booking[]> {
     ) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<Booking[]> {
-        return this.reportService.getBookingCountByMonth().pipe(
+        return this.reportService.getBookingCountByRoom().pipe(
             catchError(error => {
                 this.snackBar.open('Problem retreiving data', 'Close', { duration: 5000 });
                 this.router.navigate(['/../pages/dashboard']);

@@ -3,18 +3,18 @@ import { ActivatedRoute } from '@angular/router';
 import { EChartOption } from 'echarts';
 
 @Component({
-  selector: 'app-booking-count-by-month',
-  templateUrl: './booking-count-by-month.component.html',
-  styleUrls: ['./booking-count-by-month.component.scss']
+  selector: 'app-booking-count-by-room',
+  templateUrl: './booking-count-by-room.component.html',
+  styleUrls: ['./booking-count-by-room.component.scss']
 })
-export class BookingCountByMonthComponent implements OnInit {
-  bookingCountByMonth: any[];
+export class BookingCountByRoomComponent implements OnInit {
+  bookingCountByRoom: any[];
   theme = 'macarons';
   barChartOption: EChartOption;
 
   constructor(private route: ActivatedRoute) {
     this.route.data.subscribe(data => {
-      this.bookingCountByMonth = data['bookingCountByMonth'];
+      this.bookingCountByRoom = data['bookingCountByRoom'];
     });
   }
 
@@ -34,7 +34,7 @@ export class BookingCountByMonthComponent implements OnInit {
       series: [{
         name: 'bar',
         type: 'bar',
-        data: this.bookingCountByMonth
+        data: this.bookingCountByRoom
       }]
     };
   }

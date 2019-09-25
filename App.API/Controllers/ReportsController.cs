@@ -38,5 +38,59 @@ namespace App.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetBookingDayCountByRoom")]
+        public async Task<IActionResult> GetBookingDayCountByRoom()
+        {
+            var result = await (from room in _context.Rooms
+                                select new
+                                {
+                                    name = room.RoomNumber,
+                                    value = (from b in _context.Bookings
+                                             where b.RoomId == room.Id
+                                             select (b.CheckOutDate.Date - b.CheckInDate.Date).Days).Sum()
+                                }).ToListAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetGuestCountByCountry")]
+        public async Task<IActionResult> GetGuestCountByCountry()
+        {
+            var result = await (from guest in _context.Guests
+                                group guest.Id by guest.Country into g
+                                select new
+                                {
+                                    name = g.Key,
+                                    value = g.Count()
+                                }).ToListAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetBookingDayCountByCountry")]
+        public async Task<IActionResult> GetBookingDayCountByCountry()
+        {
+            var result = await (from l in
+                                (from guest in _context.Guests
+                                 select new
+                                 {
+                                     country = guest.Country,
+                                     bookingCount = (from b in _context.Bookings
+                                                     where b.GuestId == guest.Id
+                                                     select (b.CheckOutDate.Date - b.CheckInDate.Date).Days).Sum()
+                                 })
+                                group l by l.country into lGroup
+                                select new
+                                {
+                                    name = lGroup.Key,
+                                    value = lGroup.Sum(x => x.bookingCount)
+                                }).ToListAsync();
+
+            return Ok(result);
+        }
     }
 }

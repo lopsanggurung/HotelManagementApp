@@ -15,4 +15,8 @@ export class ReportService {
     return this.http.get<any[]>(this.baseUrl + 'reports/getBookingCountByRoom');
   }
 
+  getBookingDayCountByCountry(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + 'reports/getBookingDayCountByCountry');
+  }
+
 }

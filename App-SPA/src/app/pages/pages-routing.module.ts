@@ -38,6 +38,7 @@ import { TodaysPendingCheckinListResolver } from './dashboard/_resolvers/todays-
 import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays-pending-checkout-list.resolver';
 import { ReportComponent } from './report/report.component';
 import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
+import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-day-count-by-country.resolver';
 
 const routes: Routes = [
   {
@@ -121,7 +122,8 @@ const routes: Routes = [
         path: 'report',
         component: ReportComponent,
         resolve: {
-          bookingCountByRoom: BookingCountByRoomResolver
+          bookingCountByRoom: BookingCountByRoomResolver,
+          bookingDayCountByCountry: BookingDayCountByCountryResolver
         },
         data: { roles: ['Admin'] }
       },

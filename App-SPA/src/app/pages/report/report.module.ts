@@ -4,6 +4,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { MaterialModule } from './../../core/material/material.module';
 
 import { BookingCountByRoomComponent } from './booking-count-by-room/booking-count-by-room.component';
+import { BookingDayCountByCountryComponent } from './booking-day-count-by-country/booking-day-count-by-country.component';
 
 @NgModule({
   imports: [
@@ -12,10 +13,12 @@ import { BookingCountByRoomComponent } from './booking-count-by-room/booking-cou
     MaterialModule
   ],
   declarations: [
-    BookingCountByRoomComponent
+    BookingCountByRoomComponent,
+    BookingDayCountByCountryComponent
   ],
   exports: [
-    BookingCountByRoomComponent
+    BookingCountByRoomComponent,
+    BookingDayCountByCountryComponent
   ]
 })
 export class ReportModule { }

@@ -47,6 +47,7 @@ import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays
 import { ReportComponent } from './report/report.component';
 import { ReportModule } from './report/report.module';
 import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
+import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-day-count-by-country.resolver';
 
 @NgModule({
   imports: [
@@ -81,7 +82,8 @@ import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by
     TodaysCheckoutListResolver,
     TodaysPendingCheckinListResolver,
     TodaysPendingCheckoutListResolver,
-    BookingCountByRoomResolver
+    BookingCountByRoomResolver,
+    BookingDayCountByCountryResolver
   ],
   declarations: [
     PagesComponent,

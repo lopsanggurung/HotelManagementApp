@@ -1,6 +1,8 @@
 <div class="container">
   <h2>Guests</h2>
-
+  <button mat-raised-button color="primary" [routerLink]="['./create']">
+    Add New
+  </button>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>

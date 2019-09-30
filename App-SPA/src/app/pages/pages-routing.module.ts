@@ -39,6 +39,7 @@ import { TodaysPendingCheckoutListResolver } from './dashboard/_resolvers/todays
 import { ReportComponent } from './report/report.component';
 import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
 import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-day-count-by-country.resolver';
+import { GuestCreateComponent } from './guest/guest-create/guest-create.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
         path: 'guests',
         component: GuestListComponent,
         resolve: { guests: GuestListResolver }
+      },
+      {
+        path: 'guests/create',
+        component: GuestCreateComponent
       },
       {
         path: 'rooms',

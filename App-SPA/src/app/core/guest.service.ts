@@ -21,6 +21,10 @@ export class GuestService {
     return this.http.get<Guest>(this.baseUrl + 'guests/' + id);
   }
 
+  createGuest(guest: Guest) {
+    return this.http.post(this.baseUrl + 'guests/', guest);
+  }
+
   // updateGuest(id: number, guest: Guest) {
   //   return this.http.put(this.baseUrl + 'guests/' + id, guest);
   // }

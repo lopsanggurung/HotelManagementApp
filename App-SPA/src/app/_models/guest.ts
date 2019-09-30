@@ -7,11 +7,11 @@ export interface Guest {
     lastName: string;
     phoneNumber: string;
     email: string;
-    // nationality: string;
-    // streetAddress: string;
-    // city: string;
-    // state: string;
-    // zipCode: string;
+    nationality: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
     country: string;
     booking?: Booking[];
 }

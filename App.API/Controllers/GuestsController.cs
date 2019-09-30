@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using App.API.Data;
 using App.API.Dtos;
+using App.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +38,26 @@ namespace App.API.Controllers
             var guest = await _repo.GetGuest(id);
 
             return Ok(guest);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateGuest(GuestForCreationDto guestForCreationDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var guestToCreate = _mapper.Map<Guest>(guestForCreationDto);
+
+            _repo.Add(guestToCreate);
+
+            if (await _repo.SaveAll())
+            {
+                var guestToReturn = _mapper.Map<GuestToReturnDto>(guestToCreate);
+                return CreatedAtRoute("GetGuest", new { id = guestToCreate.Id }, guestToReturn);
+            }
+            throw new Exception("Creating the guest failed on save");
         }
     }
 }

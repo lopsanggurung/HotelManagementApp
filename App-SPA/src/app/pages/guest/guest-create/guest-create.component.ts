@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+declare var require: any;
+const countryJsonData = require('../../../../assets/country.json');
 
 import { GuestService } from 'src/app/core/guest.service';
 import { Guest } from 'src/app/_models/guest';
@@ -14,6 +16,8 @@ import { Guest } from 'src/app/_models/guest';
 export class GuestCreateComponent implements OnInit {
   guest: Guest;
   guestCreateForm: FormGroup;
+
+  countryList = countryJsonData;
 
   constructor(
     private guestService: GuestService,
@@ -86,13 +90,17 @@ export class GuestCreateComponent implements OnInit {
       this.guest = Object.assign({}, this.guestCreateForm.value);
       this.guestService.createGuest(this.guest).subscribe(
         () => {
-        this.snackBar.open('New Guest Created', 'Close', { duration: 5000 });
-        this.router.navigate(['/pages/guests']);
+          this.snackBar.open('New Guest Created', 'Close', { duration: 5000 });
+          this.router.navigate(['/pages/guests']);
         },
         error => {
           this.snackBar.open('Failed to create Guest', 'Close', { duration: 5000 });
         }
       );
     }
+  }
+
+  cancel() {
+    this.router.navigate(['/pages/guests']);
   }
 }

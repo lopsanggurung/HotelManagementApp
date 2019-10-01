@@ -8,11 +8,7 @@
           <td>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>First Name</mat-label>
-              <input
-                matInput
-                formControlName="firstName"
-                placeholder="First Name"
-              />
+              <input matInput formControlName="firstName" placeholder="First Name" />
               <mat-error>Please enter First Name</mat-error>
             </mat-form-field>
           </td>
@@ -20,11 +16,7 @@
           <td>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Middle Name</mat-label>
-              <input
-                matInput
-                formControlName="middleName"
-                placeholder="Middle Name"
-              />
+              <input matInput formControlName="middleName" placeholder="Middle Name" />
               <mat-error>Please enter Middle Name</mat-error>
             </mat-form-field>
           </td>
@@ -32,11 +24,7 @@
           <td>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Last Name</mat-label>
-              <input
-                matInput
-                formControlName="lastName"
-                placeholder="Last Name"
-              />
+              <input matInput formControlName="lastName" placeholder="Last Name" />
               <mat-error>Please enter Last Name</mat-error>
             </mat-form-field>
           </td>
@@ -48,11 +36,7 @@
           <td>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input
-                matInput
-                formControlName="phoneNumber"
-                placeholder="Phone Number"
-              />
+              <input matInput formControlName="phoneNumber" placeholder="Phone Number" />
               <mat-error>Please enter Phone Number</mat-error>
             </mat-form-field>
           </td>
@@ -69,11 +53,7 @@
 
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Nationality</mat-label>
-        <input
-          matInput
-          formControlName="nationality"
-          placeholder="Nationality"
-        />
+        <input matInput formControlName="nationality" placeholder="Nationality" />
         <mat-error>Please enter Nationality</mat-error>
       </mat-form-field>
 
@@ -82,11 +62,7 @@
           <td>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Street Address</mat-label>
-              <input
-                matInput
-                formControlName="streetAddress"
-                placeholder="Street Address"
-              />
+              <input matInput formControlName="streetAddress" placeholder="Street Address" />
               <mat-error>Please enter Street Address</mat-error>
             </mat-form-field>
           </td>
@@ -114,32 +90,37 @@
           <td>
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Zip Code</mat-label>
-              <input
-                matInput
-                formControlName="zipCode"
-                placeholder="Zip Code"
-              />
+              <input matInput formControlName="zipCode" placeholder="Zip Code" />
               <mat-error>Please enter Zip Code</mat-error>
             </mat-form-field>
           </td>
         </tr>
       </table>
 
-      <mat-form-field class="full-width" appearance="outline">
+      <!-- <mat-form-field class="full-width" appearance="outline">
         <mat-label>Country</mat-label>
         <input matInput formControlName="country" placeholder="Country" />
         <mat-error>Please enter Country</mat-error>
+      </mat-form-field> -->
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country" placeholder="Country">
+          <mat-option *ngFor="let country of countryList" value="{{ country.name }}">
+            {{ country.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Please select a Country</mat-hint>
+        <mat-error
+          *ngIf="guestCreateForm.controls['country'].hasError('required') && guestCreateForm.controls['country'].touched">
+          Please select a Country
+        </mat-error>
       </mat-form-field>
     </mat-card-content>
 
     <mat-card-actions>
       <div class="form-group text-center">
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="!guestCreateForm.valid"
-          type="submit"
-        >
+        <button mat-raised-button color="primary" [disabled]="!guestCreateForm.valid" type="submit">
           Create
         </button>
         <button mat-raised-button color="secondary" (click)="cancel()">

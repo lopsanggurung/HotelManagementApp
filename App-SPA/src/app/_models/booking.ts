@@ -26,7 +26,7 @@ export interface Booking {
     paymentStatus: string;
     pricePerNight: number;
     additionalBedPricePerNight: number;
-    otalPriceBeforeTax: number;
+    totalPriceBeforeTax: number;
     taxAmount: number;
     depositAmount: number;
     totalPrice: number;

@@ -40,6 +40,8 @@ import { ReportComponent } from './report/report.component';
 import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
 import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-day-count-by-country.resolver';
 import { GuestCreateComponent } from './guest/guest-create/guest-create.component';
+import { GuestDetailComponent } from './guest/guest-detail/guest-detail.component';
+import { GuestDetailResolver } from './guest/_resolvers/guest-detail.resolver';
 
 const routes: Routes = [
   {
@@ -76,6 +78,11 @@ const routes: Routes = [
       {
         path: 'guests/create',
         component: GuestCreateComponent
+      },
+      {
+        path: 'guests/:id',
+        component: GuestDetailComponent,
+        resolve: { guest: GuestDetailResolver }
       },
       {
         path: 'rooms',

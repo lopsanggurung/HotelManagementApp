@@ -49,6 +49,8 @@ import { ReportModule } from './report/report.module';
 import { BookingCountByRoomResolver } from './report/_resolvers/booking-count-by-room.resolver';
 import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-day-count-by-country.resolver';
 import { GuestCreateComponent } from './guest/guest-create/guest-create.component';
+import { GuestDetailResolver } from './guest/_resolvers/guest-detail.resolver';
+import { GuestDetailComponent } from './guest/guest-detail/guest-detail.component';
 
 @NgModule({
   imports: [
@@ -66,6 +68,7 @@ import { GuestCreateComponent } from './guest/guest-create/guest-create.componen
     UserListResolver,
     UserEditResolver,
     GuestListResolver,
+    GuestDetailResolver,
     BookingListResolver,
     RoomListResolver,
     RoomServiceListResolver,
@@ -98,6 +101,7 @@ import { GuestCreateComponent } from './guest/guest-create/guest-create.componen
     UserManagementComponent,
     GuestListComponent,
     GuestCreateComponent,
+    GuestDetailComponent,
     BookingListComponent,
     RoomListComponent,
     RoomServiceListComponent,

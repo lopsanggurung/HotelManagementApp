@@ -12,7 +12,7 @@ import { GuestService } from './../../../core/guest.service';
 })
 export class GuestListComponent implements OnInit {
   guests: Guest[];
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'country'];
+  displayedColumns: string[] = ['action', 'id', 'firstName', 'lastName', 'country'];
   dataSource: MatTableDataSource<Guest>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

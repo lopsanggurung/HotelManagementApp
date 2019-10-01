@@ -1,0 +1,39 @@
+<div>
+    <h2>{{ guest.firstName }} {{ guest.middleName }} {{ guest.lastName }}</h2>
+    <mat-tab-group>
+      <mat-tab label="Personal Details">
+        <p>Guest ID: {{ guest.id }}</p>
+        <p>Phone: {{ guest.phoneNumber }}</p>
+        <p>Email: {{ guest.email }}</p>
+        <p>Nationality: {{ guest.nationality }}</p>
+        <p>Street Address: {{ guest.streetAddress }}</p>
+        <p>City: {{ guest.city }}</p>
+        <p>State: {{ guest.state }}</p>
+        <p>Zip Code: {{ guest.zipCode }}</p>
+        <p>Country: {{ guest.country }}</p>
+      </mat-tab>
+      <mat-tab label="Bookings ({{ guest.bookings.length }})">
+        <mat-card>
+          <p>Number of Bookings: {{ guest.bookings.length }}</p>
+          <div *ngFor="let booking of guest.bookings">
+            <div>Booking ID: {{ booking.id }}</div>
+            <div>Total Amount: {{ booking.totalPrice | currency: 'USD' }}</div>
+            <div>Payment Status: {{ booking.paymentStatus }}</div>
+            <hr />
+            <p>
+              Number of Room Services: {{ booking.roomServices.length }}
+            </p>
+            <div *ngFor="let roomService of booking.roomServices">
+              <div>Room Service ID: {{ roomService.id }}</div>
+              <div>
+                Total Amount: {{ roomService.totalPrice | currency: 'USD' }}
+              </div>
+              <div>Paid: {{ roomService.isPaid }}</div>
+            </div>
+          </div>
+        </mat-card>
+        <hr />
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  

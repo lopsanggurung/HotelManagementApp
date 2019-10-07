@@ -1,0 +1,210 @@
+<h2 class="text-center text-primary">Create a new Booking (Guest ID: {{guestId}})</h2>
+<hr />
+<mat-card>
+  <form class="form" [formGroup]="bookingCreateForm" (ngSubmit)="create()">
+    <mat-card-content>
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Guest Id</mat-label>
+              <input matInput formControlName="guestId" placeholder="Guest Id" />
+              <mat-error>Please enter guest Id</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Room Id</mat-label>
+              <mat-select formControlName="roomId" placeholder="Room Id">
+                <mat-option *ngFor="let room of rooms" value="{{ room.id }}">
+                  {{ room.roomNumber }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Room</mat-hint>
+              <mat-error
+                *ngIf="bookingCreateForm.controls['roomId'].hasError('required') && bookingCreateForm.controls['roomId'].touched">
+                Please select a Room
+              </mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Booking Status</mat-label>
+              <mat-select formControlName="bookingStatus" placeholder="Booking Status">
+                <mat-option *ngFor="let bookingStatus of bookingStatusList" value="{{ bookingStatus.name }}">
+                  {{ bookingStatus.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Booking Status</mat-hint>
+              <mat-error
+                *ngIf="bookingCreateForm.controls['bookingStatus'].hasError('required') && bookingCreateForm.controls['bookingStatus'].touched">
+                Please select a Booking Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CheckIn Date</mat-label>
+              <input matInput [matDatepicker]="checkInDatePicker" formControlName="checkInDate" placeholder="CheckIn Date" />
+              <mat-datepicker-toggle matSuffix [for]="checkInDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkInDatePicker></mat-datepicker>
+              <mat-error>Please enter CheckIn Date</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CheckOut Date</mat-label>
+              <input matInput [matDatepicker]="checkOutDatePicker" formControlName="checkOutDate" placeholder="CheckOut Date" />
+              <mat-datepicker-toggle matSuffix [for]="checkOutDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkOutDatePicker></mat-datepicker>
+              <mat-error>Please enter CheckOut Date</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Number Of Adults</mat-label>
+              <input matInput formControlName="numberOfAdults" placeholder="Number Of Adults" />
+              <mat-error>Please enter Number Of Adults</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Number Of Children</mat-label>
+              <input matInput formControlName="numberOfChildren" placeholder="Number Of Children" />
+              <mat-error>Please enter Number Of Children</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Additional Bed</mat-label>
+              <mat-select formControlName="additionalBed" placeholder="Additional Bed">
+                <mat-option *ngFor="let additionalBed of additionalBedList" value="{{ additionalBed.value }}">
+                  {{ additionalBed.display }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select an option</mat-hint>
+              <mat-error
+                *ngIf="bookingCreateForm.controls['additionalBed'].hasError('required') && bookingCreateForm.controls['additionalBed'].touched">
+                Please select an option
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Require PickUp</mat-label>
+              <mat-select formControlName="requirePickUp" placeholder="Require PickUp">
+                <mat-option *ngFor="let requirePickUp of requirePickUpList" value="{{ requirePickUp.value }}">
+                  {{ requirePickUp.display }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select an option</mat-hint>
+              <mat-error
+                *ngIf="bookingCreateForm.controls['requirePickUp'].hasError('required') && bookingCreateForm.controls['requirePickUp'].touched">
+                Please select an option
+              </mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Booking Source</mat-label>
+              <input matInput formControlName="bookingSource" placeholder="Booking Source" />
+              <mat-error>Please enter a Booking Source</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Payment Status</mat-label>
+              <mat-select formControlName="paymentStatus" placeholder="Payment Status">
+                <mat-option *ngFor="let paymentStatus of paymentStatusList" value="{{ paymentStatus.name }}">
+                  {{ paymentStatus.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Payment Status</mat-hint>
+              <mat-error
+                *ngIf="bookingCreateForm.controls['paymentStatus'].hasError('required') && bookingCreateForm.controls['paymentStatus'].touched">
+                Please select a Payment Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Price Per Night</mat-label>
+              <input matInput formControlName="pricePerNight" placeholder="Price Per Night" />
+              <mat-error>Please enter Price Per Night</mat-error>
+            </mat-form-field>
+          </td>
+  
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Total Price Before Tax</mat-label>
+              <input matInput formControlName="totalPriceBeforeTax" placeholder="Total Price Before Tax" />
+              <mat-error>Please enter Total Price Before Tax</mat-error>
+            </mat-form-field>
+          </td>
+  
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Tax Amount</mat-label>
+              <input matInput formControlName="taxAmount" placeholder="Tax Amount" />
+              <mat-error>Please enter Tax Amount</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Deposit Amount</mat-label>
+              <input matInput formControlName="depositAmount" placeholder="Deposit Amount" />
+              <mat-error>Please enter Deposit Amount</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Total Price</mat-label>
+              <input matInput formControlName="totalPrice" placeholder="Total Price" />
+              <mat-error>Please enter Total Price</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="form-group text-center">
+        <button mat-raised-button color="primary" [disabled]="!bookingCreateForm.valid" type="submit">
+          Create
+        </button>
+        <button mat-raised-button color="secondary" (click)="cancel()">
+          Go Back
+        </button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using App.API.Data;
 using App.API.Dtos;
@@ -71,6 +72,26 @@ namespace App.API.Controllers
                                      }).ToListAsync();
 
             return Ok(bookingList);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBooking(BookingForCreationDto bookingForCreationDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var bookingToCreate = _mapper.Map<Booking>(bookingForCreationDto);
+
+            _repo.Add(bookingToCreate);
+
+            if (await _repo.SaveAll())
+            {
+                var bookingToReturn = _mapper.Map<BookingToReturnDto>(bookingToCreate);
+                return CreatedAtRoute("GetBooking", new { id = bookingToCreate.Id }, bookingToReturn);
+            }
+            throw new Exception("Creating the booking failed on save");
         }
 
         [HttpGet]

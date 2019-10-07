@@ -42,6 +42,7 @@ import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-da
 import { GuestCreateComponent } from './guest/guest-create/guest-create.component';
 import { GuestDetailComponent } from './guest/guest-detail/guest-detail.component';
 import { GuestDetailResolver } from './guest/_resolvers/guest-detail.resolver';
+import { BookingCreateComponent } from './booking/booking-create/booking-create.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,11 @@ const routes: Routes = [
         path: 'guests/:id',
         component: GuestDetailComponent,
         resolve: { guest: GuestDetailResolver }
+      },
+      {
+        path: 'guests/:id/bookings/create',
+        component: BookingCreateComponent,
+        resolve: { rooms: RoomListResolver }
       },
       {
         path: 'rooms',

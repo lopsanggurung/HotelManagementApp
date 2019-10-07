@@ -1,5 +1,8 @@
 <div>
     <h2>{{ guest.firstName }} {{ guest.middleName }} {{ guest.lastName }}</h2>
+    <button mat-raised-button color="primary" [routerLink]="['./bookings/create']">
+      Add New Booking
+    </button>
     <mat-tab-group>
       <mat-tab label="Personal Details">
         <p>Guest ID: {{ guest.id }}</p>

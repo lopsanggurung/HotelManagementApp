@@ -51,6 +51,7 @@ import { BookingDayCountByCountryResolver } from './report/_resolvers/booking-da
 import { GuestCreateComponent } from './guest/guest-create/guest-create.component';
 import { GuestDetailResolver } from './guest/_resolvers/guest-detail.resolver';
 import { GuestDetailComponent } from './guest/guest-detail/guest-detail.component';
+import { BookingCreateComponent } from './booking/booking-create/booking-create.component';
 
 @NgModule({
   imports: [
@@ -103,6 +104,7 @@ import { GuestDetailComponent } from './guest/guest-detail/guest-detail.componen
     GuestCreateComponent,
     GuestDetailComponent,
     BookingListComponent,
+    BookingCreateComponent,
     RoomListComponent,
     RoomServiceListComponent,
     LaundryServiceListComponent,

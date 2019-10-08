@@ -17,26 +17,34 @@
       </mat-tab>
       <mat-tab label="Bookings ({{ guest.bookings.length }})">
         <mat-card>
-          <p>Number of Bookings: {{ guest.bookings.length }}</p>
-          <div *ngFor="let booking of guest.bookings">
-            <div>Booking ID: {{ booking.id }}</div>
+          <mat-card class='inner-card' *ngFor="let booking of guest.bookings">
+            <a class="booking-id" [routerLink]="['/pages/bookings/', booking.id]">
+              Booking ID: {{ booking.id }}
+            </a>
             <div>Total Amount: {{ booking.totalPrice | currency: 'USD' }}</div>
-            <div>Payment Status: {{ booking.paymentStatus }}</div>
-            <hr />
+            <div>
+              Payment Status:
+              <mat-chip color="warn" selected>
+                {{ booking.paymentStatus }}
+              </mat-chip>
+            </div>
             <p>
               Number of Room Services: {{ booking.roomServices.length }}
             </p>
             <div *ngFor="let roomService of booking.roomServices">
               <div>Room Service ID: {{ roomService.id }}</div>
+              <div>Total Amount: {{ roomService.totalPrice | currency: 'USD' }}</div>
               <div>
-                Total Amount: {{ roomService.totalPrice | currency: 'USD' }}
+                Paid:
+                <mat-chip color="warn" selected>
+                  {{ roomService.isPaid }}
+                </mat-chip>
               </div>
-              <div>Paid: {{ roomService.isPaid }}</div>
             </div>
-          </div>
+          </mat-card>
         </mat-card>
-        <hr />
       </mat-tab>
     </mat-tab-group>
+    <mat-chip-list></mat-chip-list>
   </div>
   

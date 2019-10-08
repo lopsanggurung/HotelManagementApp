@@ -52,6 +52,8 @@ import { GuestCreateComponent } from './guest/guest-create/guest-create.componen
 import { GuestDetailResolver } from './guest/_resolvers/guest-detail.resolver';
 import { GuestDetailComponent } from './guest/guest-detail/guest-detail.component';
 import { BookingCreateComponent } from './booking/booking-create/booking-create.component';
+import { BookingDetailComponent } from './booking/booking-detail/booking-detail.component';
+import { BookingDetailResolver } from './booking/_resolvers/booking-detail.resolver';
 
 @NgModule({
   imports: [
@@ -71,6 +73,7 @@ import { BookingCreateComponent } from './booking/booking-create/booking-create.
     GuestListResolver,
     GuestDetailResolver,
     BookingListResolver,
+    BookingDetailResolver,
     RoomListResolver,
     RoomServiceListResolver,
     LaundryServiceListResolver,
@@ -105,6 +108,7 @@ import { BookingCreateComponent } from './booking/booking-create/booking-create.
     GuestDetailComponent,
     BookingListComponent,
     BookingCreateComponent,
+    BookingDetailComponent,
     RoomListComponent,
     RoomServiceListComponent,
     LaundryServiceListComponent,

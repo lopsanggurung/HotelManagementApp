@@ -1,0 +1,144 @@
+<div>
+  <h2>Booking ID: {{ booking.id }}</h2>
+  <mat-tab-group>
+    <mat-tab label="Booking Details">
+      <p>Created Date: {{ booking.createdDate | date}}</p>
+      <p>Last Modified Date: {{ booking.lastModifiedDate | date}}</p>
+      <p>Booking Status: {{ booking.bookingStatus }}</p>
+      <p>CheckIn Date: {{ booking.checkInDate | date}}</p>
+      <p>CheckOut Date: {{ booking.checkOutDate | date}}</p>
+      <p>Number Of Adults: {{ booking.numberOfAdults }}</p>
+      <p>Number Of Children: {{ booking.numberOfChildren }}</p>
+      <p>Additional Bed: {{ booking.additionalBed }}</p>
+      <p>Require PickUp: {{ booking.requirePickUp }}</p>
+      <p>PickUp Date: {{ booking.pickUpDate | date}}</p>
+      <p>PickUp Location: {{ booking.pickUpLocation }}</p>
+      <p>PickUp Details: {{ booking.pickUpDetails }}</p>
+      <p>CheckedIn Date: {{ booking.checkedInDate | date}}</p>
+      <p>CheckedOut Date: {{ booking.checkedOutDate | date}}</p>
+      <p>Notes: {{ booking.notes }}</p>
+      <p>FeedBack On CheckOut: {{ booking.feedBackOnCheckOut }}</p>
+      <p>Booking Source: {{ booking.bookingSource }}</p>
+      <p>Payment Status:
+        <mat-chip color="warn" selected>
+          {{ booking.paymentStatus }}
+        </mat-chip>
+      </p>
+      <p>Price Per Night: {{ booking.pricePerNight }}</p>
+      <p>
+        Additional Bed Price Per Night: {{ booking.additionalBedPricePerNight }}
+      </p>
+      <p>Total Price Before Tax: {{ booking.totalPriceBeforeTax }}</p>
+      <p>Tax Amount: {{ booking.taxAmount }}</p>
+      <p>Deposit Amount: {{ booking.depositAmount }}</p>
+      <p>Total Price: {{ booking.totalPrice }}</p>
+    </mat-tab>
+    <mat-tab label="Other Services">
+      <mat-card>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+              <mat-card class="outer-card">
+                <p>
+                  Room Services: ({{ booking.roomServices.length }})
+                </p>
+                <mat-card
+                  class="inner-card"
+                  background-color="primary"
+                  *ngFor="let roomService of booking.roomServices"
+                >
+                  <div>ID: {{ roomService.id }}</div>
+                  <div>
+                    Total Amount: {{ roomService.totalPrice | currency: 'USD' }}
+                  </div>
+                  <div>
+                    Paid:
+                    <mat-chip color="warn" selected>
+                      {{ roomService.isPaid }}
+                    </mat-chip>
+                  </div>
+                </mat-card>
+              </mat-card>
+            </div>
+
+            <div class="col-md-3">
+                <mat-card class="outer-card">
+                <p>
+                  Restaurant Orders: ({{ booking.restaurantOrders.length }})
+                </p>
+                <mat-card
+                  class="inner-card"
+                  background-color="primary"
+                  *ngFor="let restaurantOrder of booking.restaurantOrders"
+                >
+                  <div>ID: {{ restaurantOrder.id }}</div>
+                  <div>
+                    Total Amount:
+                    {{ restaurantOrder.totalPrice | currency: 'USD' }}
+                  </div>
+                  <div>
+                    Paid:
+                    <mat-chip color="warn" selected>
+                      {{ restaurantOrder.isPaid }}
+                    </mat-chip>
+                  </div>
+                </mat-card>
+              </mat-card>
+            </div>
+
+            <div class="col-md-3">
+                <mat-card class="outer-card">
+                <p>
+                  Laundry Services: ({{ booking.laundryServices.length }})
+                </p>
+                <mat-card
+                  class="inner-card"
+                  background-color="primary"
+                  *ngFor="let laundryService of booking.laundryServices"
+                >
+                  <div>ID: {{ laundryService.id }}</div>
+                  <div>
+                    Total Amount:
+                    {{ laundryService.totalPrice | currency: 'USD' }}
+                  </div>
+                  <div>
+                    Paid:
+                    <mat-chip color="warn" selected>
+                      {{ laundryService.isPaid }}
+                    </mat-chip>
+                  </div>
+                </mat-card>
+              </mat-card>
+            </div>
+
+            <div class="col-md-3">
+                <mat-card class="outer-card">
+                <p>
+                  WakeUp Call Services: ({{ booking.wakeUpCallServices.length }})
+                </p>
+                <mat-card
+                  class="inner-card"
+                  background-color="primary"
+                  *ngFor="let wakeUpCallService of booking.wakeUpCallServices"
+                >
+                  <div>ID: {{ wakeUpCallService.id }}</div>
+                  <div>
+                    WakeUp Call Date:
+                    {{ wakeUpCallService.wakeUpCallDate | date }}
+                  </div>
+                  <div>
+                    Completed:
+                    <mat-chip color="warn" selected>
+                      {{ wakeUpCallService.isCompleted }}
+                    </mat-chip>
+                  </div>
+                </mat-card>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+  <mat-chip-list></mat-chip-list>
+</div>

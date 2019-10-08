@@ -24,7 +24,14 @@ namespace App.API.Data
 
         public async Task<Booking> GetBooking(int id)
         {
-            var booking = await _context.Bookings.Include(b => b.Guest).Include(b => b.Room).FirstOrDefaultAsync(b => b.Id == id);
+            var booking = await _context.Bookings
+            .Include(b => b.Guest)
+            .Include(b => b.Room)
+            .Include(b => b.RoomServices)
+            .Include(b => b.RestaurantOrders)
+            .Include(b => b.WakeUpCallServices)
+            .Include(b => b.LaundryServices)
+            .FirstOrDefaultAsync(b => b.Id == id);
             return booking;
         }
 

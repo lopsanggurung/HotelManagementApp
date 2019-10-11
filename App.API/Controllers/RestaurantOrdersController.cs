@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using App.API.Data;
 using App.API.Dtos;
+using App.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +38,26 @@ namespace App.API.Controllers
             var restaurantOrder = await _repo.GetRestaurantOrder(id);
 
             return Ok(restaurantOrder);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateRestaurantOrder(RestaurantOrderForCreationDto restaurantOrderForCreationDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var restaurantOrderToCreate = _mapper.Map<RestaurantOrder>(restaurantOrderForCreationDto);
+
+            _repo.Add(restaurantOrderToCreate);
+
+            if (await _repo.SaveAll())
+            {
+                var restaurantOrderToReturn = _mapper.Map<RestaurantOrderToReturnDto>(restaurantOrderToCreate);
+                return CreatedAtRoute("GetRestaurantOrder", new { id = restaurantOrderToCreate.Id }, restaurantOrderToReturn);
+            }
+            throw new Exception("Creating the Restaurant Order failed on save");
         }
     }
 }

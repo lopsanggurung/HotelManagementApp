@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using App.API.Data;
 using App.API.Dtos;
@@ -142,6 +143,26 @@ namespace App.API.Controllers
             var wakeUpCallService = await _repo.GetWakeUpCallService(id);
 
             return Ok(wakeUpCallService);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateWakeUpCallService(WakeUpCallServiceForCreationDto wakeUpCallServiceForCreationDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var wakeUpCallServiceToCreate = _mapper.Map<WakeUpCallService>(wakeUpCallServiceForCreationDto);
+
+            _repo.Add(wakeUpCallServiceToCreate);
+
+            if (await _repo.SaveAll())
+            {
+                var wakeUpCallServiceToReturn = _mapper.Map<WakeUpCallServiceToReturnDto>(wakeUpCallServiceToCreate);
+                return CreatedAtRoute("GetWakeUpCallService", new { id = wakeUpCallServiceToCreate.Id }, wakeUpCallServiceToReturn);
+            }
+            throw new Exception("Creating the WakeUp Call Service failed on save");
         }
     }
 }

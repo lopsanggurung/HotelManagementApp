@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using App.API.Data;
 using App.API.Dtos;
@@ -136,6 +137,26 @@ namespace App.API.Controllers
             var laundryService = await _repo.GetLaundryService(id);
 
             return Ok(laundryService);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateLaundryService(LaundryServiceForCreationDto laundryServiceForCreationDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var laundryServiceToCreate = _mapper.Map<LaundryService>(laundryServiceForCreationDto);
+
+            _repo.Add(laundryServiceToCreate);
+
+            if (await _repo.SaveAll())
+            {
+                var laundryServiceToReturn = _mapper.Map<LaundryServiceToReturnDto>(laundryServiceToCreate);
+                return CreatedAtRoute("GetLaundryService", new { id = laundryServiceToCreate.Id }, laundryServiceToReturn);
+            }
+            throw new Exception("Creating the Laundry Service failed on save");
         }
     }
 }

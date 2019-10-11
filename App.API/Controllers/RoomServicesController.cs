@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using App.API.Data;
 using App.API.Dtos;
@@ -61,6 +63,26 @@ namespace App.API.Controllers
             var roomService = await _repo.GetRoomService(id);
 
             return Ok(roomService);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateRoomService(RoomServiceForCreationDto roomServiceForCreationDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var roomServiceToCreate = _mapper.Map<RoomService>(roomServiceForCreationDto);
+
+            _repo.Add(roomServiceToCreate);
+
+            if (await _repo.SaveAll())
+            {
+                var roomServiceToReturn = _mapper.Map<RoomServiceToReturnDto>(roomServiceToCreate);
+                return CreatedAtRoute("GetRoomService", new { id = roomServiceToCreate.Id }, roomServiceToReturn);
+            }
+            throw new Exception("Creating the Room Service failed on save");
         }
     }
 }

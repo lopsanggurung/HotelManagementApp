@@ -20,9 +20,17 @@ namespace App.API.Helpers
             CreateMap<Booking, BookingToReturnDto>();
             CreateMap<BookingForCreationDto, Booking>();
             CreateMap<RoomService, RoomServiceForListDto>();
+            CreateMap<RoomService, RoomServiceToReturnDto>();
+            CreateMap<RoomServiceForCreationDto, RoomService>();
             CreateMap<LaundryService, LaundryServiceForListDto>();
+            CreateMap<LaundryService, LaundryServiceToReturnDto>();
+            CreateMap<LaundryServiceForCreationDto, LaundryService>();
             CreateMap<WakeUpCallService, WakeUpCallServiceForListDto>();
+            CreateMap<WakeUpCallService, WakeUpCallServiceToReturnDto>();
+            CreateMap<WakeUpCallServiceForCreationDto, WakeUpCallService>();
             CreateMap<RestaurantOrder, RestaurantOrderForListDto>();
+            CreateMap<RestaurantOrder, RestaurantOrderToReturnDto>();
+            CreateMap<RestaurantOrderForCreationDto, RestaurantOrder>();
             CreateMap<MenuItem, MenuItemForListDto>();
         }
     }

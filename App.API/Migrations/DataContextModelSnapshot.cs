@@ -14,7 +14,7 @@ namespace App.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity("App.API.Models.Booking", b =>
                 {
@@ -541,9 +541,10 @@ namespace App.API.Migrations
 
             modelBuilder.Entity("App.API.Models.RestaurantOrder", b =>
                 {
-                    b.HasOne("App.API.Models.Booking")
+                    b.HasOne("App.API.Models.Booking", "Booking")
                         .WithMany("RestaurantOrders")
-                        .HasForeignKey("BookingId");
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("App.API.Models.RestaurantOrderItem", b =>

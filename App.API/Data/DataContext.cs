@@ -28,6 +28,11 @@ namespace App.API.Data
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<RestaurantOrder>()
+            .HasOne(i => i.Booking)
+            .WithMany(c => c.RestaurantOrders)
+            .OnDelete(DeleteBehavior.SetNull);
+
             builder.Entity<UserRole>(userRole =>
             {
                 userRole.HasKey(ur => new { ur.UserId, ur.RoleId });

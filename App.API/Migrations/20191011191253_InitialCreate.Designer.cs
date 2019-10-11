@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190906044538_AddedRoomLaundryRestaurantServiceModels")]
-    partial class AddedRoomLaundryRestaurantServiceModels
+    [Migration("20191011191253_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity("App.API.Models.Booking", b =>
                 {
@@ -543,9 +543,10 @@ namespace App.API.Migrations
 
             modelBuilder.Entity("App.API.Models.RestaurantOrder", b =>
                 {
-                    b.HasOne("App.API.Models.Booking")
+                    b.HasOne("App.API.Models.Booking", "Booking")
                         .WithMany("RestaurantOrders")
-                        .HasForeignKey("BookingId");
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("App.API.Models.RestaurantOrderItem", b =>

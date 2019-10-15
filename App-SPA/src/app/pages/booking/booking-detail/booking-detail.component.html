@@ -41,6 +41,9 @@
               <mat-card class="outer-card">
                 <p>
                   Room Services: ({{ booking.roomServices.length }})
+                  <button mat-icon-button [routerLink]="['./roomServices/create']">
+                    <mat-icon>add_box</mat-icon>
+                  </button>
                 </p>
                 <mat-card
                   class="inner-card"

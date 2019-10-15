@@ -45,6 +45,7 @@ import { GuestDetailResolver } from './guest/_resolvers/guest-detail.resolver';
 import { BookingCreateComponent } from './booking/booking-create/booking-create.component';
 import { BookingDetailComponent } from './booking/booking-detail/booking-detail.component';
 import { BookingDetailResolver } from './booking/_resolvers/booking-detail.resolver';
+import { RoomServiceCreateComponent } from './roomService/room-service-create/room-service-create.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,11 @@ const routes: Routes = [
         path: 'bookings/:id',
         component: BookingDetailComponent,
         resolve: { booking: BookingDetailResolver }
+      },
+      {
+        path: 'bookings/:id/roomServices/create',
+        component: RoomServiceCreateComponent,
+        resolve: { menuItems: MenuItemListResolver }
       },
       {
         path: 'guests',

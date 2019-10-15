@@ -21,6 +21,10 @@ export class RoomServiceService {
     return this.http.get<RoomService>(this.baseUrl + 'roomServices/' + id);
   }
 
+  createRoomService(roomService: RoomService) {
+    return this.http.post(this.baseUrl + 'roomServices/', roomService);
+  }
+
   // updateRoomService(id: number, roomService: RoomService) {
   //   return this.http.put(this.baseUrl + 'roomServices/' + id, roomService);
   // }

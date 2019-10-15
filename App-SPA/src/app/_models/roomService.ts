@@ -1,3 +1,5 @@
+import { RoomServiceItem } from './roomServiceItem';
+
 export interface RoomService {
     id: number;
     bookingId: number;
@@ -10,4 +12,5 @@ export interface RoomService {
     totalPriceBeforeTax: number;
     taxAmount: number;
     totalPrice: number;
+    roomServiceItems: RoomServiceItem[];
 }

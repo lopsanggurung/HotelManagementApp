@@ -10,14 +10,6 @@
         <tr>
           <td>
             <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Booking Id</mat-label>
-              <input matInput formControlName="bookingId" placeholder="Booking Id"/>
-              <mat-error>Please enter Booking Id</mat-error>
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Is Completed</mat-label>
               <mat-select formControlName="isCompleted" placeholder="Status">
                 <mat-option *ngFor="let isCompleted of isCompletedList" value="{{ isCompleted.value }}">
@@ -52,32 +44,17 @@
       <table class="full-width" cellspacing="0">
         <tr>
           <td>
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Total Price Before Tax</mat-label>
-              <input matInput formControlName="totalPriceBeforeTax" placeholder="Total Price Before Tax"/>
-              <mat-error>Please enter Total Price Before Tax</mat-error>
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Tax Amount</mat-label>
-              <input matInput formControlName="taxAmount" placeholder="Tax Amount"/>
-              <mat-error>Please enter Tax Amount</mat-error>
-            </mat-form-field>
-          </td>
-
-          <td>
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Total Price</mat-label>
-              <input matInput formControlName="totalPrice" placeholder="Total Price"/>
-              <mat-error>Please enter Total Price</mat-error>
-            </mat-form-field>
+            <div>
+              Total Price before Tax: {{totalPriceBeforeTax}}
+            </div>
+            <div>
+              Tax Amount: {{taxAmount}}
+            </div>
+            <div>
+              <strong>Total Price: </strong>{{totalPrice}}
+            </div>
           </td>
         </tr>
-      </table>
-
-      <table class="full-width" cellspacing="0">
         <tr>
           <div formArrayName="roomServiceItems">
             <div *ngFor="let roomServiceItem of roomServiceItemForms.controls; let i = index" [formGroupName]="i">
@@ -85,7 +62,7 @@
                 <mat-form-field class="full-width" appearance="outline">
                   <mat-select formControlName="menuItemId" placeholder="Item Name">
                     <mat-option *ngFor="let menuItem of menuItems" value="{{ menuItem.id }}">
-                      {{ menuItem.name }}
+                      {{ menuItem.name }} | ${{menuItem.price}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -95,13 +72,6 @@
                   <mat-label>quantity</mat-label>
                   <input matInput formControlName="quantity" placeholder="quantity"/>
                   <mat-error>Please enter a quantity</mat-error>
-                </mat-form-field>
-              </td>
-              <td>
-                <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>pricePerItem</mat-label>
-                  <input matInput formControlName="pricePerItem" placeholder="pricePerItem"/>
-                  <mat-error>Please enter pricePerItem</mat-error>
                 </mat-form-field>
               </td>
               <td>

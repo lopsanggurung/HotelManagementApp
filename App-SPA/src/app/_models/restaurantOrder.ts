@@ -1,3 +1,5 @@
+import { RestaurantOrderItem } from './RestaurantOrderItem';
+
 export interface RestaurantOrder {
     id: number;
     bookingId: number;
@@ -8,4 +10,5 @@ export interface RestaurantOrder {
     totalPriceBeforeTax: number;
     taxAmount: number;
     totalPrice: number;
+    restaurantOrderItems: RestaurantOrderItem[];
 }

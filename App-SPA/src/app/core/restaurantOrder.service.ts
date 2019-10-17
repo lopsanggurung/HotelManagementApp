@@ -21,6 +21,10 @@ export class RestaurantOrderService {
     return this.http.get<RestaurantOrder>(this.baseUrl + 'restaurantOrders/' + id);
   }
 
+  createRestaurantOrder(restaurantOrder: RestaurantOrder) {
+    return this.http.post(this.baseUrl + 'restaurantOrders/', restaurantOrder);
+  }
+
   // updateRestaurantOrder(id: number, restaurantOrder: RestaurantOrder) {
   //   return this.http.put(this.baseUrl + 'restaurantOrders/' + id, restaurantOrder);
   // }

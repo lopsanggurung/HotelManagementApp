@@ -46,6 +46,9 @@ import { BookingCreateComponent } from './booking/booking-create/booking-create.
 import { BookingDetailComponent } from './booking/booking-detail/booking-detail.component';
 import { BookingDetailResolver } from './booking/_resolvers/booking-detail.resolver';
 import { RoomServiceCreateComponent } from './roomService/room-service-create/room-service-create.component';
+import {
+  GuestRestaurantOrderCreateComponent
+} from './restaurantOrder/guest-restaurant-order-create/guest-restaurant-order-create.component';
 
 const routes: Routes = [
   {
@@ -82,6 +85,11 @@ const routes: Routes = [
       {
         path: 'bookings/:id/roomServices/create',
         component: RoomServiceCreateComponent,
+        resolve: { menuItems: MenuItemListResolver }
+      },
+      {
+        path: 'bookings/:id/restaurantOrders/create',
+        component: GuestRestaurantOrderCreateComponent,
         resolve: { menuItems: MenuItemListResolver }
       },
       {

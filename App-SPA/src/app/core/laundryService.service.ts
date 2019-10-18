@@ -33,6 +33,10 @@ export class LaundryServiceService {
     return this.http.get<LaundryService[]>(this.baseUrl + 'laundryServices/' + 'getPendingLaundryToReceiveFromLaundry');
   }
 
+  createLaundryService(laundryService: LaundryService) {
+    return this.http.post(this.baseUrl + 'laundryServices/', laundryService);
+  }
+
   // updateLaundryService(id: number, laundryService: LaundryService) {
   //   return this.http.put(this.baseUrl + 'laundryServices/' + id, laundryService);
   // }

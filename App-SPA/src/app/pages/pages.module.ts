@@ -58,6 +58,7 @@ import { RoomServiceCreateComponent } from './roomService/room-service-create/ro
 import {
   GuestRestaurantOrderCreateComponent
 } from './restaurantOrder/guest-restaurant-order-create/guest-restaurant-order-create.component';
+import { LaundryServiceCreateComponent } from './laundryService/laundry-service-create/laundry-service-create.component';
 
 @NgModule({
   imports: [
@@ -117,6 +118,7 @@ import {
     RoomServiceListComponent,
     RoomServiceCreateComponent,
     LaundryServiceListComponent,
+    LaundryServiceCreateComponent,
     WakeUpCallServiceListComponent,
     RestaurantOrderListComponent,
     GuestRestaurantOrderCreateComponent,

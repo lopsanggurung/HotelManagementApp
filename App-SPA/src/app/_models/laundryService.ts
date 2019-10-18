@@ -1,9 +1,8 @@
+import { LaundryServiceItem } from './laundryServiceItem';
+
 export interface LaundryService {
     id: number;
     bookingId: number;
-    firstName?: string;
-    lastName?: string;
-    roomNumber?: string;
     dateOrdered: Date;
     dateReturnedFromLaundry: Date;
     dateReturnedToGuest: Date;
@@ -11,4 +10,5 @@ export interface LaundryService {
     totalPriceBeforeTax: number;
     taxAmount: number;
     totalPrice: number;
+    laundryServiceItems: LaundryServiceItem[];
 }

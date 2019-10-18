@@ -49,6 +49,7 @@ import { RoomServiceCreateComponent } from './roomService/room-service-create/ro
 import {
   GuestRestaurantOrderCreateComponent
 } from './restaurantOrder/guest-restaurant-order-create/guest-restaurant-order-create.component';
+import { LaundryServiceCreateComponent } from './laundryService/laundry-service-create/laundry-service-create.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
         path: 'bookings/:id/restaurantOrders/create',
         component: GuestRestaurantOrderCreateComponent,
         resolve: { menuItems: MenuItemListResolver }
+      },
+      {
+        path: 'bookings/:id/laundryServices/create',
+        component: LaundryServiceCreateComponent
       },
       {
         path: 'guests',

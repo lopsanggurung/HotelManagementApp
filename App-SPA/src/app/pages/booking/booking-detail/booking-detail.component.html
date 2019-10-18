@@ -96,6 +96,9 @@
                 <mat-card class="outer-card">
                 <p>
                   Laundry Services: ({{ booking.laundryServices.length }})
+                  <button mat-icon-button [routerLink]="['./laundryServices/create']">
+                    <mat-icon>add_box</mat-icon>
+                  </button>
                 </p>
                 <mat-card
                   class="inner-card"

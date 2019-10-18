@@ -29,6 +29,10 @@ export class WakeUpCallServiceService {
     return this.http.get<WakeUpCallService[]>(this.baseUrl + 'wakeUpCallServices/' + 'GetTomorrowsPendingWakeupCalls');
   }
 
+  createWakeUpCallService(wakeUpCallService: WakeUpCallService) {
+    return this.http.post(this.baseUrl + 'wakeUpCallServices/', wakeUpCallService);
+  }
+
   // updateWakeUpCallService(id: number, wakeUpCallService: WakeUpCallService) {
   //   return this.http.put(this.baseUrl + 'wakeUpCallServices/' + id, wakeUpCallService);
   // }

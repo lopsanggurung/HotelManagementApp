@@ -59,6 +59,7 @@ import {
   GuestRestaurantOrderCreateComponent
 } from './restaurantOrder/guest-restaurant-order-create/guest-restaurant-order-create.component';
 import { LaundryServiceCreateComponent } from './laundryService/laundry-service-create/laundry-service-create.component';
+import { WakeUpCallServiceCreateComponent } from './wakeUpCallService/wake-up-call-service-create/wake-up-call-service-create.component';
 
 @NgModule({
   imports: [
@@ -120,6 +121,7 @@ import { LaundryServiceCreateComponent } from './laundryService/laundry-service-
     LaundryServiceListComponent,
     LaundryServiceCreateComponent,
     WakeUpCallServiceListComponent,
+    WakeUpCallServiceCreateComponent,
     RestaurantOrderListComponent,
     GuestRestaurantOrderCreateComponent,
     MenuItemListComponent

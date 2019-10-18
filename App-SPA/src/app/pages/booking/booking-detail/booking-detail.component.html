@@ -123,7 +123,10 @@
             <div class="col-md-3">
                 <mat-card class="outer-card">
                 <p>
-                  WakeUp Call Services: ({{ booking.wakeUpCallServices.length }})
+                  WakeUpCall Services: ({{ booking.wakeUpCallServices.length }})
+                  <button mat-icon-button [routerLink]="['./wakeUpCallServices/create']">
+                    <mat-icon>add_box</mat-icon>
+                  </button>
                 </p>
                 <mat-card
                   class="inner-card"

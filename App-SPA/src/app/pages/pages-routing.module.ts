@@ -53,6 +53,8 @@ import { LaundryServiceCreateComponent } from './laundryService/laundry-service-
 import { WakeUpCallServiceCreateComponent } from './wakeUpCallService/wake-up-call-service-create/wake-up-call-service-create.component';
 import { RoomServiceDetailComponent } from './roomService/room-service-detail/room-service-detail.component';
 import { RoomServiceDetailResolver } from './roomService/_resolvers/room-service-detail.resolver';
+import { RestaurantOrderDetailComponent } from './restaurantOrder/restaurant-order-detail/restaurant-order-detail.component';
+import { RestaurantOrderDetailResolver } from './restaurantOrder/_resolvers/restaurant-order-detail.resolver';
 
 const routes: Routes = [
   {
@@ -152,6 +154,11 @@ const routes: Routes = [
         path: 'restaurantOrders',
         component: RestaurantOrderListComponent,
         resolve: { restaurantOrders: RestaurantOrderListResolver }
+      },
+      {
+        path: 'restaurantOrders/:id',
+        component: RestaurantOrderDetailComponent,
+        resolve: { restaurantOrder: RestaurantOrderDetailResolver }
       },
       {
         path: 'menuItems',

@@ -79,7 +79,9 @@
                   background-color="primary"
                   *ngFor="let restaurantOrder of booking.restaurantOrders"
                 >
-                  <div>ID: {{ restaurantOrder.id }}</div>
+                  <a class="booking-id" [routerLink]="['/pages/restaurantOrders/', restaurantOrder.id]">
+                    ID: {{ restaurantOrder.id }}
+                  </a>
                   <div>
                     Total Amount:
                     {{ restaurantOrder.totalPrice | currency: 'USD' }}

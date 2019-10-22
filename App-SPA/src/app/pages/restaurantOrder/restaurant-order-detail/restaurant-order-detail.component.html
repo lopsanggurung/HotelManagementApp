@@ -1,0 +1,49 @@
+<div>
+  <h2>Order ID: {{ restaurantOrder.id }} | Booking ID: {{ restaurantOrder.bookingId }}</h2>
+  <button mat-raised-button color="primary" [routerLink]="['./restaurantOrders/edit/', restaurantOrder.id]">
+    Edit
+  </button>
+  <mat-card>
+    <div>Service Date: {{ restaurantOrder.serviceDate }}</div>
+    <div>Completed: {{ restaurantOrder.isCompleted }}</div>
+    <div>Paid: <mat-chip color="warn" selected>{{ restaurantOrder.isPaid }}</mat-chip></div>
+    <div>Total Price Before Tax: {{ restaurantOrder.totalPriceBeforeTax | currency: 'USD' }}</div>
+    <div>Tax: {{ restaurantOrder.taxAmount | currency: 'USD' }}</div>
+    <div>Total Amount: {{ restaurantOrder.totalPrice | currency: 'USD' }}</div>
+    <hr />
+    <div>Number of Items: {{ restaurantOrder.restaurantOrderItems.length }}</div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price per Item</th>
+        <th>Quantity x Price</th>
+      </tr>
+      <tr *ngFor="let restaurantOrderItem of restaurantOrder.restaurantOrderItems">
+        <td>{{ restaurantOrderItem.menuItem.name }}</td>
+        <td>{{ restaurantOrderItem.quantity }}</td>
+        <td>{{ restaurantOrderItem.pricePerItem | currency: 'USD' }}</td>
+        <td>{{ restaurantOrderItem.quantity * restaurantOrderItem.pricePerItem | currency: 'USD' }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Sub Total:</strong></td>
+        <td><strong>{{ restaurantOrder.totalPriceBeforeTax | currency: 'USD' }}</strong></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Tax:</strong></td>
+        <td><strong>{{ restaurantOrder.taxAmount | currency: 'USD' }}</strong></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Total:</strong></td>
+        <td><strong>{{ restaurantOrder.totalPrice | currency: 'USD' }}</strong></td>
+      </tr>
+    </table>
+  </mat-card>
+  <mat-chip-list></mat-chip-list>
+</div>

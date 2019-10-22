@@ -25,7 +25,7 @@ namespace App.API.Data
 
         public async Task<RestaurantOrder> GetRestaurantOrder(int id)
         {
-            var restaurantOrder = await _context.RestaurantOrders.Include(r => r.RestaurantOrderItems).FirstOrDefaultAsync(r => r.Id == id);
+            var restaurantOrder = await _context.RestaurantOrders.Include(r => r.RestaurantOrderItems).ThenInclude(rsi => rsi.MenuItem).FirstOrDefaultAsync(r => r.Id == id);
             return restaurantOrder;
         }
 

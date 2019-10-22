@@ -50,7 +50,7 @@
                   background-color="primary"
                   *ngFor="let roomService of booking.roomServices"
                 >
-                  <a class="booking-id" [routerLink]="['/pages/roomServices/', roomService.id]">
+                  <a [routerLink]="['/pages/roomServices/', roomService.id]">
                     ID: {{ roomService.id }}
                   </a>
                   <div>
@@ -79,7 +79,7 @@
                   background-color="primary"
                   *ngFor="let restaurantOrder of booking.restaurantOrders"
                 >
-                  <a class="booking-id" [routerLink]="['/pages/restaurantOrders/', restaurantOrder.id]">
+                  <a [routerLink]="['/pages/restaurantOrders/', restaurantOrder.id]">
                     ID: {{ restaurantOrder.id }}
                   </a>
                   <div>
@@ -109,7 +109,9 @@
                   background-color="primary"
                   *ngFor="let laundryService of booking.laundryServices"
                 >
-                  <div>ID: {{ laundryService.id }}</div>
+                  <a [routerLink]="['/pages/laundryServices/', laundryService.id]">
+                    ID: {{ laundryService.id }}
+                  </a>
                   <div>
                     Total Amount:
                     {{ laundryService.totalPrice | currency: 'USD' }}

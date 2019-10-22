@@ -1,0 +1,55 @@
+<div>
+  <h2>Service ID: {{ laundryService.id }} | Booking ID: {{ laundryService.bookingId }}</h2>
+  <button mat-raised-button color="primary" [routerLink]="['./laundryServices/edit/', laundryService.id]">
+    Edit
+  </button>
+  <mat-card>
+    <div>Date Ordered: {{ laundryService.dateOrdered }}</div>
+    <div>Date Returned from Laundry: {{ laundryService.dateReturnedFromLaundry }}</div>
+    <div>Date Returned to Guest: {{ laundryService.dateReturnedToGuest  }}</div>
+    <div>Paid: <mat-chip color="warn" selected>{{ laundryService.isPaid }}</mat-chip></div>
+    <div>Total Price Before Tax: {{ laundryService.totalPriceBeforeTax | currency: 'USD' }}</div>
+    <div>Tax: {{ laundryService.taxAmount | currency: 'USD' }}</div>
+    <div>Total Amount: {{ laundryService.totalPrice | currency: 'USD' }}</div>
+    <hr />
+    <div>Number of Items: {{ laundryService.laundryServiceItems.length }}</div>
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Price per Item</th>
+        <th>Quantity x Price</th>
+      </tr>
+      <tr *ngFor="let laundryServiceItem of laundryService.laundryServiceItems">
+        <td>{{ laundryServiceItem.type }}</td>
+        <td>{{ laundryServiceItem.category }}</td>
+        <td>{{ laundryServiceItem.quantity }}</td>
+        <td>{{ laundryServiceItem.pricePerItem | currency: 'USD' }}</td>
+        <td>{{ laundryServiceItem.quantity * laundryServiceItem.pricePerItem | currency: 'USD' }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><strong>Sub Total:</strong></td>
+        <td><strong>{{ laundryService.totalPriceBeforeTax | currency: 'USD' }}</strong></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><strong>Tax:</strong></td>
+        <td><strong>{{ laundryService.taxAmount | currency: 'USD' }}</strong></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><strong>Total:</strong></td>
+        <td><strong>{{ laundryService.totalPrice | currency: 'USD' }}</strong></td>
+      </tr>
+    </table>
+  </mat-card>
+  <mat-chip-list></mat-chip-list>
+</div>

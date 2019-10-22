@@ -25,7 +25,7 @@ namespace App.API.Data
 
         public async Task<RoomService> GetRoomService(int id)
         {
-            var roomService = await _context.RoomServices.Include(r => r.RoomServiceItems).FirstOrDefaultAsync(r => r.Id == id);
+            var roomService = await _context.RoomServices.Include(r => r.RoomServiceItems).ThenInclude(rsi => rsi.MenuItem).FirstOrDefaultAsync(r => r.Id == id);
             return roomService;
         }
 

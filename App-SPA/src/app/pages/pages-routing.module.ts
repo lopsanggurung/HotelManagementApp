@@ -51,6 +51,8 @@ import {
 } from './restaurantOrder/guest-restaurant-order-create/guest-restaurant-order-create.component';
 import { LaundryServiceCreateComponent } from './laundryService/laundry-service-create/laundry-service-create.component';
 import { WakeUpCallServiceCreateComponent } from './wakeUpCallService/wake-up-call-service-create/wake-up-call-service-create.component';
+import { RoomServiceDetailComponent } from './roomService/room-service-detail/room-service-detail.component';
+import { RoomServiceDetailResolver } from './roomService/_resolvers/room-service-detail.resolver';
 
 const routes: Routes = [
   {
@@ -130,6 +132,11 @@ const routes: Routes = [
         path: 'roomServices',
         component: RoomServiceListComponent,
         resolve: { roomServices: RoomServiceListResolver }
+      },
+      {
+        path: 'roomServices/:id',
+        component: RoomServiceDetailComponent,
+        resolve: { roomService: RoomServiceDetailResolver }
       },
       {
         path: 'laundryServices',

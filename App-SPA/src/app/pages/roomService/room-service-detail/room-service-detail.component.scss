@@ -1,0 +1,25 @@
+h2 {
+  display: inline;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+mat-chip {
+  height: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 2px;
+}
+
+// tr:nth-child(even) {
+//   background-color: #dddddd;
+// }

@@ -50,7 +50,9 @@
                   background-color="primary"
                   *ngFor="let roomService of booking.roomServices"
                 >
-                  <div>ID: {{ roomService.id }}</div>
+                  <a class="booking-id" [routerLink]="['/pages/roomServices/', roomService.id]">
+                    ID: {{ roomService.id }}
+                  </a>
                   <div>
                     Total Amount: {{ roomService.totalPrice | currency: 'USD' }}
                   </div>

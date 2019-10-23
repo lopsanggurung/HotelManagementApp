@@ -13,7 +13,7 @@ import { WakeUpCallServiceService } from './../../../core/wakeUpCallService.serv
 })
 export class WakeUpCallServiceListComponent implements OnInit {
   wakeUpCallServices: WakeUpCallService[];
-  displayedColumns: string[] = ['id', 'bookingId', 'wakeUpCallTime', 'wakeUpCallDate',
+  displayedColumns: string[] = ['action', 'id', 'bookingId', 'wakeUpCallTime', 'wakeUpCallDate',
   'roomNumber', 'firstName', 'lastName', 'isCompleted'];
   dataSource: MatTableDataSource<WakeUpCallService>;
 

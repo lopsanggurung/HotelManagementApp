@@ -12,7 +12,7 @@ import { LaundryServiceService } from './../../../core/laundryService.service';
 })
 export class LaundryServiceListComponent implements OnInit {
   laundryServices: LaundryService[];
-  displayedColumns: string[] = ['id', 'bookingId', 'firstName', 'lastName', 'roomNumber', 'dateOrdered',
+  displayedColumns: string[] = ['action', 'id', 'bookingId', 'firstName', 'lastName', 'roomNumber', 'dateOrdered',
   'dateReturnedFromLaundry', 'dateReturnedToGuest', 'isPaid', 'totalPriceBeforeTax', 'taxAmount', 'totalPrice'];
   dataSource: MatTableDataSource<LaundryService>;
 

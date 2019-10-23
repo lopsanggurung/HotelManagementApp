@@ -8,6 +8,16 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button [routerLink]="['/pages/restaurantOrders/', row.id]">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>

@@ -12,7 +12,7 @@ import { RestaurantOrderService } from 'src/app/core/restaurantOrder.service';
 })
 export class RestaurantOrderListComponent implements OnInit {
   restaurantOrders: RestaurantOrder[];
-  displayedColumns: string[] = ['id', 'bookingId', 'orderFor', 'orderDate', 'isCompleted', 'isPaid',
+  displayedColumns: string[] = ['action', 'id', 'bookingId', 'orderFor', 'orderDate', 'isCompleted', 'isPaid',
     'totalPriceBeforeTax', 'taxAmount', 'totalPrice'];
   dataSource: MatTableDataSource<RestaurantOrder>;
 

@@ -139,7 +139,9 @@
                   background-color="primary"
                   *ngFor="let wakeUpCallService of booking.wakeUpCallServices"
                 >
-                  <div>ID: {{ wakeUpCallService.id }}</div>
+                  <a [routerLink]="['/pages/wakeUpCallServices/', wakeUpCallService.id]">
+                    ID: {{ wakeUpCallService.id }}
+                  </a>
                   <div>
                     WakeUp Call Date:
                     {{ wakeUpCallService.wakeUpCallDate | date }}

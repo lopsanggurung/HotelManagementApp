@@ -66,6 +66,8 @@ import { RestaurantOrderDetailComponent } from './restaurantOrder/restaurant-ord
 import { RestaurantOrderDetailResolver } from './restaurantOrder/_resolvers/restaurant-order-detail.resolver';
 import { LaundryServiceDetailComponent } from './laundryService/laundry-service-detail/laundry-service-detail.component';
 import { LaundryServiceDetailResolver } from './laundryService/_resolvers/laundry-service-detail.resolver';
+import { WakeUpCallServiceDetailComponent } from './wakeUpCallService/wake-up-call-service-detail/wake-up-call-service-detail.component';
+import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-detail.resolver';
 
 @NgModule({
   imports: [
@@ -92,6 +94,7 @@ import { LaundryServiceDetailResolver } from './laundryService/_resolvers/laundr
     LaundryServiceListResolver,
     LaundryServiceDetailResolver,
     WakeUpCallServiceListResolver,
+    WakeUpCallServiceDetailResolver,
     RestaurantOrderListResolver,
     RestaurantOrderDetailResolver,
     MenuItemListResolver,
@@ -133,6 +136,7 @@ import { LaundryServiceDetailResolver } from './laundryService/_resolvers/laundr
     LaundryServiceDetailComponent,
     WakeUpCallServiceListComponent,
     WakeUpCallServiceCreateComponent,
+    WakeUpCallServiceDetailComponent,
     RestaurantOrderListComponent,
     RestaurantOrderDetailComponent,
     GuestRestaurantOrderCreateComponent,

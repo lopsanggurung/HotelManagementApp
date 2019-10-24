@@ -59,5 +59,24 @@ namespace App.API.Controllers
             }
             throw new Exception("Creating the Restaurant Order failed on save");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRestaurantOrder(int id)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var restaurantOrderFromRepo = await _repo.GetRestaurantOrder(id);
+
+            _repo.Delete(restaurantOrderFromRepo);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+            throw new Exception("Failed to delete the Restaurant Order");
+        }
     }
 }

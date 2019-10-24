@@ -84,5 +84,24 @@ namespace App.API.Controllers
             }
             throw new Exception("Creating the Room Service failed on save");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRoomService(int id)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var roomServiceFromRepo = await _repo.GetRoomService(id);
+
+            _repo.Delete(roomServiceFromRepo);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+            throw new Exception("Failed to delete the Room Service");
+        }
     }
 }

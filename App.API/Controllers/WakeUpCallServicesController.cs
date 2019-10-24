@@ -164,5 +164,24 @@ namespace App.API.Controllers
             }
             throw new Exception("Creating the WakeUp Call Service failed on save");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteWakeUpCallService(int id)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var wakeUpCallServiceFromRepo = await _repo.GetWakeUpCallService(id);
+
+            _repo.Delete(wakeUpCallServiceFromRepo);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+            throw new Exception("Failed to delete the Wake Up Call Service");
+        }
     }
 }

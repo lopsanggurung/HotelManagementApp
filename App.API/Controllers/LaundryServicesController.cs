@@ -158,5 +158,24 @@ namespace App.API.Controllers
             }
             throw new Exception("Creating the Laundry Service failed on save");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteLaundryService(int id)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var laundryServiceFromRepo = await _repo.GetLaundryService(id);
+
+            _repo.Delete(laundryServiceFromRepo);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+            throw new Exception("Failed to delete the Laundry Service");
+        }
     }
 }

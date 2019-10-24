@@ -1,8 +1,9 @@
 <div>
   <h2>Order ID: {{ restaurantOrder.id }} | Booking ID: {{ restaurantOrder.bookingId }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['./restaurantOrders/edit/', restaurantOrder.id]">
+  <button class='btn' mat-raised-button color="primary" [routerLink]="['./restaurantOrders/edit/', restaurantOrder.id]">
     Edit
   </button>
+  <button mat-raised-button color="warn" (click)="openDialog()">Delete</button>
   <mat-card>
     <div>Service Date: {{ restaurantOrder.serviceDate }}</div>
     <div>Completed: {{ restaurantOrder.isCompleted }}</div>

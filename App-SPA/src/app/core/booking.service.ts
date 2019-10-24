@@ -25,6 +25,10 @@ export class BookingService {
     return this.http.post(this.baseUrl + 'bookings/', booking);
   }
 
+  deleteBooking(id): Observable<Booking> {
+    return this.http.delete<Booking>(this.baseUrl + 'bookings/' + id);
+  }
+
   getTodaysCheckIns(): Observable<Booking[]> {
     return this.http.get<Booking[]>(this.baseUrl + 'bookings/getTodaysCheckIns');
   }

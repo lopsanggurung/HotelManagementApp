@@ -25,6 +25,10 @@ export class RestaurantOrderService {
     return this.http.post(this.baseUrl + 'restaurantOrders/', restaurantOrder);
   }
 
+  deleteRestaurantOrder(id): Observable<RestaurantOrder> {
+    return this.http.delete<RestaurantOrder>(this.baseUrl + 'restaurantOrders/' + id);
+  }
+
   // updateRestaurantOrder(id: number, restaurantOrder: RestaurantOrder) {
   //   return this.http.put(this.baseUrl + 'restaurantOrders/' + id, restaurantOrder);
   // }

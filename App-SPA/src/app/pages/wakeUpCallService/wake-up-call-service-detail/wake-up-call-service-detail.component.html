@@ -1,8 +1,9 @@
 <div>
   <h2>Service ID: {{ wakeUpCallService.id }} | Booking ID: {{ wakeUpCallService.bookingId }}</h2>
-  <button mat-raised-button color="primary" [routerLink]="['./wakeUpCallServices/edit/', wakeUpCallService.id]">
+  <button class='btn' mat-raised-button color="primary" [routerLink]="['./wakeUpCallServices/edit/', wakeUpCallService.id]">
     Edit
   </button>
+  <button mat-raised-button color="warn" (click)="openDialog()">Delete</button>
   <mat-card>
     <div>Wake Up Call Date: {{ wakeUpCallService.wakeUpCallDate }}</div>
     <div>Completed: <mat-chip color="warn" selected>{{ wakeUpCallService.isCompleted }}</mat-chip></div>

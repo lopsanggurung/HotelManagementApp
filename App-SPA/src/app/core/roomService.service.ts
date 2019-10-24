@@ -25,6 +25,10 @@ export class RoomServiceService {
     return this.http.post(this.baseUrl + 'roomServices/', roomService);
   }
 
+  deleteRoomService(id): Observable<RoomService> {
+    return this.http.delete<RoomService>(this.baseUrl + 'roomServices/' + id);
+  }
+
   // updateRoomService(id: number, roomService: RoomService) {
   //   return this.http.put(this.baseUrl + 'roomServices/' + id, roomService);
   // }

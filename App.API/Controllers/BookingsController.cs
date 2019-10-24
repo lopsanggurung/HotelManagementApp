@@ -273,5 +273,24 @@ namespace App.API.Controllers
 
             return Ok(booking);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBooking(int id)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var bookingFromRepo = await _repo.GetBooking(id);
+
+            _repo.Delete(bookingFromRepo);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+            throw new Exception("Failed to delete the Booking");
+        }
     }
 }

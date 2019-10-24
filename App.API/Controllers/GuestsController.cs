@@ -59,5 +59,24 @@ namespace App.API.Controllers
             }
             throw new Exception("Creating the guest failed on save");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGuest(int id)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var guestFromRepo = await _repo.GetGuest(id);
+
+            _repo.Delete(guestFromRepo);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+            throw new Exception("Failed to delete the guest");
+        }
     }
 }

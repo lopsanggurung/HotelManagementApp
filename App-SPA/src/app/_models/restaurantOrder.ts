@@ -1,4 +1,4 @@
-import { RestaurantOrderItem } from './RestaurantOrderItem';
+import { RestaurantOrderItem } from './restaurantOrderItem';
 
 export interface RestaurantOrder {
     id: number;

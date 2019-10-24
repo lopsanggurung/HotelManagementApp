@@ -1,3 +1,5 @@
+import { RoomService } from 'src/app/_models/roomService';
+
 export interface Booking {
     id: number;
     guestId: number;
@@ -30,4 +32,5 @@ export interface Booking {
     taxAmount: number;
     depositAmount: number;
     totalPrice: number;
+    roomServices: RoomService[];
 }

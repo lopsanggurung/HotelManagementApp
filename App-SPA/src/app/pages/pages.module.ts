@@ -9,6 +9,7 @@ import { ManagerModule } from './manager/manager.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesComponent } from './pages.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { ManagerComponent } from './manager/manager.component';
@@ -114,6 +115,7 @@ import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/
   declarations: [
     PagesComponent,
     NavComponent,
+    DeleteDialogComponent,
     DashboardComponent,
     AdminComponent,
     ReportComponent,
@@ -141,6 +143,9 @@ import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/
     RestaurantOrderDetailComponent,
     GuestRestaurantOrderCreateComponent,
     MenuItemListComponent
-  ]
+  ],
+  entryComponents: [
+    DeleteDialogComponent
+  ],
 })
 export class PagesModule { }

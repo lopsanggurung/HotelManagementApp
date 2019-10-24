@@ -13,5 +13,5 @@ export interface Guest {
     state: string;
     zipCode: string;
     country: string;
-    booking?: Booking[];
+    bookings?: Booking[];
 }

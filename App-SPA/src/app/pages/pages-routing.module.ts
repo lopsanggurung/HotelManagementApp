@@ -59,6 +59,8 @@ import { LaundryServiceDetailComponent } from './laundryService/laundry-service-
 import { LaundryServiceDetailResolver } from './laundryService/_resolvers/laundry-service-detail.resolver';
 import { WakeUpCallServiceDetailComponent } from './wakeUpCallService/wake-up-call-service-detail/wake-up-call-service-detail.component';
 import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-detail.resolver';
+import { GuestEditComponent } from './guest/guest-edit/guest-edit.component';
+import { GuestEditResolver } from './guest/_resolvers/guest-edit.resolver';
 
 const routes: Routes = [
   {
@@ -123,6 +125,12 @@ const routes: Routes = [
         path: 'guests/:id',
         component: GuestDetailComponent,
         resolve: { guest: GuestDetailResolver }
+      },
+      {
+        path: 'guests/:id/edit',
+        component: GuestEditComponent,
+        resolve: { guest: GuestEditResolver },
+        canDeactivate: [PreventUnsavedchanges]
       },
       {
         path: 'guests/:id/bookings/create',

@@ -1,0 +1,36 @@
+<h1>Edit Guest Profile</h1>
+
+<div *ngIf="editForm.dirty">
+  <p>
+    <strong>Information:</strong>
+    You have made changes. Any unsaved changes will be lost!
+  </p>
+</div>
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateGuest(guest.id)">
+  <label for="id">ID</label>
+  <input class="form-control" type="number" [disabled]="true" name="id" [(ngModel)]="guest.id" />
+  <label for="firstName">First Name</label>
+  <input class="form-control" type="text" name="firstName" [(ngModel)]="guest.firstName" />
+  <label for="lastName">Last Name</label>
+  <input class="form-control" type="text" name="lastName" [(ngModel)]="guest.lastName" />
+  <label for="phoneNumber">Phone Number</label>
+  <input class="form-control" type="text" name="phoneNumber" [(ngModel)]="guest.phoneNumber" />
+  <label for="email">Email</label>
+  <input class="form-control" type="email" name="email" [(ngModel)]="guest.email" />
+  <label for="nationality">Nationality</label>
+  <input class="form-control" type="text" name="nationality" [(ngModel)]="guest.nationality" />
+  <label for="streetAddress">Street Address</label>
+  <input class="form-control" type="text" name="streetAddress" [(ngModel)]="guest.streetAddress" />
+  <label for="city">City</label>
+  <input class="form-control" type="text" name="city" [(ngModel)]="guest.city" />
+  <label for="state">State</label>
+  <input class="form-control" type="text" name="state" [(ngModel)]="guest.state" />
+  <label for="zipCode">Zip Code</label>
+  <input class="form-control" type="text" name="zipCode" [(ngModel)]="guest.zipCode" />
+  <label for="country">Country</label>
+  <input class="form-control" type="text" name="country" [(ngModel)]="guest.country" />
+</form>
+
+<button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block mt-5">
+  Save Changes
+</button>

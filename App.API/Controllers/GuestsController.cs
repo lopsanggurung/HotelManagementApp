@@ -78,5 +78,23 @@ namespace App.API.Controllers
             }
             throw new Exception("Failed to delete the guest");
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateGuest(int id, GuestForUpdateDto guestForUpdateDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var guestFromRepo = await _repo.GetGuest(id);
+
+            _mapper.Map(guestForUpdateDto, guestFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating guest {id} failed on save");
+        }
     }
 }

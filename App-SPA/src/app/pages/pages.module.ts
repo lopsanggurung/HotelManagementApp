@@ -69,6 +69,8 @@ import { LaundryServiceDetailComponent } from './laundryService/laundry-service-
 import { LaundryServiceDetailResolver } from './laundryService/_resolvers/laundry-service-detail.resolver';
 import { WakeUpCallServiceDetailComponent } from './wakeUpCallService/wake-up-call-service-detail/wake-up-call-service-detail.component';
 import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-detail.resolver';
+import { GuestEditComponent } from './guest/guest-edit/guest-edit.component';
+import { GuestEditResolver } from './guest/_resolvers/guest-edit.resolver';
 
 @NgModule({
   imports: [
@@ -87,6 +89,7 @@ import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/
     UserEditResolver,
     GuestListResolver,
     GuestDetailResolver,
+    GuestEditResolver,
     BookingListResolver,
     BookingDetailResolver,
     RoomListResolver,
@@ -126,6 +129,7 @@ import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/
     GuestListComponent,
     GuestCreateComponent,
     GuestDetailComponent,
+    GuestEditComponent,
     BookingListComponent,
     BookingCreateComponent,
     BookingDetailComponent,

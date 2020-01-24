@@ -29,7 +29,7 @@ export class GuestService {
     return this.http.delete<Guest>(this.baseUrl + 'guests/' + id);
   }
 
-  // updateGuest(id: number, guest: Guest) {
-  //   return this.http.put(this.baseUrl + 'guests/' + id, guest);
-  // }
+  updateGuest(id: number, guest: Guest) {
+    return this.http.put(this.baseUrl + 'guests/' + id, guest);
+  }
 }

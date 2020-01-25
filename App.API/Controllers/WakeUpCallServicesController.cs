@@ -58,18 +58,18 @@ namespace App.API.Controllers
         public async Task<IActionResult> GetTodaysWakeupCalls()
         {
             var todaysWakeupCalls = await (from wakeUpCallService in _context.WakeUpCallServices.Cast<WakeUpCallService>().Where(w => w.WakeUpCallDate.Date == DateTime.Today.Date)
-                                                  join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
-                                                  join guest in _context.Guests on booking.GuestId equals guest.Id
-                                                  join room in _context.Rooms on booking.RoomId equals room.Id
-                                                  select new
-                                                  {
-                                                      Id = wakeUpCallService.Id,
-                                                      WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
-                                                      IsCompleted = wakeUpCallService.IsCompleted,
-                                                      FirstName = guest.FirstName,
-                                                      LastName = guest.LastName,
-                                                      RoomNumber = room.RoomNumber
-                                                  }).ToListAsync();
+                                           join booking in _context.Bookings on wakeUpCallService.BookingId equals booking.Id
+                                           join guest in _context.Guests on booking.GuestId equals guest.Id
+                                           join room in _context.Rooms on booking.RoomId equals room.Id
+                                           select new
+                                           {
+                                               Id = wakeUpCallService.Id,
+                                               WakeUpCallDate = wakeUpCallService.WakeUpCallDate,
+                                               IsCompleted = wakeUpCallService.IsCompleted,
+                                               FirstName = guest.FirstName,
+                                               LastName = guest.LastName,
+                                               RoomNumber = room.RoomNumber
+                                           }).ToListAsync();
 
             return Ok(todaysWakeupCalls);
         }
@@ -182,6 +182,24 @@ namespace App.API.Controllers
                 return Ok();
             }
             throw new Exception("Failed to delete the Wake Up Call Service");
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateWakeUpCallService(int id, WakeUpCallServiceForUpdateDto wakeUpCallServiceForUpdateDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var wakeUpCallServiceFromRepo = await _repo.GetWakeUpCallService(id);
+
+            _mapper.Map(wakeUpCallServiceForUpdateDto, wakeUpCallServiceFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating Wake Up Call Service {id} failed on save");
         }
     }
 }

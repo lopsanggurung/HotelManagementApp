@@ -177,5 +177,23 @@ namespace App.API.Controllers
             }
             throw new Exception("Failed to delete the Laundry Service");
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateLaundryService(int id, LaundryServiceForUpdateDto laundryServiceForUpdateDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var laundryServiceFromRepo = await _repo.GetLaundryService(id);
+
+            _mapper.Map(laundryServiceForUpdateDto, laundryServiceFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating Laundry Service {id} failed on save");
+        }
     }
 }

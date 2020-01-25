@@ -78,5 +78,23 @@ namespace App.API.Controllers
             }
             throw new Exception("Failed to delete the Restaurant Order");
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateRestaurantOrder(int id, RestaurantOrderForUpdateDto restaurantOrderForUpdateDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var restaurantOrderFromRepo = await _repo.GetRestaurantOrder(id);
+
+            _mapper.Map(restaurantOrderForUpdateDto, restaurantOrderFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating Restaurant Order {id} failed on save");
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace App.API.Controllers
         private readonly IRoomServiceRepository _repo;
         private readonly IMapper _mapper;
         private readonly DataContext _context;
-        public RoomServicesController(IRoomServiceRepository repo, IMapper mapper,  DataContext context)
+        public RoomServicesController(IRoomServiceRepository repo, IMapper mapper, DataContext context)
         {
             _mapper = mapper;
             _repo = repo;
@@ -36,23 +36,23 @@ namespace App.API.Controllers
             // return Ok(roomServicesToReturn);
 
             var roomServiceList = await (from roomService in _context.RoomServices.Cast<RoomService>()
-                                        join booking in _context.Bookings on roomService.BookingId equals booking.Id
-                                        join guest in _context.Guests on booking.GuestId equals guest.Id
-                                        join room in _context.Rooms on booking.RoomId equals room.Id
-                                        select new
-                                        {
-                                            Id = roomService.Id,
-                                            BookingId = roomService.BookingId,
-                                            FirstName = guest.FirstName,
-                                            LastName = guest.LastName,
-                                            RoomNumber = room.RoomNumber,
-                                            ServiceDate = roomService.ServiceDate,
-                                            IsCompleted = roomService.IsCompleted,
-                                            IsPaid = roomService.IsPaid,
-                                            TotalPriceBeforeTax = roomService.TotalPriceBeforeTax,
-                                            TaxAmount = roomService.TaxAmount,
-                                            TotalPrice = roomService.TotalPrice
-                                        }).ToListAsync();
+                                         join booking in _context.Bookings on roomService.BookingId equals booking.Id
+                                         join guest in _context.Guests on booking.GuestId equals guest.Id
+                                         join room in _context.Rooms on booking.RoomId equals room.Id
+                                         select new
+                                         {
+                                             Id = roomService.Id,
+                                             BookingId = roomService.BookingId,
+                                             FirstName = guest.FirstName,
+                                             LastName = guest.LastName,
+                                             RoomNumber = room.RoomNumber,
+                                             ServiceDate = roomService.ServiceDate,
+                                             IsCompleted = roomService.IsCompleted,
+                                             IsPaid = roomService.IsPaid,
+                                             TotalPriceBeforeTax = roomService.TotalPriceBeforeTax,
+                                             TaxAmount = roomService.TaxAmount,
+                                             TotalPrice = roomService.TotalPrice
+                                         }).ToListAsync();
 
             return Ok(roomServiceList);
         }
@@ -102,6 +102,24 @@ namespace App.API.Controllers
                 return Ok();
             }
             throw new Exception("Failed to delete the Room Service");
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateRoomService(int id, RoomServiceForUpdateDto roomServiceForUpdateDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var roomServiceFromRepo = await _repo.GetRoomService(id);
+
+            _mapper.Map(roomServiceForUpdateDto, roomServiceFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating Room Service {id} failed on save");
         }
     }
 }

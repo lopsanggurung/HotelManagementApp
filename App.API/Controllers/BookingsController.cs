@@ -292,5 +292,23 @@ namespace App.API.Controllers
             }
             throw new Exception("Failed to delete the Booking");
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBooking(int id, BookingForUpdateDto bookingForUpdateDto)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (currentUserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var bookingFromRepo = await _repo.GetBooking(id);
+
+            _mapper.Map(bookingForUpdateDto, bookingFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating booking {id} failed on save");
+        }
     }
 }

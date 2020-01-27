@@ -1,3 +1,370 @@
-<p>
-  booking-edit works!
-</p>
+<!-- <h1>Edit Booking</h1>
+
+<div *ngIf="editForm.dirty">
+  <p>
+    <strong>Information:</strong>
+    You have made changes. Any unsaved changes will be lost!
+  </p>
+</div>
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateBooking(booking.id)">
+  <label for="id">ID</label>
+  <input class="form-control" type="number" [disabled]="true" name="id" [(ngModel)]="booking.id" />
+  <label for="bookingStatus">Booking Status</label>
+  <input class="form-control" type="text" name="bookingStatus" [(ngModel)]="booking.bookingStatus" />
+  <label for="checkInDate">CheckIn Date</label>
+  <input class="form-control" type="text" name="checkInDate" [(ngModel)]="booking.checkInDate" />
+  <label for="checkOutDate">CheckOut Date</label>
+  <input class="form-control" type="text" name="checkOutDate" [(ngModel)]="booking.checkOutDate" />
+  <label for="numberOfAdults">Number Of Adults</label>
+  <input class="form-control" type="text" name="numberOfAdults" [(ngModel)]="booking.numberOfAdults" />
+  <label for="numberOfChildren">Number Of Children</label>
+  <input class="form-control" type="text" name="numberOfChildren" [(ngModel)]="booking.numberOfChildren" />
+  <label for="additionalBed">Additional Bed</label>
+  <input class="form-control" type="text" name="additionalBed" [(ngModel)]="booking.additionalBed" />
+  <label for="requirePickUp">Require PickUp</label>
+  <input class="form-control" type="text" name="requirePickUp" [(ngModel)]="booking.requirePickUp" />
+  <label for="pickUpDate">PickUp Date</label>
+  <input class="form-control" type="text" name="pickUpDate" [(ngModel)]="booking.pickUpDate" />
+  <label for="pickUpLocation">PickUp Location</label>
+  <input class="form-control" type="text" name="pickUpLocation" [(ngModel)]="booking.pickUpLocation" />
+  <label for="pickUpDetails">PickUp Details</label>
+  <input class="form-control" type="text" name="pickUpDetails" [(ngModel)]="booking.pickUpDetails" />
+  <label for="checkedInDate">CheckedIn Date</label>
+  <input class="form-control" type="text" name="checkedInDate" [(ngModel)]="booking.checkedInDate" />
+  <label for="checkedOutDate">CheckedOut Date</label>
+  <input class="form-control" type="text" name="checkedOutDate" [(ngModel)]="booking.checkedOutDate" />
+  <label for="notes">Notes</label>
+  <input class="form-control" type="text" name="notes" [(ngModel)]="booking.notes" />
+  <label for="feedBackOnCheckOut">FeedBack On CheckOut</label>
+  <input class="form-control" type="text" name="feedBackOnCheckOut" [(ngModel)]="booking.feedBackOnCheckOut" />
+  <label for="bookingSource">Booking Source</label>
+  <input class="form-control" type="text" name="bookingSource" [(ngModel)]="booking.bookingSource" />
+  <label for="paymentStatus">Payment Status</label>
+  <input class="form-control" type="text" name="paymentStatus" [(ngModel)]="booking.paymentStatus" />
+  <label for="pricePerNight">Price Per Night</label>
+  <input class="form-control" type="text" name="pricePerNight" [(ngModel)]="booking.pricePerNight" />
+  <label for="additionalBedPricePerNight">Additional Bed Price Per Night</label>
+  <input class="form-control" type="text" name="additionalBedPricePerNight"
+    [(ngModel)]="booking.additionalBedPricePerNight" />
+  <label for="totalPriceBeforeTax">Total Price Before Tax</label>
+  <input class="form-control" type="text" name="totalPriceBeforeTax" [(ngModel)]="booking.totalPriceBeforeTax" />
+  <label for="taxAmount">Tax Amount</label>
+  <input class="form-control" type="text" name="taxAmount" [(ngModel)]="booking.taxAmount" />
+  <label for="depositAmount">Deposit Amount</label>
+  <input class="form-control" type="text" name="depositAmount" [(ngModel)]="booking.depositAmount" />
+  <label for="totalPrice">Total Price</label>
+  <input class="form-control" type="text" name="totalPrice" [(ngModel)]="booking.totalPrice" />
+</form>
+
+<button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block mt-5">
+  Save Changes
+</button> -->
+
+
+
+
+
+
+
+<h2 class="text-center text-primary">Update Booking: {{booking.id}} (Guest ID: {{guestId}})</h2>
+<hr />
+<mat-card>
+  <form class="form" [formGroup]="bookingUpdateForm" (ngSubmit)="updateBooking(booking.id)">
+    <mat-card-content>
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Guest Id</mat-label>
+              <input matInput value="{{guestId}}" disabled placeholder="Guest Id" />
+              <mat-error>Please enter guest Id</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Room Id</mat-label>
+              <mat-select formControlName="roomId" disabled placeholder="Room Id">
+                <mat-option *ngFor="let room of rooms" value="{{ room.id }}">
+                  {{ room.roomNumber }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="bookingUpdateForm.controls['roomId'].hasError('required') && bookingUpdateForm.controls['roomId'].touched">
+                Please select a Room
+              </mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Booking Status</mat-label>
+              <mat-select formControlName="bookingStatus" placeholder="Booking Status">
+                <mat-option *ngFor="let bookingStatus of bookingStatusList" value="{{ bookingStatus.name }}">
+                  {{ bookingStatus.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Booking Status</mat-hint>
+              <mat-error
+                *ngIf="bookingUpdateForm.controls['bookingStatus'].hasError('required') && bookingUpdateForm.controls['bookingStatus'].touched">
+                Please select a Booking Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CheckIn Date</mat-label>
+              <input matInput [matDatepicker]="checkInDatePicker" formControlName="checkInDate"
+                placeholder="CheckIn Date" />
+              <mat-datepicker-toggle matSuffix [for]="checkInDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkInDatePicker></mat-datepicker>
+              <mat-error>Please enter CheckIn Date</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CheckOut Date</mat-label>
+              <input matInput [matDatepicker]="checkOutDatePicker" formControlName="checkOutDate"
+                placeholder="CheckOut Date" />
+              <mat-datepicker-toggle matSuffix [for]="checkOutDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkOutDatePicker></mat-datepicker>
+              <mat-error>Please enter CheckOut Date</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Number Of Adults</mat-label>
+              <input matInput formControlName="numberOfAdults" placeholder="Number Of Adults" />
+              <mat-error>Please enter Number Of Adults</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Number Of Children</mat-label>
+              <input matInput formControlName="numberOfChildren" placeholder="Number Of Children" />
+              <mat-error>Please enter Number Of Children</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Additional Bed</mat-label>
+              <mat-select formControlName="additionalBed" placeholder="Additional Bed">
+                <mat-option *ngFor="let additionalBed of additionalBedList" value="{{ additionalBed.value }}">
+                  {{ additionalBed.display }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select an option</mat-hint>
+              <mat-error
+                *ngIf="bookingUpdateForm.controls['additionalBed'].hasError('required') && bookingUpdateForm.controls['additionalBed'].touched">
+                Please select an option
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Require PickUp</mat-label>
+              <mat-select formControlName="requirePickUp" placeholder="Require PickUp">
+                <mat-option *ngFor="let requirePickUp of requirePickUpList" value="{{ requirePickUp.value }}">
+                  {{ requirePickUp.display }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select an option</mat-hint>
+              <mat-error
+                *ngIf="bookingUpdateForm.controls['requirePickUp'].hasError('required') && bookingUpdateForm.controls['requirePickUp'].touched">
+                Please select an option
+              </mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Pick Up Date</mat-label>
+              <input matInput [matDatepicker]="pickUpDatePicker" formControlName="pickUpDate"
+                placeholder="Pick Up Date" />
+              <mat-datepicker-toggle matSuffix [for]="pickUpDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #pickUpDatePicker></mat-datepicker>
+              <mat-error>Please enter Pick Up Date</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Pick Up Location</mat-label>
+              <input matInput formControlName="pickUpLocation" placeholder="Pick Up Location" />
+              <mat-error>Please enter a Pick Up Location</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Pick Up Details</mat-label>
+              <input matInput formControlName="pickUpDetails" placeholder="Pick Up Details" />
+              <mat-error>Please enter Pick Up Details</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CheckedIn Date</mat-label>
+              <input matInput [matDatepicker]="checkedInDatePicker" formControlName="checkedInDate"
+                placeholder="CheckedIn Date" />
+              <mat-datepicker-toggle matSuffix [for]="checkedInDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkedInDatePicker></mat-datepicker>
+              <mat-error>Please enter CheckedIn Date</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CheckedOut Date</mat-label>
+              <input matInput [matDatepicker]="checkedOutDatePicker" formControlName="checkedOutDate"
+                placeholder="CheckedOut Date" />
+              <mat-datepicker-toggle matSuffix [for]="checkedOutDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkedOutDatePicker></mat-datepicker>
+              <mat-error>Please enter ChecedkOut Date</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Notes</mat-label>
+              <textarea matInput formControlName="notes" placeholder="Notes"></textarea>
+              <mat-error>Please enter Notes</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>FeedBack On CheckOut</mat-label>
+              <textarea matInput formControlName="feedBackOnCheckOut" placeholder="FeedBack On CheckOut"></textarea>
+              <mat-error>Please enter Feedback from Guest</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Booking Source</mat-label>
+              <input matInput formControlName="bookingSource" placeholder="Booking Source" />
+              <mat-error>Please enter a Booking Source</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Payment Status</mat-label>
+              <mat-select formControlName="paymentStatus" placeholder="Payment Status">
+                <mat-option *ngFor="let paymentStatus of paymentStatusList" value="{{ paymentStatus.name }}">
+                  {{ paymentStatus.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Payment Status</mat-hint>
+              <mat-error
+                *ngIf="bookingUpdateForm.controls['paymentStatus'].hasError('required') && bookingUpdateForm.controls['paymentStatus'].touched">
+                Please select a Payment Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Price Per Night</mat-label>
+              <input class="dark-background" matInput formControlName="pricePerNight" placeholder="Price Per Night" />
+              <mat-error>Please enter Price Per Night</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Additional Bed Price Per Night</mat-label>
+              <input matInput formControlName="additionalBedPricePerNight"
+                placeholder="Additional Bed Price Per Night" />
+              <mat-error>Please enter Additional Bed Price Per Night</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Total Price Before Tax</mat-label>
+              <input matInput formControlName="totalPriceBeforeTax" placeholder="Total Price Before Tax" />
+              <mat-error>Please enter Total Price Before Tax</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Tax Amount</mat-label>
+              <input matInput formControlName="taxAmount" placeholder="Tax Amount" />
+              <mat-error>Please enter Tax Amount</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Deposit Amount</mat-label>
+              <input matInput formControlName="depositAmount" placeholder="Deposit Amount" />
+              <mat-error>Please enter Deposit Amount</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Total Price</mat-label>
+              <input matInput formControlName="totalPrice" placeholder="Total Price" />
+              <mat-error>Please enter Total Price</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="form-group text-center">
+        <button mat-raised-button color="primary" [disabled]="!bookingUpdateForm.valid || !bookingUpdateForm.dirty"
+          type="submit">
+          Update
+        </button>
+        <button mat-raised-button color="secondary" (click)="cancel()">
+          Go Back
+        </button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

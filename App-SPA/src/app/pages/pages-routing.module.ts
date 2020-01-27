@@ -171,7 +171,7 @@ const routes: Routes = [
       {
         path: 'roomServices/:id/edit',
         component: RoomServiceEditComponent,
-        resolve: { roomService: RoomServiceEditResolver },
+        resolve: { roomService: RoomServiceEditResolver, menuItems: MenuItemListResolver },
         // canDeactivate: [PreventUnsavedchanges]
       },
       {

@@ -1,13 +1,14 @@
 <div>
   <h2>Service ID: {{ roomService.id }} | Booking ID: {{ roomService.bookingId }}</h2>
-  <button class='btn' mat-raised-button color="primary" [routerLink]="['./roomServices/edit/', roomService.id]">
+  <button class='btn' mat-raised-button color="primary" [routerLink]="['./edit']">
     Edit
   </button>
   <button mat-raised-button color="warn" (click)="openDialog()">Delete</button>
   <mat-card>
     <div>Service Date: {{ roomService.serviceDate }}</div>
     <div>Completed: {{ roomService.isCompleted }}</div>
-    <div>Paid: <mat-chip color="warn" selected>{{ roomService.isPaid }}</mat-chip></div>
+    <div>Paid: <mat-chip color="warn" selected>{{ roomService.isPaid }}</mat-chip>
+    </div>
     <div>Total Price Before Tax: {{ roomService.totalPriceBeforeTax | currency: 'USD' }}</div>
     <div>Tax: {{ roomService.taxAmount | currency: 'USD' }}</div>
     <div>Total Amount: {{ roomService.totalPrice | currency: 'USD' }}</div>

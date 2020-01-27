@@ -29,7 +29,7 @@ export class RestaurantOrderService {
     return this.http.delete<RestaurantOrder>(this.baseUrl + 'restaurantOrders/' + id);
   }
 
-  // updateRestaurantOrder(id: number, restaurantOrder: RestaurantOrder) {
-  //   return this.http.put(this.baseUrl + 'restaurantOrders/' + id, restaurantOrder);
-  // }
+  updateRestaurantOrder(id: number, restaurantOrder: RestaurantOrder) {
+    return this.http.put(this.baseUrl + 'restaurantOrders/' + id, restaurantOrder);
+  }
 }

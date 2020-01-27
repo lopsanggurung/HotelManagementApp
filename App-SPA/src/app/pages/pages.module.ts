@@ -71,6 +71,16 @@ import { WakeUpCallServiceDetailComponent } from './wakeUpCallService/wake-up-ca
 import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-detail.resolver';
 import { GuestEditComponent } from './guest/guest-edit/guest-edit.component';
 import { GuestEditResolver } from './guest/_resolvers/guest-edit.resolver';
+import { BookingEditComponent } from './booking/booking-edit/booking-edit.component';
+import { BookingEditResolver } from './booking/_resolvers/booking-edit.resolver';
+import { RoomServiceEditComponent } from './roomService/room-service-edit/room-service-edit.component';
+import { RoomServiceEditResolver } from './roomService/_resolvers/room-service-edit.resolver';
+import { LaundryServiceEditComponent } from './laundryService/laundry-service-edit/laundry-service-edit.component';
+import { LaundryServiceEditResolver } from './laundryService/_resolvers/laundry-service-edit.resolver';
+import { WakeUpCallServiceEditComponent } from './wakeUpCallService/wake-up-call-service-edit/wake-up-call-service-edit.component';
+import { WakeUpCallServiceEditResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-edit.resolver';
+import { RestaurantOrderEditComponent } from './restaurantOrder/restaurant-order-edit/restaurant-order-edit.component';
+import { RestaurantOrderEditResolver } from './restaurantOrder/_resolvers/restaurant-order-edit.resolver';
 
 @NgModule({
   imports: [
@@ -92,15 +102,20 @@ import { GuestEditResolver } from './guest/_resolvers/guest-edit.resolver';
     GuestEditResolver,
     BookingListResolver,
     BookingDetailResolver,
+    BookingEditResolver,
     RoomListResolver,
     RoomServiceListResolver,
     RoomServiceDetailResolver,
+    RoomServiceEditResolver,
     LaundryServiceListResolver,
     LaundryServiceDetailResolver,
+    LaundryServiceEditResolver,
     WakeUpCallServiceListResolver,
     WakeUpCallServiceDetailResolver,
+    WakeUpCallServiceEditResolver,
     RestaurantOrderListResolver,
     RestaurantOrderDetailResolver,
+    RestaurantOrderEditResolver,
     MenuItemListResolver,
     PreventUnsavedchanges,
     TodaysCallListResolver,
@@ -133,18 +148,23 @@ import { GuestEditResolver } from './guest/_resolvers/guest-edit.resolver';
     BookingListComponent,
     BookingCreateComponent,
     BookingDetailComponent,
+    BookingEditComponent,
     RoomListComponent,
     RoomServiceListComponent,
     RoomServiceCreateComponent,
     RoomServiceDetailComponent,
+    RoomServiceEditComponent,
     LaundryServiceListComponent,
     LaundryServiceCreateComponent,
     LaundryServiceDetailComponent,
+    LaundryServiceEditComponent,
     WakeUpCallServiceListComponent,
     WakeUpCallServiceCreateComponent,
     WakeUpCallServiceDetailComponent,
+    WakeUpCallServiceEditComponent,
     RestaurantOrderListComponent,
     RestaurantOrderDetailComponent,
+    RestaurantOrderEditComponent,
     GuestRestaurantOrderCreateComponent,
     MenuItemListComponent
   ],

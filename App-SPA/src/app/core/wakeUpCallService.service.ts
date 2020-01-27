@@ -37,7 +37,7 @@ export class WakeUpCallServiceService {
     return this.http.delete<WakeUpCallService>(this.baseUrl + 'wakeUpCallServices/' + id);
   }
 
-  // updateWakeUpCallService(id: number, wakeUpCallService: WakeUpCallService) {
-  //   return this.http.put(this.baseUrl + 'wakeUpCallServices/' + id, wakeUpCallService);
-  // }
+  updateWakeUpCallService(id: number, wakeUpCallService: WakeUpCallService) {
+    return this.http.put(this.baseUrl + 'wakeUpCallServices/' + id, wakeUpCallService);
+  }
 }

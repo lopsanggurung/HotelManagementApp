@@ -1,6 +1,6 @@
 <div>
   <h2>Service ID: {{ laundryService.id }} | Booking ID: {{ laundryService.bookingId }}</h2>
-  <button class='btn' mat-raised-button color="primary" [routerLink]="['./laundryServices/edit/', laundryService.id]">
+  <button class='btn' mat-raised-button color="primary" [routerLink]="['./edit']">
     Edit
   </button>
   <button mat-raised-button color="warn" (click)="openDialog()">Delete</button>
@@ -8,7 +8,8 @@
     <div>Date Ordered: {{ laundryService.dateOrdered }}</div>
     <div>Date Returned from Laundry: {{ laundryService.dateReturnedFromLaundry }}</div>
     <div>Date Returned to Guest: {{ laundryService.dateReturnedToGuest  }}</div>
-    <div>Paid: <mat-chip color="warn" selected>{{ laundryService.isPaid }}</mat-chip></div>
+    <div>Paid: <mat-chip color="warn" selected>{{ laundryService.isPaid }}</mat-chip>
+    </div>
     <div>Total Price Before Tax: {{ laundryService.totalPriceBeforeTax | currency: 'USD' }}</div>
     <div>Tax: {{ laundryService.taxAmount | currency: 'USD' }}</div>
     <div>Total Amount: {{ laundryService.totalPrice | currency: 'USD' }}</div>

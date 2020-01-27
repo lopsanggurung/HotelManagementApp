@@ -41,7 +41,7 @@ export class LaundryServiceService {
     return this.http.delete<LaundryService>(this.baseUrl + 'laundryServices/' + id);
   }
 
-  // updateLaundryService(id: number, laundryService: LaundryService) {
-  //   return this.http.put(this.baseUrl + 'laundryServices/' + id, laundryService);
-  // }
+  updateLaundryService(id: number, laundryService: LaundryService) {
+    return this.http.put(this.baseUrl + 'laundryServices/' + id, laundryService);
+  }
 }

@@ -1,13 +1,14 @@
 <div>
   <h2>Order ID: {{ restaurantOrder.id }} | Booking ID: {{ restaurantOrder.bookingId }}</h2>
-  <button class='btn' mat-raised-button color="primary" [routerLink]="['./restaurantOrders/edit/', restaurantOrder.id]">
+  <button class='btn' mat-raised-button color="primary" [routerLink]="['./edit']">
     Edit
   </button>
   <button mat-raised-button color="warn" (click)="openDialog()">Delete</button>
   <mat-card>
-    <div>Service Date: {{ restaurantOrder.serviceDate }}</div>
+    <div>Order Date: {{ restaurantOrder.orderDate }}</div>
     <div>Completed: {{ restaurantOrder.isCompleted }}</div>
-    <div>Paid: <mat-chip color="warn" selected>{{ restaurantOrder.isPaid }}</mat-chip></div>
+    <div>Paid: <mat-chip color="warn" selected>{{ restaurantOrder.isPaid }}</mat-chip>
+    </div>
     <div>Total Price Before Tax: {{ restaurantOrder.totalPriceBeforeTax | currency: 'USD' }}</div>
     <div>Tax: {{ restaurantOrder.taxAmount | currency: 'USD' }}</div>
     <div>Total Amount: {{ restaurantOrder.totalPrice | currency: 'USD' }}</div>

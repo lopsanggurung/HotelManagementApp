@@ -1,4 +1,7 @@
-import { RoomService } from 'src/app/_models/roomService';
+import { RoomService } from './roomService';
+import { LaundryService } from './laundryService';
+import { WakeUpCallService } from './wakeUpCallService';
+import { RestaurantOrder } from './restaurantOrder';
 
 export interface Booking {
     id: number;
@@ -33,4 +36,7 @@ export interface Booking {
     depositAmount: number;
     totalPrice: number;
     roomServices: RoomService[];
+    laundryServices: LaundryService[];
+    wakeUpCallServices: WakeUpCallService[];
+    restaurantOrders: RestaurantOrder[];
 }

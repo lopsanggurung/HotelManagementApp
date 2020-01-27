@@ -61,6 +61,16 @@ import { WakeUpCallServiceDetailComponent } from './wakeUpCallService/wake-up-ca
 import { WakeUpCallServiceDetailResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-detail.resolver';
 import { GuestEditComponent } from './guest/guest-edit/guest-edit.component';
 import { GuestEditResolver } from './guest/_resolvers/guest-edit.resolver';
+import { BookingEditComponent } from './booking/booking-edit/booking-edit.component';
+import { BookingEditResolver } from './booking/_resolvers/booking-edit.resolver';
+import { RoomServiceEditComponent } from './roomService/room-service-edit/room-service-edit.component';
+import { RoomServiceEditResolver } from './roomService/_resolvers/room-service-edit.resolver';
+import { LaundryServiceEditComponent } from './laundryService/laundry-service-edit/laundry-service-edit.component';
+import { LaundryServiceEditResolver } from './laundryService/_resolvers/laundry-service-edit.resolver';
+import { WakeUpCallServiceEditComponent } from './wakeUpCallService/wake-up-call-service-edit/wake-up-call-service-edit.component';
+import { WakeUpCallServiceEditResolver } from './wakeUpCallService/_resolvers/wakeUpCall-service-edit.resolver';
+import { RestaurantOrderEditComponent } from './restaurantOrder/restaurant-order-edit/restaurant-order-edit.component';
+import { RestaurantOrderEditResolver } from './restaurantOrder/_resolvers/restaurant-order-edit.resolver';
 
 const routes: Routes = [
   {
@@ -93,6 +103,12 @@ const routes: Routes = [
         path: 'bookings/:id',
         component: BookingDetailComponent,
         resolve: { booking: BookingDetailResolver }
+      },
+      {
+        path: 'bookings/:id/edit',
+        component: BookingEditComponent,
+        resolve: { booking: BookingEditResolver, rooms: RoomListResolver },
+        // canDeactivate: [PreventUnsavedchanges]
       },
       {
         path: 'bookings/:id/roomServices/create',
@@ -153,6 +169,12 @@ const routes: Routes = [
         resolve: { roomService: RoomServiceDetailResolver }
       },
       {
+        path: 'roomServices/:id/edit',
+        component: RoomServiceEditComponent,
+        resolve: { roomService: RoomServiceEditResolver },
+        // canDeactivate: [PreventUnsavedchanges]
+      },
+      {
         path: 'laundryServices',
         component: LaundryServiceListComponent,
         resolve: { laundryServices: LaundryServiceListResolver }
@@ -161,6 +183,12 @@ const routes: Routes = [
         path: 'laundryServices/:id',
         component: LaundryServiceDetailComponent,
         resolve: { laundryService: LaundryServiceDetailResolver }
+      },
+      {
+        path: 'laundryServices/:id/edit',
+        component: LaundryServiceEditComponent,
+        resolve: { laundryService: LaundryServiceEditResolver },
+        // canDeactivate: [PreventUnsavedchanges]
       },
       {
         path: 'wakeUpCallServices',
@@ -173,6 +201,12 @@ const routes: Routes = [
         resolve: { wakeUpCallService: WakeUpCallServiceDetailResolver }
       },
       {
+        path: 'wakeUpCallServices/:id/edit',
+        component: WakeUpCallServiceEditComponent,
+        resolve: { wakeUpCallService: WakeUpCallServiceEditResolver },
+        // canDeactivate: [PreventUnsavedchanges]
+      },
+      {
         path: 'restaurantOrders',
         component: RestaurantOrderListComponent,
         resolve: { restaurantOrders: RestaurantOrderListResolver }
@@ -181,6 +215,12 @@ const routes: Routes = [
         path: 'restaurantOrders/:id',
         component: RestaurantOrderDetailComponent,
         resolve: { restaurantOrder: RestaurantOrderDetailResolver }
+      },
+      {
+        path: 'restaurantOrders/:id/edit',
+        component: RestaurantOrderEditComponent,
+        resolve: { restaurantOrder: RestaurantOrderEditResolver },
+        // canDeactivate: [PreventUnsavedchanges]
       },
       {
         path: 'menuItems',

@@ -29,7 +29,7 @@ export class RoomServiceService {
     return this.http.delete<RoomService>(this.baseUrl + 'roomServices/' + id);
   }
 
-  // updateRoomService(id: number, roomService: RoomService) {
-  //   return this.http.put(this.baseUrl + 'roomServices/' + id, roomService);
-  // }
+  updateRoomService(id: number, roomService: RoomService) {
+    return this.http.put(this.baseUrl + 'roomServices/' + id, roomService);
+  }
 }

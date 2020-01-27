@@ -1,6 +1,6 @@
 <div>
   <h2>Booking ID: {{ booking.id }}</h2>
-  <button class='btn' mat-raised-button color="primary" [routerLink]="['./bookingServices/edit/', bookingService.id]">
+  <button class='btn' mat-raised-button color="primary" [routerLink]="['./edit']">
     Edit
   </button>
   <button mat-raised-button color="warn" (click)="openDialog()">Delete</button>
@@ -49,11 +49,8 @@
                     <mat-icon>add_box</mat-icon>
                   </button>
                 </p>
-                <mat-card
-                  class="inner-card"
-                  background-color="primary"
-                  *ngFor="let roomService of booking.roomServices"
-                >
+                <mat-card class="inner-card" background-color="primary"
+                  *ngFor="let roomService of booking.roomServices">
                   <a [routerLink]="['/pages/roomServices/', roomService.id]">
                     ID: {{ roomService.id }}
                   </a>
@@ -71,18 +68,15 @@
             </div>
 
             <div class="col-md-3">
-                <mat-card class="outer-card">
+              <mat-card class="outer-card">
                 <p>
                   Restaurant Orders: ({{ booking.restaurantOrders.length }})
                   <button mat-icon-button [routerLink]="['./restaurantOrders/create']">
                     <mat-icon>add_box</mat-icon>
                   </button>
                 </p>
-                <mat-card
-                  class="inner-card"
-                  background-color="primary"
-                  *ngFor="let restaurantOrder of booking.restaurantOrders"
-                >
+                <mat-card class="inner-card" background-color="primary"
+                  *ngFor="let restaurantOrder of booking.restaurantOrders">
                   <a [routerLink]="['/pages/restaurantOrders/', restaurantOrder.id]">
                     ID: {{ restaurantOrder.id }}
                   </a>
@@ -101,18 +95,15 @@
             </div>
 
             <div class="col-md-3">
-                <mat-card class="outer-card">
+              <mat-card class="outer-card">
                 <p>
                   Laundry Services: ({{ booking.laundryServices.length }})
                   <button mat-icon-button [routerLink]="['./laundryServices/create']">
                     <mat-icon>add_box</mat-icon>
                   </button>
                 </p>
-                <mat-card
-                  class="inner-card"
-                  background-color="primary"
-                  *ngFor="let laundryService of booking.laundryServices"
-                >
+                <mat-card class="inner-card" background-color="primary"
+                  *ngFor="let laundryService of booking.laundryServices">
                   <a [routerLink]="['/pages/laundryServices/', laundryService.id]">
                     ID: {{ laundryService.id }}
                   </a>
@@ -131,18 +122,15 @@
             </div>
 
             <div class="col-md-3">
-                <mat-card class="outer-card">
+              <mat-card class="outer-card">
                 <p>
                   WakeUpCall Services: ({{ booking.wakeUpCallServices.length }})
                   <button mat-icon-button [routerLink]="['./wakeUpCallServices/create']">
                     <mat-icon>add_box</mat-icon>
                   </button>
                 </p>
-                <mat-card
-                  class="inner-card"
-                  background-color="primary"
-                  *ngFor="let wakeUpCallService of booking.wakeUpCallServices"
-                >
+                <mat-card class="inner-card" background-color="primary"
+                  *ngFor="let wakeUpCallService of booking.wakeUpCallServices">
                   <a [routerLink]="['/pages/wakeUpCallServices/', wakeUpCallService.id]">
                     ID: {{ wakeUpCallService.id }}
                   </a>

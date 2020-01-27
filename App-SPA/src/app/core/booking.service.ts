@@ -45,7 +45,7 @@ export class BookingService {
     return this.http.get<Booking[]>(this.baseUrl + 'bookings/getTodaysPendingCheckOuts');
   }
 
-  // updateBooking(id: number, guest: Booking) {
-  //   return this.http.put(this.baseUrl + 'bookings/' + id, booking);
-  // }
+  updateBooking(id: number, booking: Booking) {
+    return this.http.put(this.baseUrl + 'bookings/' + id, booking);
+  }
 }

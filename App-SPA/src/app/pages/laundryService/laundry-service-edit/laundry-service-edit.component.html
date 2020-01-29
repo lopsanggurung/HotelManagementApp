@@ -1,3 +1,151 @@
-<p>
-  laundry-service-edit works!
-</p>
+<h2 class="text-center text-primary">
+  Edit Laundry Service: {{laundryService.id}} (Booking ID: {{ bookingId }})
+</h2>
+<mat-card>
+  <form [formGroup]="mainForm" (ngSubmit)="update(laundryService.id)">
+    <mat-card-content>
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Date Ordered</mat-label>
+              <input matInput [matDatepicker]="dateOrderedPicker" formControlName="dateOrdered"
+                placeholder="Date Ordered" />
+              <mat-datepicker-toggle matSuffix [for]="dateOrderedPicker"></mat-datepicker-toggle>
+              <mat-datepicker #dateOrderedPicker></mat-datepicker>
+              <mat-error>Please enter Date Ordered</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Date Returned From Laundry</mat-label>
+              <input matInput [matDatepicker]="dateReturnedFromLaundryPicker" formControlName="dateReturnedFromLaundry"
+                placeholder="Date Returned From Laundry" />
+              <mat-datepicker-toggle matSuffix [for]="dateReturnedFromLaundryPicker"></mat-datepicker-toggle>
+              <mat-datepicker #dateReturnedFromLaundryPicker></mat-datepicker>
+              <mat-error>Please enter Date Returned From Laundry</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Date Returned To Guest</mat-label>
+              <input matInput [matDatepicker]="dateReturnedToGuestPicker" formControlName="dateReturnedToGuest"
+                placeholder="Date Returned To Guest" />
+              <mat-datepicker-toggle matSuffix [for]="dateReturnedToGuestPicker"></mat-datepicker-toggle>
+              <mat-datepicker #dateReturnedToGuestPicker></mat-datepicker>
+              <mat-error>Please enter Date Returned To Guest</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Payment Status</mat-label>
+              <mat-select formControlName="isPaid" placeholder="Payment Status">
+                <mat-option *ngFor="let isPaid of isPaidList" value="{{ isPaid.value }}">
+                  {{ isPaid.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Payment Status</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['isPaid'].hasError('required') && mainForm.controls['isPaid'].touched">
+                Please select a Payment Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <div>
+              Total Price before Tax: {{totalPriceBeforeTax}}
+            </div>
+            <div>
+              Tax Amount: {{taxAmount}}
+            </div>
+            <div>
+              <strong>Total Price: </strong>{{totalPrice}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div formArrayName="laundryServiceItems">
+            <div *ngFor="let laundryServiceItem of laundryServiceItemForms.controls; let i = index" [formGroupName]="i">
+              <!-- <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-select formControlName="menuItemId" placeholder="Item Name">
+                    <mat-option *ngFor="let menuItem of menuItems" value="{{ menuItem.id }}">
+                      {{ menuItem.name }} | ${{menuItem.price}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td> -->
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Type</mat-label>
+                  <mat-select formControlName="type" placeholder="type">
+                    <mat-option *ngFor="let type of typeList" value="{{ type.value }}">
+                      {{ type.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Category</mat-label>
+                  <mat-select formControlName="category" placeholder="category">
+                    <mat-option *ngFor="let category of categoryList" value="{{ category.value }}">
+                      {{ category.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>quantity</mat-label>
+                  <input matInput formControlName="quantity" placeholder="quantity" />
+                  <mat-error>Please enter a quantity</mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>pricePerItem</mat-label>
+                  <input matInput formControlName="pricePerItem" placeholder="pricePerItem" />
+                  <mat-error>Please enter a pricePerItem</mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <button type="button" mat-raised-button color="warn" (click)="deleteLaundryServiceItem(i)">
+                  Delete Item
+                </button>
+              </td>
+            </div>
+
+            <button type="button" mat-raised-button color="primary" (click)="addLaundryServiceItem()">
+              Add Item
+            </button>
+          </div>
+        </tr>
+      </table>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="form-group text-center">
+        <button type="submit" mat-raised-button color="primary"
+          [disabled]="!mainForm.valid || !mainForm.dirty || laundryServiceItemForms.length == 0">
+          Update
+        </button>
+        <button type="button" mat-raised-button color="secondary" (click)="cancel()">
+          Go Back
+        </button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -219,7 +219,7 @@ const routes: Routes = [
       {
         path: 'restaurantOrders/:id/edit',
         component: RestaurantOrderEditComponent,
-        resolve: { restaurantOrder: RestaurantOrderEditResolver },
+        resolve: { restaurantOrder: RestaurantOrderEditResolver, menuItems: MenuItemListResolver },
         // canDeactivate: [PreventUnsavedchanges]
       },
       {

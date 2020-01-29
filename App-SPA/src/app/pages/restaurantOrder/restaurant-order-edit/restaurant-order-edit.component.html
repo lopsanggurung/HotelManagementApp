@@ -1,3 +1,106 @@
-<p>
-  restaurant-order-edit works!
-</p>
+<h2 class="text-center text-primary">
+  Edit Restaurant Order: {{restaurantOrder.id}}
+  <span *ngIf="bookingId != null">(Booking ID: {{ bookingId }})</span>
+  <span *ngIf="bookingId == null">(Non Guest)</span>
+</h2>
+<mat-card>
+  <form [formGroup]="mainForm" (ngSubmit)="update(restaurantOrder.id)">
+    <mat-card-content>
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Is Completed</mat-label>
+              <mat-select formControlName="isCompleted" placeholder="Status">
+                <mat-option *ngFor="let isCompleted of isCompletedList" value="{{ isCompleted.value }}">
+                  {{ isCompleted.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Status</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['isCompleted'].hasError('required') && mainForm.controls['isCompleted'].touched">
+                Please select a Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Payment Status</mat-label>
+              <mat-select formControlName="isPaid" placeholder="Payment Status">
+                <mat-option *ngFor="let isPaid of isPaidList" value="{{ isPaid.value }}">
+                  {{ isPaid.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Payment Status</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['isPaid'].hasError('required') && mainForm.controls['isPaid'].touched">
+                Please select a Payment Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <div>
+              Total Price before Tax: {{totalPriceBeforeTax}}
+            </div>
+            <div>
+              Tax Amount: {{taxAmount}}
+            </div>
+            <div>
+              <strong>Total Price: </strong>{{totalPrice}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div formArrayName="restaurantOrderItems">
+            <div *ngFor="let restaurantOrderItem of restaurantOrderItemForms.controls; let i = index"
+              [formGroupName]="i">
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-select formControlName="menuItemId" placeholder="Item Name">
+                    <mat-option *ngFor="let menuItem of menuItems" value="{{ menuItem.id }}">
+                      {{ menuItem.name }} | ${{menuItem.price}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>quantity</mat-label>
+                  <input matInput formControlName="quantity" placeholder="quantity" />
+                  <mat-error>Please enter a quantity</mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <button type="button" mat-raised-button color="warn" (click)="deleteRestaurantOrderItem(i)">
+                  Delete Item
+                </button>
+              </td>
+            </div>
+
+            <button type="button" mat-raised-button color="primary" (click)="addRestaurantOrderItem()">
+              Add Item
+            </button>
+          </div>
+        </tr>
+      </table>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="form-group text-center">
+        <button type="submit" mat-raised-button color="primary"
+          [disabled]="!mainForm.valid || !mainForm.dirty || restaurantOrderItemForms.length == 0">
+          Update
+        </button>
+        <button type="button" mat-raised-button color="secondary" (click)="cancel()">
+          Go Back
+        </button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

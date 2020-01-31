@@ -1,3 +1,66 @@
-<p>
-  wake-up-call-service-edit works!
-</p>
+<h2 class="text-center text-primary">
+  Edit Wakeup Call Service (Booking ID: {{ bookingId }})
+</h2>
+<mat-card>
+  <form [formGroup]="mainForm" (ngSubmit)="update(wakeUpCallService.id)">
+    <mat-card-content>
+      <!-- Value: {{ mainForm.value | json }}
+      <hr /> -->
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Is Completed</mat-label>
+              <mat-select formControlName="isCompleted" placeholder="Status">
+                <mat-option *ngFor="let isCompleted of isCompletedList" value="{{ isCompleted.value }}">
+                  {{ isCompleted.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Status</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['isCompleted'].hasError('required') && mainForm.controls['isCompleted'].touched">
+                Please select a Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>WakeUpCall Date</mat-label>
+              <input matInput [matDatepicker]="wakeUpCallDatePicker" formControlName="wakeUpCallDate"
+                placeholder="wakeUpCall Date" />
+              <mat-datepicker-toggle matSuffix [for]="wakeUpCallDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #wakeUpCallDatePicker></mat-datepicker>
+              <mat-error>Please enter WakeupCall Date</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>WakeUpCall Time</mat-label>
+              <mat-select formControlName="wakeUpCallTime" placeholder="wakeUpCall Time">
+                <mat-option *ngFor="let timeInterval of timeIntervalList" value="{{ timeInterval.value }}">
+                  {{ timeInterval.value }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a WakeUpCall Time</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['wakeUpCallTime'].hasError('required') && mainForm.controls['wakeUpCallTime'].touched">
+                Please select a WakeUpCall Time
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="form-group text-center">
+        <button type="submit" mat-raised-button color="primary" [disabled]="!mainForm.valid">
+          Update
+        </button>
+        <button type="button" mat-raised-button color="secondary" (click)="cancel()">
+          Go Back
+        </button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,139 @@
+<h2 class="text-center text-primary">
+  Create a new Order
+  <span *ngIf="mainForm.controls['bookingId'].value != ''">
+    (Booking ID: {{ mainForm.controls['bookingId'].value }})
+  </span>
+  <span *ngIf="mainForm.controls['orderFor'].value != ''">
+    (Order For: {{ mainForm.controls['orderFor'].value }})
+  </span>
+</h2>
+<div class="warning"
+  *ngIf="mainForm.controls['bookingId'].value == '' && mainForm.controls['orderFor'].value == '' && mainForm.touched">
+  *Booking Id or Order For is Required
+</div>
+<div class="warning" *ngIf="restaurantOrderItemForms.length == 0  && mainForm.touched">
+  *At least one Order Item Required
+</div>
+<mat-card>
+  <form [formGroup]="mainForm" (ngSubmit)="create()">
+    <mat-card-content>
+      <!-- Value: {{ mainForm.value | json }}
+      <hr /> -->
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Booking Id (Required for Guest)</mat-label>
+              <mat-select formControlName="bookingId" placeholder="Booking Id">
+                <mat-option *ngFor="let booking of bookings" value="{{ booking.id }}">
+                  <span *ngIf="booking.id == null"> Non-Guest Order</span>
+                  <span *ngIf="booking.id != null">
+                    {{ booking.id }} | {{booking.firstName}} {{booking.lastName}}
+                  </span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Order For (Required for Non-Guest)</mat-label>
+              <input matInput formControlName="orderFor" placeholder="Order For" />
+              <mat-error>Please enter Ordering Person's name</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Is Completed</mat-label>
+              <mat-select formControlName="isCompleted" placeholder="Status">
+                <mat-option *ngFor="let isCompleted of isCompletedList" value="{{ isCompleted.value }}">
+                  {{ isCompleted.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Status</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['isCompleted'].hasError('required') && mainForm.controls['isCompleted'].touched">
+                Please select a Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Payment Status</mat-label>
+              <mat-select formControlName="isPaid" placeholder="Payment Status">
+                <mat-option *ngFor="let isPaid of isPaidList" value="{{ isPaid.value }}">
+                  {{ isPaid.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Please select a Payment Status</mat-hint>
+              <mat-error
+                *ngIf="mainForm.controls['isPaid'].hasError('required') && mainForm.controls['isPaid'].touched">
+                Please select a Payment Status
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <div>
+              Total Price before Tax: {{totalPriceBeforeTax}}
+            </div>
+            <div>
+              Tax Amount: {{taxAmount}}
+            </div>
+            <div>
+              <strong>Total Price: </strong>{{totalPrice}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div formArrayName="restaurantOrderItems">
+            <div *ngFor="let restaurantOrderItem of restaurantOrderItemForms.controls; let i = index"
+              [formGroupName]="i">
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-select formControlName="menuItemId" placeholder="Item Name">
+                    <mat-option *ngFor="let menuItem of menuItems" value="{{ menuItem.id }}">
+                      {{ menuItem.name }} | ${{menuItem.price}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>quantity</mat-label>
+                  <input matInput formControlName="quantity" placeholder="quantity" />
+                  <mat-error>Please enter a quantity</mat-error>
+                </mat-form-field>
+              </td>
+              <td>
+                <button type="button" mat-raised-button color="warn" (click)="deleteRestaurantOrderItem(i)">
+                  Delete Item
+                </button>
+              </td>
+            </div>
+
+            <button type="button" mat-raised-button color="primary" (click)="addRestaurantOrderItem()">
+              Add Item
+            </button>
+          </div>
+        </tr>
+      </table>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="form-group text-center">
+        <button type="submit" mat-raised-button color="primary"
+          [disabled]="!mainForm.valid || restaurantOrderItemForms.length == 0">
+          Create
+        </button>
+        <button type="button" mat-raised-button color="secondary" (click)="cancel()">
+          Go Back
+        </button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

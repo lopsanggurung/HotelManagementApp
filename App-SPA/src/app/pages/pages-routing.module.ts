@@ -46,6 +46,7 @@ import { BookingCreateComponent } from './booking/booking-create/booking-create.
 import { BookingDetailComponent } from './booking/booking-detail/booking-detail.component';
 import { BookingDetailResolver } from './booking/_resolvers/booking-detail.resolver';
 import { RoomServiceCreateComponent } from './roomService/room-service-create/room-service-create.component';
+import { RestaurantOrderCreateComponent } from './restaurantOrder/restaurant-order-create/restaurant-order-create.component';
 import {
   GuestRestaurantOrderCreateComponent
 } from './restaurantOrder/guest-restaurant-order-create/guest-restaurant-order-create.component';
@@ -127,6 +128,11 @@ const routes: Routes = [
       {
         path: 'bookings/:id/wakeUpCallServices/create',
         component: WakeUpCallServiceCreateComponent
+      },
+      {
+        path: 'restaurantOrders/create',
+        component: RestaurantOrderCreateComponent,
+        resolve: { bookings: BookingListResolver, menuItems: MenuItemListResolver }
       },
       {
         path: 'guests',

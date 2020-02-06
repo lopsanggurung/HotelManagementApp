@@ -1,6 +1,6 @@
-import {CdkTableModule} from '@angular/cdk/table';
-import {CdkTreeModule} from '@angular/cdk/tree';
-import {NgModule} from '@angular/core';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { NgModule } from '@angular/core';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -38,8 +38,12 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { MaterialComponent } from './material.component';
 
 @NgModule({
+  declarations: [
+    MaterialComponent
+  ],
   exports: [
     CdkTableModule,
     CdkTreeModule,
@@ -80,7 +84,7 @@ import {
     MatTreeModule,
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }
 
 
 /**  Copyright 2018 Google Inc. All Rights Reserved.

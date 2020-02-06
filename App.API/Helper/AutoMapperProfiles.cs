@@ -19,6 +19,7 @@ namespace App.API.Helpers
             CreateMap<Room, RoomForListDto>();
             CreateMap<Booking, BookingForListDto>();
             CreateMap<Booking, BookingToReturnDto>();
+            CreateMap<BookingForCreationDto, Booking>();
             CreateMap<BookingForUpdateDto, Booking>();
             CreateMap<RoomService, RoomServiceForListDto>();
             CreateMap<RoomService, RoomServiceToReturnDto>();

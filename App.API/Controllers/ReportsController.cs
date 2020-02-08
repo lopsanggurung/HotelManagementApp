@@ -49,7 +49,7 @@ namespace App.API.Controllers
                                     name = room.RoomNumber,
                                     value = (from b in _context.Bookings
                                              where b.RoomId == room.Id
-                                             select (b.CheckOutDate.Date - b.CheckInDate.Date).Days).Sum()
+                                             select (b.CheckOutDate.Date.Subtract(b.CheckInDate.Date)).Days).Sum()
                                 }).ToListAsync();
 
             return Ok(result);
@@ -81,7 +81,7 @@ namespace App.API.Controllers
                                      country = guest.Country,
                                      bookingCount = (from b in _context.Bookings
                                                      where b.GuestId == guest.Id
-                                                     select (b.CheckOutDate.Date - b.CheckInDate.Date).Days).Sum()
+                                                     select (b.CheckOutDate.Date.Subtract(b.CheckInDate.Date)).Days).Sum()
                                  })
                                 group l by l.country into lGroup
                                 select new

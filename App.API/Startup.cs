@@ -162,7 +162,7 @@ namespace App.API
 
             // app.UseHttpsRedirection();
             // Comment out seeder.SeeUsers() after seeding database with data
-            seeder.SeedUsers();
+            // seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseAuthentication();
             app.UseDefaultFiles();

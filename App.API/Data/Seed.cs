@@ -18,9 +18,9 @@ namespace App.API.Data
             _context = context;
         }
 
-        public void SeedUsers()
+        public static void SeedUsers(UserManager<User> userManager, RoleManager<Role> roleManager, DataContext context)
         {
-            if (!_userManager.Users.Any())
+            if (!userManager.Users.Any())
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
                 var users = JsonConvert.DeserializeObject<List<User>>(userData);
@@ -35,13 +35,13 @@ namespace App.API.Data
 
                 foreach (var role in roles)
                 {
-                    _roleManager.CreateAsync(role).Wait();
+                    roleManager.CreateAsync(role).Wait();
                 }
 
                 foreach (var user in users)
                 {
-                    _userManager.CreateAsync(user, "password").Wait();
-                    _userManager.AddToRoleAsync(user, "Member").Wait();
+                    userManager.CreateAsync(user, "password").Wait();
+                    userManager.AddToRoleAsync(user, "Member").Wait();
                 }
 
                 var adminUser = new User
@@ -49,97 +49,97 @@ namespace App.API.Data
                     UserName = "Admin"
                 };
 
-                IdentityResult result = _userManager.CreateAsync(adminUser, "password").Result;
+                IdentityResult result = userManager.CreateAsync(adminUser, "password").Result;
 
                 if (result.Succeeded)
                 {
-                    var admin = _userManager.FindByNameAsync("Admin").Result;
-                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Manager" }).Wait();
+                    var admin = userManager.FindByNameAsync("Admin").Result;
+                    userManager.AddToRolesAsync(admin, new[] { "Admin", "Manager" }).Wait();
                 }
             }
 
-            if (!_context.Rooms.Any())
+            if (!context.Rooms.Any())
             {
                 var roomData = System.IO.File.ReadAllText("Data/RoomSeedData.json");
                 var rooms = JsonConvert.DeserializeObject<List<Room>>(roomData);
                 foreach (var room in rooms)
                 {
-                    _context.Rooms.Add(room);
+                    context.Rooms.Add(room);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
 
-            if (!_context.Guests.Any())
+            if (!context.Guests.Any())
             {
                 var guestData = System.IO.File.ReadAllText("Data/GuestSeedData.json");
                 var guests = JsonConvert.DeserializeObject<List<Guest>>(guestData);
                 foreach (var guest in guests)
                 {
-                    _context.Guests.Add(guest);
+                    context.Guests.Add(guest);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
 
-            if (!_context.WakeUpCallServices.Any())
+            if (!context.WakeUpCallServices.Any())
             {
                 var wakeUpCallServiceData = System.IO.File.ReadAllText("Data/WakeUpCallServiceSeedData.json");
                 var wakeUpCallServices = JsonConvert.DeserializeObject<List<WakeUpCallService>>(wakeUpCallServiceData);
                 foreach (var wakeUpCallService in wakeUpCallServices)
                 {
-                    _context.WakeUpCallServices.Add(wakeUpCallService);
+                    context.WakeUpCallServices.Add(wakeUpCallService);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
 
-            if (!_context.MenuItems.Any())
+            if (!context.MenuItems.Any())
             {
                 var menuItemData = System.IO.File.ReadAllText("Data/MenuItemSeedData.json");
                 var MenuItems = JsonConvert.DeserializeObject<List<MenuItem>>(menuItemData);
                 foreach (var MenuItem in MenuItems)
                 {
-                    _context.MenuItems.Add(MenuItem);
+                    context.MenuItems.Add(MenuItem);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
 
-            if (!_context.RoomServices.Any())
+            if (!context.RoomServices.Any())
             {
                 var roomServiceData = System.IO.File.ReadAllText("Data/RoomServiceSeedData.json");
                 var roomServices = JsonConvert.DeserializeObject<List<RoomService>>(roomServiceData);
                 foreach (var roomService in roomServices)
                 {
-                    _context.RoomServices.Add(roomService);
+                    context.RoomServices.Add(roomService);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
 
-            if (!_context.LaundryServices.Any())
+            if (!context.LaundryServices.Any())
             {
                 var laundryServiceData = System.IO.File.ReadAllText("Data/LaundryServiceSeedData.json");
                 var laundryServices = JsonConvert.DeserializeObject<List<LaundryService>>(laundryServiceData);
                 foreach (var laundryService in laundryServices)
                 {
-                    _context.LaundryServices.Add(laundryService);
+                    context.LaundryServices.Add(laundryService);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
 
-            if (!_context.RestaurantOrders.Any())
+            if (!context.RestaurantOrders.Any())
             {
                 var restaurantOrderData = System.IO.File.ReadAllText("Data/RestaurantOrderSeedData.json");
                 var restaurantOrders = JsonConvert.DeserializeObject<List<RestaurantOrder>>(restaurantOrderData);
                 foreach (var restaurantOrder in restaurantOrders)
                 {
-                    _context.RestaurantOrders.Add(restaurantOrder);
+                    context.RestaurantOrders.Add(restaurantOrder);
                 }
 
-                _context.SaveChanges();
+                context.SaveChanges();
             }
         }
     }
